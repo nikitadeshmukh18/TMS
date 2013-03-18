@@ -1,2 +1,2 @@
-com/sample/controller/InnerController.class
-com/sample/controller/BaseController.class
+com\sample\controller\BaseController.class
+com\sample\controller\InnerController.class

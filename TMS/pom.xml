@@ -13,6 +13,7 @@
         <spring.version>3.0.5.RELEASE</spring.version>
         <jdk.version>1.6</jdk.version>
         <junit.version>3.8.1</junit.version>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
