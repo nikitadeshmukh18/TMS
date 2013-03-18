@@ -56,6 +56,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<h1>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${message}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write(" ....</h1>\r\n");
+      out.write("<<<<<<< HEAD\r\n");
+      out.write("<h1>Its Working</h1>\r\n");
+      out.write("=======\r\n");
+      out.write("<h2>TSM TSM ....</h2>\r\n");
+      out.write(">>>>>>> 0ad6ae224343335670e1ddb8884cdc87f32fc654\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
