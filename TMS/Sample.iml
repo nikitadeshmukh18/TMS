@@ -7,6 +7,19 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/static" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/bootstrap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/bootstrap/css" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/bootstrap/img" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/bootstrap/js" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/static/css" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/static/img" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/META-INF" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/static/js" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/pages" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
