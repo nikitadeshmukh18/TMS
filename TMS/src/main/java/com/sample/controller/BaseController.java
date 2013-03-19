@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class BaseController {
 
-    @RequestMapping(value = "/" , method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String welcome(ModelMap model){
+        System.out.println("model = " + model);
         model.addAttribute("message", "Maven Web Project + Spring 3 MVC - welcome()");
         return "index";
     }
