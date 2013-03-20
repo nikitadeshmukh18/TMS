@@ -9,7 +9,8 @@
 
     <!-- Le styles -->
 
-    <link href="static/css/bootstrap.css" rel="stylesheet">
+     <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -43,11 +44,13 @@
       }
 
     </style>
-    <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+     <link href="<%=request.getContextPath()%>/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="static/js/html5shiv.js"></script>
+
+
+
     <![endif]-->
 
     <!-- Fav and touch icons -->
@@ -64,8 +67,8 @@
 
       <form class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
+        <input type="text" class="input-block-level" placeholder="Email address" required>
+        <input type="password" class="input-block-level" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

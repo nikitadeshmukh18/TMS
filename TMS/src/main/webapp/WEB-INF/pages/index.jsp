@@ -11,6 +11,6 @@
 <h1>Its Working</h1>
 <h2>TSM TSM ....</h2>
 <a href="login">Log IN</a>
-<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+<a href="search">Search</a>
 </body>
 </html>

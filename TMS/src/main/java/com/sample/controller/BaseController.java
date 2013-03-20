@@ -23,4 +23,9 @@ public class BaseController {
        // model.addAttribute("message", "Maven Web Project + Spring 3 MVC - welcome()");
         return "login";
     }
+
+    @RequestMapping(value = "/search" , method = RequestMethod.GET)
+    public String search(ModelMap model){
+        return "search";
+    }
    }
