@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.mysema.spring:spring-tx-annotations:0.1.0" type="repository">
+    <properties maven-id="com.mysema.spring:spring-tx-annotations:0.1.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/spring-tx-annotations-0.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

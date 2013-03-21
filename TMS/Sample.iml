@@ -25,6 +25,11 @@
     <orderEntry type="jdk" jdkName="1.6" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.springframework:spring-webmvc:3.2.0.RC2" level="project" />
+    <orderEntry type="library" name="com.google.code.maven-play-plugin.org.hibernate:hibernate-core:3.6.10.Final-patched-play-1.2.5" level="project" />
+    <orderEntry type="library" name="com.mysema.spring:spring-tx-annotations:0.1.0" level="project" />
+    <orderEntry type="library" name="org.springframework:spring-tx:3.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="org.springframework.security:spring-security-core:3.2.0.M1" level="project" />
+    <orderEntry type="library" name="org.springframework:spring-orm:3.2.2.RELEASE" level="project" />
   </component>
 </module>
 

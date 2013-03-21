@@ -1,26 +1,42 @@
 package com.sample.controller;
 
+import com.sample.model.User;
+import com.sample.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+
+import java.util.Map;
 
 
 @Controller
+@SessionAttributes({"username"})
 @RequestMapping("/")
 public class BaseController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model){
         System.out.println("model = " + model);
         model.addAttribute("message", "Maven Web Project + Spring 3 MVC - welcome()");
         return "index";
     }
 
-    @RequestMapping(value = "/login" , method = RequestMethod.GET)
-    public String login(ModelMap model){
-       // model.addAttribute("message", "Maven Web Project + Spring 3 MVC - welcome()");
+    @RequestMapping(value = "/admin")
+    public String admin(@RequestParam("username") String username, @RequestParam("password") String password, ModelMap map ){
+//        User user = userService.getUser(username);
+//        return new ModelAndView("admin" , (Map<String, ?>) user);
+        map.addAttribute("HIiiiii");
+        return "admin";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(){
         return "login";
     }
 

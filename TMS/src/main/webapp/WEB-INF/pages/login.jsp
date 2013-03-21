@@ -65,10 +65,10 @@
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" method="GET" action="admin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address" required>
-        <input type="password" class="input-block-level" placeholder="Password" required>
+        <input id="username" type="text" class="input-block-level" placeholder="Email address" required>
+        <input id="password" type="password" class="input-block-level" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
