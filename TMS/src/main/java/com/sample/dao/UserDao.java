@@ -14,11 +14,12 @@ public class UserDao {
     private List<User> allUsers;
     private User user;
 
+    @Autowired
     private SessionFactory sessionFactory;
 
     public List<User> getAllUsers() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select * from User");
+        Query query = session.createQuery("from User");
         List<User> allUsers = query.list();
         return allUsers;
     }

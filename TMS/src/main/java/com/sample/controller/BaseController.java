@@ -19,31 +19,32 @@ import java.util.Map;
 @RequestMapping("/")
 public class BaseController {
 
-    @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(ModelMap model){
+    @RequestMapping(value = "/")
+    public String welcome(ModelMap model) {
         System.out.println("model = " + model);
         model.addAttribute("message", "Maven Web Project + Spring 3 MVC - welcome()");
         return "index";
     }
 
-    @RequestMapping(value = "/admin")
-    public String admin(@RequestParam("password") String password, ModelMap map ){
-//        User user = userService.getUser(username);
-//        return new ModelAndView("admin" , (Map<String, ?>) user);
+    public ModelAndView admin(@RequestParam("password") String password,
+                              ModelMap map) {
+        System.out.println(password);
+        User user = userService.getUser("nikitade");
+        System.out.println(user);
+
         map.addAttribute("HIiiiii");
-        return "admin";
+        return new ModelAndView("admin", (Map<String, ?>) user);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(){
+    public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/search" , method = RequestMethod.GET)
-    public String search(ModelMap model){
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(ModelMap model) {
         return "search";
     }
-   }
+}

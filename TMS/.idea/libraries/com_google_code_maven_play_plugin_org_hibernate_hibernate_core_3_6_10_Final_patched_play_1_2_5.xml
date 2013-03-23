@@ -1,6 +1,5 @@
 <component name="libraryTable">
-  <library name="com.google.code.maven-play-plugin.org.hibernate:hibernate-core:3.6.10.Final-patched-play-1.2.5" type="repository">
-    <properties maven-id="com.google.code.maven-play-plugin.org.hibernate:hibernate-core:3.6.10.Final-patched-play-1.2.5" />
+  <library name="com.google.code.maven-play-plugin.org.hibernate:hibernate-core:3.6.10.Final-patched-play-1.2.5">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/hibernate-core-3.6.10.Final-patched-play-1.2.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.6.jar!/" />
