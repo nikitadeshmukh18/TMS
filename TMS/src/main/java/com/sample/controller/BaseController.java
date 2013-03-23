@@ -4,6 +4,7 @@ import com.sample.model.User;
 import com.sample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,13 +15,13 @@ import java.util.Map;
 
 @Controller
 @SessionAttributes({"username"})
+@Transactional
 @RequestMapping("/")
 public class BaseController {
 
-    @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/")
     public String welcome(ModelMap model){
         System.out.println("model = " + model);
         model.addAttribute("message", "Maven Web Project + Spring 3 MVC - welcome()");
@@ -28,11 +29,13 @@ public class BaseController {
     }
 
     @RequestMapping(value = "/admin")
-    public String admin(@RequestParam("username") String username, @RequestParam("password") String password, ModelMap map ){
-//        User user = userService.getUser(username);
-//        return new ModelAndView("admin" , (Map<String, ?>) user);
+    public ModelAndView admin(@RequestParam("password") String password,
+                              ModelMap map){
+        System.out.println(password);
+        User user = userService.getUser("nikitade");
+        System.out.println(user);
         map.addAttribute("HIiiiii");
-        return "admin";
+        return new ModelAndView("admin" , (Map<String, ?>) user);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

@@ -1,6 +1,5 @@
 <component name="libraryTable">
-  <library name="org.springframework:spring-tx:3.0.5.RELEASE" type="repository">
-    <properties maven-id="org.springframework:spring-tx:3.0.5.RELEASE" />
+  <library name="org.springframework:spring-tx:3.0.5.RELEASE">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/spring-tx-3.0.5.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/geronimo-jta_1.1_spec-1.1.jar!/" />
