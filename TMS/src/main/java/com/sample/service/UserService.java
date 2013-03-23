@@ -18,7 +18,7 @@ public class UserService {
 
     public UserService() {
     }
-
+    @Autowired
     public UserService(UserDao userDao) {
         this.userDao = userDao;
     }

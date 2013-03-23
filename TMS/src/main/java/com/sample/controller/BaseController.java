@@ -14,12 +14,18 @@ import java.util.Map;
 
 
 @Controller
-@SessionAttributes({"username"})
 @Transactional
 @RequestMapping("/")
 public class BaseController {
-
     private UserService userService;
+
+    public BaseController(){}
+    @Autowired
+
+
+    public BaseController(UserService userService){
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/")
     public String welcome(ModelMap model) {
@@ -28,14 +34,14 @@ public class BaseController {
         return "index";
     }
 
-    public ModelAndView admin(@RequestParam("password") String password,
+    @RequestMapping(value = "/admin")
+    public String admin(@RequestParam("password") String password,
                               ModelMap map) {
-        System.out.println(password);
+//        System.out.println(password);
         User user = userService.getUser("nikitade");
-        System.out.println(user);
-
-        map.addAttribute("HIiiiii");
-        return new ModelAndView("admin", (Map<String, ?>) user);
+//        System.out.println(user);
+        map.addAttribute("user", user);
+        return "admin";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

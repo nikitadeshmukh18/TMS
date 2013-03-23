@@ -26,7 +26,8 @@ public class UserDao {
 
     public User getUser(String username) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from User where User_Id in (Select User_Id from Login where username=?)").setParameter(0,username);
+//        Query query = session.createQuery("from User where User_Id in (Select User_Id from Login where username=?)").setParameter(0,username);
+        Query query = session.createQuery("from User");
         User user1 = (User) query.list().get(0);
         return user1;
     }

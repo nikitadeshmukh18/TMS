@@ -5,7 +5,7 @@
 </head>
 <body>
 WELCOME ADMIN
-
+${user.name}
 
 </body>
 </html>
