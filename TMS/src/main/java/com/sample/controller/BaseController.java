@@ -4,6 +4,7 @@ import com.sample.model.User;
 import com.sample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @Controller
 @SessionAttributes({"username"})
+@Transactional
 @RequestMapping("/")
 public class BaseController {
 
@@ -28,7 +30,7 @@ public class BaseController {
     }
 
     @RequestMapping(value = "/admin")
-    public String admin(@RequestParam("username") String username, @RequestParam("password") String password, ModelMap map ){
+    public String admin(@RequestParam("password") String password, ModelMap map ){
 //        User user = userService.getUser(username);
 //        return new ModelAndView("admin" , (Map<String, ?>) user);
         map.addAttribute("HIiiiii");
