@@ -6,10 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Transactional
-@RequestMapping("/Sample/bus/*")
+@RequestMapping("/bus")
 
 public class BusController {
 
@@ -24,9 +26,9 @@ public class BusController {
         this.busService = busService;
     }
 
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/addBus")
     public String addBus(ModelMap modelMap){
-        return "addBus";
+        return ("addBus");
     }
 
 }
