@@ -39,6 +39,8 @@
             <list>
                 <value>com.sample.model.User</value>
                 <value>com.sample.model.Login</value>
+                <value>com.sample.model.Bus</value>
+                <value>com.sample.model.BusRoute</value>
             </list>
         </property>
 
