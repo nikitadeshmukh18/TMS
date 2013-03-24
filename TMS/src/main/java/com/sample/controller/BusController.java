@@ -26,8 +26,11 @@ public class BusController {
         this.busService = busService;
     }
 
-    @RequestMapping(value = "/addBus")
+    @RequestMapping(value = "/add")
     public String addBus(ModelMap modelMap){
+
+
+
         return ("addBus");
     }
 

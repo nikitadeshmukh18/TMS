@@ -18,6 +18,7 @@ import java.util.Map;
 
 @Controller
 @Transactional
+@SessionAttributes("username")
 @RequestMapping("/")
 public class BaseController {
     private UserService userService;
@@ -54,9 +55,11 @@ public class BaseController {
     }
 
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-    public View validateLogin(@RequestParam("password") String password, ModelMap modelMap){
-        int id = loginService.getId("nikitade");
-        boolean isValid = loginService.isValidUser("nikitade",password);
+    public View validateLogin(@RequestParam("password") String password,
+                              @RequestParam("username") String username,
+                              ModelMap modelMap){
+        int id = loginService.getId(username);
+        boolean isValid = loginService.isValidUser(username,password);
         if(isValid) {
             return new RedirectView("admin");
         }
