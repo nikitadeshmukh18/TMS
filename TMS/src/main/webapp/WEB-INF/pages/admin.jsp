@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a></text>
+WELCOME ADMIN ${user.name} <text align="right"><a href="logout">Log Out</a></text>
 
 <a href="admin/addBus" > Add Bus </a>
 
