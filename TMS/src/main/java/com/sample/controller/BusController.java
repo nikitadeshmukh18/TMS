@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Transactional
-@RequestMapping("/bus")
+@RequestMapping("/admin")
 
 public class BusController {
 
@@ -26,7 +26,7 @@ public class BusController {
         this.busService = busService;
     }
 
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/addBus")
     public String addBus(ModelMap modelMap){
 
 
