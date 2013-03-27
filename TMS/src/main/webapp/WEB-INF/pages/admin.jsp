@@ -107,7 +107,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      case 2:
                                                           %>
                                                           <div class="container">
-                                                                <form class="form-addroute" method="POST" action="addroute.do">
+                                                                <form class="form-addroute" method="POST" action="addroute">
                                                                  <h2 class="form-addroute-heading">ADD ROUTE DETAILS</h2>
                                                                  <input id="busid" name"username" type="text" class="input-block-level" placeholder="Route ID" required/>
                                                                  <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Route Source" required/>
@@ -143,9 +143,11 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                            Desti : <%=busdesti%>
                                                            Apply Search Logic Here
                                                            </pre>
-                                                           <a href="javascript:javascript:mypopup('http://localhost:8080/Sample/admin?id=14&bisid=<%=busid%>&bussrc=<%=bussrc%>&busdesti=<%=busdesti%>','600','700')" > WANT NEW ROUTE </a>
+                                                           <a href="javascript:javascript:mypopup('http://localhost:8080/Sample/admin?id=14&bisid=<%=busid%>&bussrc=<%=bussrc%>&busdesti=<%=busdesti%>','400','400')" > WANT NEW ROUTE </a>
                                                            <%
                                                            break;
+
+
                                                      case 14:                 //ADD BUS Pop UP & NEW Route
                                                      String bussrc1 = "";
                                                      bussrc1 = request.getParameter("bussrc");
@@ -155,12 +157,35 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      busid1 = request.getParameter("busid");
 
                                                      %>
+
+                                                         <div class="alert">
+                                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                         Here You Could Add Alerts
+
+                                                         </div>
                                                                                                                  <pre>
                                                      BUS ID Submitted is <%=busid1%>
                                                      Src : <%=bussrc1%>
                                                      Desti : <%=busdesti1%>
                                                      Apply New Route Logic with bus ID
                                                                                                                  </pre>
+                                                      <div class="container">
+                                                      <form class="form-addbusroute" method="POST" action="addroute">
+
+                                                     New Route ID : <input  name="bustime" type="text" class="input-block-level" placeholder="Arrival Time OF BUS" required/>
+
+                                                     Select Bus Stop : <select name="busstop">
+                                                                       <option>1</option>
+                                                                       <option>2</option>
+                                                                       <option>3</option>
+                                                                       <option>4</option>
+                                                                       <option>5</option>
+                                                                       </select>
+                                                     <input  name="bustime" type="text" class="input-block-level" placeholder="Arrival Time OF BUS" required/>
+                                                     <button class="btn btn-success btn-large" type="submit">Add Stop</button>
+
+                                                      </form>
+
                                                      <%
                                                      break;
 
