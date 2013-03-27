@@ -50,6 +50,11 @@ public class BaseController {
         return ("login");
     }
 
+    @RequestMapping(value = "/addroute")
+    public String addroute() {
+        return ("addroute");
+    }
+
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     public ModelAndView validateLogin(@RequestParam("password") String password,
                                       @RequestParam("username") String username,
@@ -58,7 +63,7 @@ public class BaseController {
 
         boolean isValid = loginService.isValidUser(username, password);
         if (isValid) {
-            return new ModelAndView("redirect:admin");
+            return new ModelAndView("redirect:admin?id=0");
         } else {
             return new ModelAndView("redirect:/login");
         }
