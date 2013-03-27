@@ -26,7 +26,7 @@ public class User {
         return id;
     }
 
-    private void setId ( Long id ) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,7 +34,7 @@ public class User {
         return name;
     }
 
-    public void setName( String username ) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -53,5 +53,4 @@ public class User {
     public void setUserType(String userType) {
         this.userType = userType;
     }
-
 }

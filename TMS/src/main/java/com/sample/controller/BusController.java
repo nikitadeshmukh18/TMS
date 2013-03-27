@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -27,11 +28,11 @@ public class BusController {
     }
 
     @RequestMapping(value = "/addBus")
-    public String addBus(ModelMap modelMap){
+    public ModelAndView addBus(ModelMap modelMap){
+        int id=1;
+        modelMap.addAttribute("id",id);
 
-
-
-        return ("addBus");
+        return new ModelAndView("redirect:/admin",modelMap);
     }
 
 }
