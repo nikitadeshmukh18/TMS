@@ -12,7 +12,7 @@ public class BusStop {
     private int stopId;
 
     @Column(name = "Stop_Name")
-    private int StopName;
+    private String stopName;
 
     public int getStopId() {
         return stopId;
@@ -22,11 +22,11 @@ public class BusStop {
         this.stopId = stopId;
     }
 
-    public int getStopName() {
-        return StopName;
+    public String getStopName() {
+        return stopName;
     }
 
-    public void setStopName(int stopName) {
-        StopName = stopName;
+    public void setStopName(String stopName) {
+        this.stopName = stopName;
     }
 }

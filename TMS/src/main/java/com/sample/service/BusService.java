@@ -21,4 +21,7 @@ public class BusService {
     }
 
 
+    public void saveBus(String busSource, String busDestination) {
+        busDao.saveBus(busSource,busDestination);
+    }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.*" %>
 <%@page import="java.lang.*" %>
 <%@page import="com.sample.model.User"%>
@@ -25,7 +26,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                        <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE BUS<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="admin?id=1">ADD BUS</a></li>
+                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addBus">ADD BUS</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY BUS INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE BUS</a></li>
 
@@ -90,11 +91,20 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                          %>
 
                                                          <div class="container">
-                                                               <form class="form-addbus" method="POST" action="admin?id=13">
+                                                               <form class="form-addbus" method="POST" action="admin/saveBus">
                                                                  <h2 class="form-addbus-heading">ADD BUS DETAILS</h2>
-                                                                 <input id="busid" name"busid" type="text" class="input-block-level" placeholder="Bus ID" required/>
-                                                                 <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Bus Source" required/>
-                                                                 <input id="busdesti" name="busdesti" type="text" class="input-block-level" placeholder="Bus Destination" required/>
+
+                                                                 <select id="busStops">
+
+                                                                 <c:forEach items='${busStops}' var='stop'>
+                                                                    ${item.stopName}
+                                                                    <option> <c:out value='${stop.stopName}'/></option>
+                                                                 </c:forEach>
+                                                                 </select>
+                                                                 <input id="bus_src" name="bus_src" type="text" class="input-block-level" placeholder="Bus Source" required/>
+                                                                 <input id="bus_destination" name="bus_destination" type="text" class="input-block-level" placeholder="Bus Destination" required/>
+
+
                                                                 <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">Existing Route</button>
                                                                 <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">New Route</button><br>
                                                          <button class="btn btn-large btn-primary" type="submit">Add Bus</button>

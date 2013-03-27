@@ -37,14 +37,6 @@ public class BaseController {
         return "index";
     }
 
-    @RequestMapping(value = "/admin")
-    public String admin(ModelMap map) {
-
-        User user = userService.getUser("username");
-        map.addAttribute("user", user);
-        return "admin";
-    }
-
     @RequestMapping(value = "/login")
     public String login() {
         return ("login");
@@ -80,4 +72,6 @@ public class BaseController {
 
         return new ModelAndView("redirect:/");
     }
+
+
 }
