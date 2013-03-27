@@ -25,7 +25,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                        <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE BUS<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="addbus">ADD BUS</a></li>
+                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="admin?id=1">ADD BUS</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY BUS INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE BUS</a></li>
 
@@ -70,12 +70,11 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
                             <%
 
-                                        User user = new User();
-                                        Integer id= (Integer) request.getAttribute("id");
-                                        int ID = (int) id;
-                                        user = (User) request.getAttribute("user");
 
-                                        //id=0;
+                                        String ID= request.getParameter("id");
+
+                                        int id =  Integer.parseInt(ID);
+
                                         
                                        switch(id)
                                        {

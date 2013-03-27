@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33cac7e0-1ecb-4047-bdd9-b1a946043546" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" />
     </list>
     <ignored path="Sample.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,7 +20,7 @@
     <file path="/a.dummy" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1363704408282" ignored="false" />
     <file path="/search.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364029569062" ignored="false" />
     <file path="/UserService.java" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364051876153" ignored="false" />
-    <file path="/admin.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364396012687" ignored="false" />
+    <file path="/admin.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364400604221" ignored="false" />
     <file path="/UserDao.java" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364130941013" ignored="false" />
     <file path="/sampleLogin.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364056341244" ignored="false" />
     <file path="/Login.java" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364114235176" ignored="false" />
@@ -119,19 +119,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.jsp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="admin.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="173" selection-start="13371" selection-end="13371" vertical-scroll-proportion="0.0">
+            <state line="27" column="118" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.5232558">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mvc-dispatcher-servlet.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="mvc-dispatcher-servlet.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="41" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.879017">
+            <state line="31" column="41" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,7 +167,7 @@
       <file leaf-file-name="BusController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="36" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
+            <state line="29" column="36" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -215,8 +215,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/sample/controller/BaseController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/form.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" />
       </list>
     </option>
   </component>
@@ -956,7 +956,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="36" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
+        <state line="29" column="36" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -975,16 +975,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="173" selection-start="13371" selection-end="13371" vertical-scroll-proportion="0.0">
+        <state line="31" column="41" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="41" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.879017">
+        <state line="27" column="118" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.5232558">
           <folding />
         </state>
       </provider>
