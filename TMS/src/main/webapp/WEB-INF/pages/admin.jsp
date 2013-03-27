@@ -89,9 +89,9 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                          %>
 
                                                          <div class="container">
-                                                               <form class="form-addbus" method="POST" action="addbus.do">
+                                                               <form class="form-addbus" method="POST" action="admin?id=13">
                                                                  <h2 class="form-addbus-heading">ADD BUS DETAILS</h2>
-                                                                 <input id="busid" name"username" type="text" class="input-block-level" placeholder="Bus ID" required/>
+                                                                 <input id="busid" name"busid" type="text" class="input-block-level" placeholder="Bus ID" required/>
                                                                  <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Bus Source" required/>
                                                                  <input id="busdesti" name="busdesti" type="text" class="input-block-level" placeholder="Bus Destination" required/>
                                                                 <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">Existing Route</button>
@@ -116,6 +116,52 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                  </div> <!-- /container -->
                                                           <%
                                                          break;
+                                                     case 13:                 //ADD BUS Second Page
+                                                           String bussrc = "";
+                                                           bussrc = request.getParameter("bussrc");
+                                                           String busdesti = "";
+                                                           busdesti = request.getParameter("busdesti");
+                                                           String busid="";
+                                                           busid = request.getParameter("busid");
+
+                                                           %>
+                                                           <script language="javascript">function mypopup(url,width,height)
+                                                           {
+                                                           width=window.screen.width;
+                                                           height=window.screen.height;
+                                                           mywindow = window.open
+                                                           (url,"mywindow","location=0,status=1,scrollbars=1,resizable=1,menubar=0,toolbar=no,width="+width+",height="+height);
+                                                           //mywindow.moveTo(0,0);
+                                                            mywindow.focus();
+                                                           }
+                                                           </script>
+                                                           <pre>
+                                                           BUS ID Submitted is <%=busid%>
+                                                           Src : <%=bussrc%>
+                                                           Desti : <%=busdesti%>
+                                                           Apply Search Logic Here
+                                                           </pre>
+                                                           <a href="javascript:javascript:mypopup('http://localhost:8080/Sample/admin?id=14&bisid=<%=busid%>&bussrc=<%=bussrc%>&busdesti=<%=busdesti%>','600','700')" > WANT NEW ROUTE </a>
+                                                           <%
+                                                           break;
+                                                     case 14:                 //ADD BUS Pop UP & NEW Route
+                                                     String bussrc1 = "";
+                                                     bussrc1 = request.getParameter("bussrc");
+                                                     String busdesti1 = "";
+                                                     busdesti1 = request.getParameter("busdesti");
+                                                     String busid1="";
+                                                     busid1 = request.getParameter("busid");
+
+                                                     %>
+                                                                                                                 <pre>
+                                                     BUS ID Submitted is <%=busid1%>
+                                                     Src : <%=bussrc1%>
+                                                     Desti : <%=busdesti1%>
+                                                     Apply New Route Logic with bus ID
+                                                                                                                 </pre>
+                                                     <%
+                                                     break;
+
                                                       default :
                                                           %>
                                                          <h1>Default</h1>
