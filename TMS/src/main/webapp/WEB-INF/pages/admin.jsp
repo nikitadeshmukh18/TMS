@@ -94,7 +94,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                  <input id="busid" name"username" type="text" class="input-block-level" placeholder="Bus ID" required/>
                                                                  <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Bus Source" required/>
                                                                  <input id="busdesti" name="busdesti" type="text" class="input-block-level" placeholder="Bus Destination" required/>
-
+                                                                <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">Existing Route</button>
+                                                                <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">New Route</button><br>
                                                          <button class="btn btn-large btn-primary" type="submit">Add Bus</button>
                                                                </form>
 
