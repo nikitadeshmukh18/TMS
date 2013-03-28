@@ -26,7 +26,7 @@ public class BusController {
 
     private UserService userService;
     private BusStopService busStopService;
-    private BusService busService
+    private BusService busService;
     public BusController() {
 
     }

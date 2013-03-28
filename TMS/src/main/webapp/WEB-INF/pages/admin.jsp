@@ -11,6 +11,7 @@
     <link href="<%=request.getContextPath()%>/static/css/form.css" rel="stylesheet" type="text/css"/>
      <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
      <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
+
 </head>
 <body>
 WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a></text>
@@ -76,7 +77,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
                                         int id =  Integer.parseInt(ID);
 
-                                        
+
                                        switch(id)
                                        {
                                                      case 0:
@@ -94,15 +95,23 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                <form class="form-addbus" method="POST" action="admin/saveBus">
                                                                  <h2 class="form-addbus-heading">ADD BUS DETAILS</h2>
 
-                                                                 <select id="busStops">
+                                                                 <select id="busStops" name="bus_src">
 
-                                                                 <c:forEach items='${busStops}' var='stop'>
+                                                               <c:forEach items='${busStops}' var='stop'>
                                                                     ${item.stopName}
                                                                     <option> <c:out value='${stop.stopName}'/></option>
                                                                  </c:forEach>
                                                                  </select>
-                                                                 <input id="bus_src" name="bus_src" type="text" class="input-block-level" placeholder="Bus Source" required/>
-                                                                 <input id="bus_destination" name="bus_destination" type="text" class="input-block-level" placeholder="Bus Destination" required/>
+
+                                                                <select id="busStops" name="bus_destination">
+
+                                                                <c:forEach items='${busStops}' var='stop'>
+                                                                ${item.stopName}
+                                                                <option> <c:out value='${stop.stopName}'/></option>
+                                                                </c:forEach>
+                                                                </select>
+
+
 
 
                                                                 <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">Existing Route</button>
