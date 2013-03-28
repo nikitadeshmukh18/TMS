@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33cac7e0-1ecb-4047-bdd9-b1a946043546" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java" afterPath="$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/search.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/search.jsp" />
     </list>
     <ignored path="Sample.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,7 +18,7 @@
     <file path="/mvc-dispatcher-servlet.xml" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364482274737" ignored="false" />
     <file path="/foo.xml" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1363698354199" ignored="false" />
     <file path="/a.dummy" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1363704408282" ignored="false" />
-    <file path="/search.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364029569062" ignored="false" />
+    <file path="/search.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364501142312" ignored="false" />
     <file path="/UserService.java" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364051876153" ignored="false" />
     <file path="/admin.jsp" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364491712250" ignored="false" />
     <file path="/UserDao.java" changelist="33cac7e0-1ecb-4047-bdd9-b1a946043546" time="1364130941013" ignored="false" />
@@ -97,19 +94,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
+      <file leaf-file-name="BusDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="80" selection-start="6372" selection-end="6372" vertical-scroll-proportion="0.0">
+            <state line="9" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BusStop.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/model/BusStop.java">
+      <file leaf-file-name="BusStopDao.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusStopDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="48" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+            <state line="24" column="12" selection-start="626" selection-end="626" vertical-scroll-proportion="0.40236688">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="68" selection-start="223" selection-end="716" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,14 +124,50 @@
       <file leaf-file-name="search.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/search.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="43" selection-start="3635" selection-end="3663" vertical-scroll-proportion="0.0">
+            <state line="65" column="5" selection-start="1851" selection-end="1851" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminhome.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/adminhome.jsp">
+      <file leaf-file-name="BaseController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BaseController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="44" selection-start="1051" selection-end="1056" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/LoginDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="13" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/UserDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BusStopService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/service/BusStopService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addBus.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addBus.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -133,37 +175,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <file leaf-file-name="BusService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/service/BusService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="53" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mvc-dispatcher-servlet.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="86" selection-start="2147" selection-end="2147" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="46" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.4878049">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusStopDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusStopDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="69" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
+            <state line="27" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sample/model/BusRoute.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sample/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sample/dao/LoginDao.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
@@ -198,12 +212,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sample/model/BusStop.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sample/dao/BusStopDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sample/service/BusService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sample/dao/BusDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/search.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sample/dao/BusStopDao.java" />
       </list>
     </option>
   </component>
@@ -475,10 +490,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -865,44 +876,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="39" selection-start="1853" selection-end="1853" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="0" selection-start="2833" selection-end="2833" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="44" selection-start="507" selection-end="584" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="43" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="0" selection-start="4892" selection-end="4892" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/service/BusService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="53" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
@@ -917,44 +890,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/search.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="43" selection-start="3635" selection-end="3663" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.12820514">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="20" selection-start="702" selection-end="702" vertical-scroll-proportion="0.41463414">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/model/BusStop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="48" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusStopDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="69" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="80" selection-start="6372" selection-end="6372" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -968,7 +906,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BusController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="46" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.4878049">
+        <state line="38" column="49" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/model/BusRoute.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/service/BusStopService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/addBus.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/service/BusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/LoginDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="44" selection-start="1051" selection-end="1056" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="68" selection-start="223" selection-end="716" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/search.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="5" selection-start="1851" selection-end="1851" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sample/dao/BusStopDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="12" selection-start="626" selection-end="626" vertical-scroll-proportion="0.40236688">
           <folding />
         </state>
       </provider>
