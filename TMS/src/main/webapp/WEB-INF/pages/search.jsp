@@ -9,32 +9,14 @@
 
     <!-- Le styles -->
 
-     <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-     <script src="<%=request.getContextPath()%>/static/js/jquery-latest.js"></script>
-     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/jquery.autocomplete.css" type="text/css" />
-     <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/jquery.autocomplete.js"></script>
-     <script type="text/javascript"  src="<%=request.getContextPath()%>/static/js/gData.js"></script>
-        <style type="text/css">
-        #myGroup {visibility:hidden}
-                    </style>
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$("#txtStationFrom").autocomplete(gDarr,{max:35,matchContains: true}).result(function(evt,item){
-        		if(item!=null && item.length==1){
-        			var tar=item[0].split("-");
-        			evt.target.value=item[0];
-        			document.forms[0].lccp_src_stncode.value=$.trim(tar[1]);
-        		}
-        	});
-        	$("#txtStationTo").autocomplete(gDarr,{max:35,matchContains:true}).result(function(evt,item){
-                        if(item!=null && item.length==1){
-                                var tar=item[0].split("-");
-                                evt.target.value=item[0];
-                                document.forms[0].lccp_dstn_stncode.value=$.trim(tar[1]);
-                        }
-                });
-        });
-        </script>
+          <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+         <link href="<%=request.getContextPath()%>/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
+         <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
+         <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
+
+
+
+
 
 
 
@@ -142,10 +124,17 @@
 
       <form class="form-inline" name="myForm" method="POST" onsubmit="return checkform(this);" >
         <h2 class="form-search-heading">Basic Search</h2>
-        <input style="" name="lccp_src_stncode_dis" id="txtStationFrom" onfocus="focustxt=this;" placeholder="From Location"  size="25" value="" maxlength="25" autocomplete="off" type="text"  class="input-medium search-query" required>
-        <input type="hidden" name="lccp_src_stncode" value="">
-        <input style="" name="lccp_dstn_stncode_dis" id="txtStationTo" onfocus="focustxt=this;" size="25" placeholder="To Location" value="" maxlength="25" autocomplete="off" type="text"  class="input-medium search-query" required >
-         <input type="hidden" name="lccp_dstn_stncode" value="">
+       <select name="bus_src">
+       <option>Bhosari</option>
+       <option>Khadaki</option>
+       <option>MaNaPa</option>
+       </select>
+
+       <select name="bus_desination">
+       <option>Bhosari</option>
+       <option>Khadaki</option>
+       <option>MaNaPa</option>
+       </select>
 
          <label for="code"><h4>Write code below >
           <span id="txtCaptchaDiv" style="color:#F00"></span></h4>
@@ -162,6 +151,18 @@
 
     </div> <!-- /container -->
 
-
+    <script src="<%=request.getContextPath()%>/static/js/bootstrap-transition.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-alert.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-modal.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-scrollspy.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-tab.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-tooltip.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-popover.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-button.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-collapse.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-carousel.js"></script>
+                                               <script src="<%=request.getContextPath()%>/static/js/bootstrap-typeahead.js"></script>
   </body>
 </html>
