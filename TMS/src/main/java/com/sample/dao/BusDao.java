@@ -1,5 +1,6 @@
 package com.sample.dao;
 
+import com.sample.model.Bus;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,13 +18,10 @@ public class BusDao {
     private SessionFactory sessionFactory;
 
 
-    public void saveBus(String busSource, String busDestination) {
+    public void saveBus(Bus bus) {
         Session session = sessionFactory.getCurrentSession();
-        List busDetails = new ArrayList();
-        busDetails.add(busSource);
-        busDetails.add(busDestination);
-        busDetails.add(1);
-//        Query query = session.createQuery("insert into Bus (Bus_Source,Bus_Destination,Rout_Id) values('?','?',?)").setParameterList("busDetails",busDetails);
+        session.save(bus);
+
 
     }
 }

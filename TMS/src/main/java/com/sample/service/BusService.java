@@ -1,6 +1,7 @@
 package com.sample.service;
 
 import com.sample.dao.BusDao;
+import com.sample.model.Bus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ public class BusService {
     }
 
 
-    public void saveBus(String busSource, String busDestination) {
-        busDao.saveBus(busSource,busDestination);
+    public void saveBus(Bus bus) {
+        busDao.saveBus(bus);
     }
 }

@@ -1,5 +1,6 @@
 package com.sample.controller;
 
+import com.sample.model.Bus;
 import com.sample.model.BusStop;
 import com.sample.model.User;
 import com.sample.service.BusService;
@@ -59,7 +60,7 @@ public class BusController {
 //            System.out.println(busStop.getStopName() + "Stop = " + stops[i++].getStopName());
 //        }
 
-        map.addAttribute("busStops",busStops);
+        map.addAttribute("busStops", busStops);
 
 
         return new ModelAndView("admin",map);
@@ -79,13 +80,11 @@ public class BusController {
                                 @RequestParam("bus_destination") String busDestination,
             ModelMap modelMap){
 
-
-       System.out.println("In save Bus\n\n src = " + busSource + "\t\tdest = " + busDestination);
-       busService.saveBus(busSource, busDestination);
-
-
-
-        return new ModelAndView("redirect:/admin?id=0");
+       Bus bus = new Bus();
+       bus.setBusSource(busSource);
+       bus.setBusDestination(busDestination);
+       busService.saveBus(bus);
+       return new ModelAndView("redirect:/admin?id=0");
     }
 
 
