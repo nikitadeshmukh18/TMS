@@ -8,13 +8,17 @@ import com.sample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,25 +43,35 @@ public class BusController {
     }
 
     @RequestMapping(value = "/admin")
-    public String admin(ModelMap map) {
+    public ModelAndView admin(ModelMap map, @ModelAttribute("id") String id) {
 
         User user = userService.getUser("username");
-        return "admin";
+        map.addAttribute("user",user);
+        List<BusStop> busStops =  busStopService.getAllStops();
+        BusStop[] stops = new BusStop[10];
+
+
+//        Iterator iterator = busStops.iterator();
+//        int i=0;
+//        while (iterator.hasNext()) {
+//            BusStop busStop = (BusStop) iterator.next();
+//            stops[i] = busStop;
+//            System.out.println(busStop.getStopName() + "Stop = " + stops[i++].getStopName());
+//        }
+
+        map.addAttribute("busStops",busStops);
+
+
+        return new ModelAndView("admin",map);
     }
 
     @RequestMapping(value = "/addBus")
-    public ModelAndView addBus(ModelMap modelMap){
+    public ModelAndView addBus(){
 
         System.out.println("in addbus");
 
-        List<BusStop> busStops = busStopService.getAllStops();
-        Iterator iterator = busStops.iterator();
-        while (iterator.hasNext()) {
-            BusStop busStop = (BusStop) iterator.next();
-            System.out.println(busStop.getStopName());
-        }
-        modelMap.addAttribute("busStops",busStops);
-        return new ModelAndView("redirect:/admin?id=1",modelMap);
+        System.out.println("\nLeaving add Bus\n\n\n map = ");
+        return new ModelAndView("redirect:/admin?id=1");
     }
 
     @RequestMapping(value = "/saveBus")
@@ -66,7 +80,8 @@ public class BusController {
             ModelMap modelMap){
 
 
-       busService.saveBus(busSource,busDestination);
+       System.out.println("In save Bus\n\n src = " + busSource + "\t\tdest = " + busDestination);
+       busService.saveBus(busSource, busDestination);
 
 
 

@@ -14,7 +14,7 @@
 
 </head>
 <body>
-WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a></text>
+WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a>  ${id}</text>
                      <section id="dropdowns">
                               <div class="page-header">
 
@@ -95,18 +95,18 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                <form class="form-addbus" method="POST" action="admin/saveBus">
                                                                  <h2 class="form-addbus-heading">ADD BUS DETAILS</h2>
 
-                                                                 <select id="busStops" name="bus_src">
+                                                                 <select id="bus_src" name="bus_src">
 
                                                                <c:forEach items='${busStops}' var='stop'>
-                                                                    ${item.stopName}
+
                                                                     <option> <c:out value='${stop.stopName}'/></option>
                                                                  </c:forEach>
                                                                  </select>
 
-                                                                <select id="busStops" name="bus_destination">
+                                                                <select id="bus_destination" name="bus_destination">
 
                                                                 <c:forEach items='${busStops}' var='stop'>
-                                                                ${item.stopName}
+
                                                                 <option> <c:out value='${stop.stopName}'/></option>
                                                                 </c:forEach>
                                                                 </select>
