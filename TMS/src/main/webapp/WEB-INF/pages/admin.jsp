@@ -45,7 +45,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                         <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE ROUTES<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin?id=2">ADD ROUTES</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addRoute">ADD ROUTES</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY ROUTES INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE ROUTES</a></li>
 
@@ -125,13 +125,14 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
                                                                 <c:forEach items='${routes}' var='route'>
 
-                                                                <option> <c:out value='${route.pathName}'/>${route.pathName}</option>
+                                                                <option> <c:out value='${route.routeId}:'/>${route.pathName}</option>
                                                                 </c:forEach>
                                                                 </select>
 
 
-                                                                <button class="btn btn-info" type="button" onclick="return routePopUp('/')">Existing Route</button>
-                                                                <button class="btn btn-info" type="button" onclick="openwin(0);">New Route</button><br>
+
+                                                                <button class="btn btn-info" type="button" onclick="admin/addRoute">New Route</button><br>
+
                                                                 <br>
                                                          <button class="btn btn-large btn-primary" type="submit">SAVE</button>
                                                                </form>
@@ -142,7 +143,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      case 2:
                                                           %>
                                                           <div class="container">
-                                                                <form class="form-addroute" method="POST" action="addroute">
+                                                                <form class="form-addroute" method="POST" action="admin/saveRoute">
                                                                  <h2 class="form-addroute-heading">ADD ROUTE DETAILS</h2>
                                                                  <input id="busid" name"username" type="text" class="input-block-level" placeholder="Route ID" required/>
                                                                  <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Route Source" required/>
@@ -173,10 +174,11 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                            }
                                                            </script>
                                                            <pre>
-                                                           BUS ID Submitted is <%=busid%>
-                                                           Src : <%=bussrc%>
-                                                           Desti : <%=busdesti%>
-                                                           Apply Search Logic Here
+                                                           Bus Successfully Created
+                                                           Source : ${bus.busSource}
+                                                           Destination : ${bus.busDestination}
+                                                           Route: ${rt}
+
                                                            </pre>
                                                            <a href="javascript:javascript:mypopup('http://localhost:8080/Sample/admin?id=14&bisid=<%=busid%>&bussrc=<%=bussrc%>&busdesti=<%=busdesti%>','400','400')" > WANT NEW ROUTE </a>
                                                            <%

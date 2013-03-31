@@ -51,17 +51,18 @@ public class RouteService {
                 Integer stopId = (Integer) haultIterator.next();
                 String stopName = busStopDao.getStopWith(stopId);
                 if (haultIterator.hasNext())
-                    routeStr.concat(stopName + "-");
-                else routeStr.concat(stopName);
+                {
+                    routeStr=routeStr.concat(stopName);
+                    routeStr=routeStr.concat("-");
+                }
+                else routeStr=routeStr.concat(stopName);
 
-                System.out.println("stop = " + routeStr + "");
 
             }
             System.out.println(routeStr);
             Path path = new Path();
             path.setPathName(routeStr);
             path.setRouteId(routeId);
-            System.out.println("\n\npathname="+path.getPathName() + "id==="+ path.getRouteId() + "Path ="+path);
             paths.add(path);
 
         }

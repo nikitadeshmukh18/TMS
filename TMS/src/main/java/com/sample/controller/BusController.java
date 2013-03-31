@@ -24,6 +24,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Controller
 @Transactional
@@ -35,12 +36,13 @@ public class BusController {
     private BusStopService busStopService;
     private BusService busService;
     private RouteService routeService;
+
     public BusController() {
 
     }
 
     @Autowired
-    public BusController(UserService userService , BusStopService busStopService, BusService busService, RouteService routeService) {
+    public BusController(UserService userService, BusStopService busStopService, BusService busService, RouteService routeService) {
         this.busStopService = busStopService;
         this.userService = userService;
         this.busService = busService;
@@ -48,42 +50,80 @@ public class BusController {
     }
 
     @RequestMapping(value = "/admin")
-    public ModelAndView admin(ModelMap map, @ModelAttribute("id") String id) {
+    public ModelAndView admin(ModelMap map, @ModelAttribute("id") String id, @ModelAttribute("route") String route ) {
 
         User user = userService.getUser("username");
-        map.addAttribute("user",user);
+        map.addAttribute("user", user);
 
-        List<BusStop> busStops =  busStopService.getAllStops();
+        List<BusStop> busStops = busStopService.getAllStops();
         map.addAttribute("busStops", busStops);
 
-        List<Path> routes =  routeService.getAllRoutes();
-        map.addAttribute("routes",routes);
+        List<Path> routes = routeService.getAllRoutes();
+        map.addAttribute("routes", routes);
 
-        return new ModelAndView("admin",map);
+        try{
+        StringTokenizer st = new StringTokenizer(route, ":");
+        int rid = Integer.parseInt(st.nextToken());
+
+        String rt = st.nextToken();
+        st=new StringTokenizer(rt,"-");
+        String src= st.nextToken();
+        String dest=null;
+        while(st.hasMoreTokens())
+        {
+            dest=st.nextToken();
+        }
+
+        Bus bus = new Bus();
+        bus.setRouteId(rid);
+        bus.setBusSource(src);
+        bus.setBusDestination(dest);
+
+        map.addAttribute("bus",bus);
+        map.addAttribute("rt",rt);
+        }
+        catch (Exception e){}
+        return new ModelAndView("admin", map);
     }
 
     @RequestMapping(value = "/addBus")
-    public ModelAndView addBus(){
+    public ModelAndView addBus() {
 
-        System.out.println("in addbus");
-
-        System.out.println("\nLeaving add Bus\n\n\n");
         return new ModelAndView("redirect:/admin?id=1");
     }
 
     @RequestMapping(value = "/saveBus")
-    public ModelAndView saveBus(@RequestParam("bus_src") String busSource ,
+    public ModelAndView saveBus(@RequestParam("bus_src") String busSource,
                                 @RequestParam("bus_destination") String busDestination,
-                                @RequestParam("route") String routeId,
-            ModelMap modelMap){
+                                @RequestParam("route") String route,
+                                ModelMap modelMap) {
 
-       Bus bus = new Bus();
-       bus.setBusSource(busSource);
-       bus.setBusDestination(busDestination);
-       int id = Integer.parseInt(routeId);
-       bus.setRouteId(id);
-       busService.saveBus(bus);
-       return new ModelAndView("redirect:/admin?id=0");
+        Bus bus = new Bus();
+        bus.setBusSource(busSource);
+        bus.setBusDestination(busDestination);
+
+        StringTokenizer st = new StringTokenizer(route, ":");
+
+        int id = Integer.parseInt(st.nextToken());
+        bus.setRouteId(id);
+
+        busService.saveBus(bus);
+        modelMap.addAttribute("bus",bus);
+        modelMap.addAttribute("route",route);
+
+        System.out.println("Bus =" + bus);
+        return new ModelAndView("redirect:/admin?id=13",modelMap);
+    }
+
+    @RequestMapping(value = "/addRoute")
+    public ModelAndView addRoute(){
+
+        return new ModelAndView("redirect:/admin?id=2");
+    }
+
+    @RequestMapping(value = "/saveRoute")
+    public ModelAndView saveRoute(){
+        return  new ModelAndView("redirect:/admin?id=0");
     }
 
 
