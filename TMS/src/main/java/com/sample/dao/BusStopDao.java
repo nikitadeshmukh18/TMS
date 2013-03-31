@@ -25,4 +25,12 @@ public class BusStopDao {
         List<BusStop> busStops = query.list();
         return busStops;
     }
+
+    public String getStopWith(Integer stopId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select Stop_Name from BusStop where Stop_Id="+stopId;
+        Query query = session.createSQLQuery(hql);
+        String name = (String) query.list().get(0);
+        return name;
+    }
 }

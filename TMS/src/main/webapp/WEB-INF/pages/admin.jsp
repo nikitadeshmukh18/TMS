@@ -5,6 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script language="javascript" type="text/javascript">
+function routePopUp(url) {
+	newwindow=window.open(url,'name','height=200,width=150');
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+</script>
+
     <title></title>
     <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="<%=request.getContextPath()%>/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
@@ -93,17 +102,17 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
                                                          <div class="container">
                                                                <form class="form-addbus" method="POST" action="admin/saveBus">
-                                                                 <h2 class="form-addbus-heading">ADD BUS DETAILS</h2>
+                                                                 <h2 class="form-addbus-heading">ADD BUS DETAILS</h2><br>
 
-                                                                 <select id="bus_src" name="bus_src">
+                                                                From : <select id="bus_src" name="bus_src">
 
                                                                <c:forEach items='${busStops}' var='stop'>
 
                                                                     <option> <c:out value='${stop.stopName}'/></option>
                                                                  </c:forEach>
                                                                  </select>
-
-                                                                <select id="bus_destination" name="bus_destination">
+                                                               <br>
+                                                                To :   <select id="bus_destination" name="bus_destination">
 
                                                                 <c:forEach items='${busStops}' var='stop'>
 
@@ -111,12 +120,20 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                 </c:forEach>
                                                                 </select>
 
+                                                                <br>
+                                                                Routes :   <select id="route" name="route">
+
+                                                                <c:forEach items='${routes}' var='route'>
+
+                                                                <option> <c:out value='${route.pathName}'/>${route.pathName}</option>
+                                                                </c:forEach>
+                                                                </select>
 
 
-
-                                                                <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">Existing Route</button>
-                                                                <button class="btn btn-info btn-large" type="button" onclick="openwin(0);">New Route</button><br>
-                                                         <button class="btn btn-large btn-primary" type="submit">Add Bus</button>
+                                                                <button class="btn btn-info" type="button" onclick="return routePopUp('/')">Existing Route</button>
+                                                                <button class="btn btn-info" type="button" onclick="openwin(0);">New Route</button><br>
+                                                                <br>
+                                                         <button class="btn btn-large btn-primary" type="submit">SAVE</button>
                                                                </form>
 
                                                              </div> <!-- /container -->

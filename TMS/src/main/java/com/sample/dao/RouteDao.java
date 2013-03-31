@@ -31,7 +31,22 @@ public class RouteDao {
         return route;
     }
 
+    public List getRouteIds() {
 
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createSQLQuery("select distinct Route_Id from Route");
+        List<Integer> routeIds =  query.list();
+        return routeIds;
+    }
 
+    public List<Integer> getAllStopsForRoute(int routeId) {
+
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select Stop_Id from Route where Route_Id="+routeId+" Order By Stop_Index";
+        Query query = session.createSQLQuery(hql);
+        List<Integer> haults = (List<Integer>) query.list();
+        return haults;
+
+    }
 }
 
