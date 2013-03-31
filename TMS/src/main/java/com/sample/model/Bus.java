@@ -1,6 +1,7 @@
 package com.sample.model;
 
 import javax.persistence.*;
+import java.sql.Time;
 
 @Entity
 @Table(name = "Bus")
@@ -19,6 +20,9 @@ public class Bus {
 
     @Column(name = "Route_Id")
     private int routeId;
+
+    @Column(name = "Start_Time")
+    private String startTime;
 
     public int getBusNo() {
         return busNo;
@@ -50,5 +54,13 @@ public class Bus {
 
     public void setRouteId(int routeId) {
         this.routeId = routeId;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 }

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.lang.reflect.Array;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -50,7 +51,7 @@ public class BusController {
     }
 
     @RequestMapping(value = "/admin")
-    public ModelAndView admin(ModelMap map, @ModelAttribute("id") String id, @ModelAttribute("route") String route ) {
+    public ModelAndView admin(ModelMap map, @ModelAttribute("id") String id, @ModelAttribute("route") String route ,@ModelAttribute("time")String time) {
 
         User user = userService.getUser("username");
         map.addAttribute("user", user);
@@ -81,6 +82,7 @@ public class BusController {
 
         map.addAttribute("bus",bus);
         map.addAttribute("rt",rt);
+        map.addAttribute("time",time);
         }
         catch (Exception e){}
         return new ModelAndView("admin", map);
@@ -96,6 +98,7 @@ public class BusController {
     public ModelAndView saveBus(@RequestParam("bus_src") String busSource,
                                 @RequestParam("bus_destination") String busDestination,
                                 @RequestParam("route") String route,
+                                @RequestParam("startTime") String time,
                                 ModelMap modelMap) {
 
         Bus bus = new Bus();
@@ -107,9 +110,12 @@ public class BusController {
         int id = Integer.parseInt(st.nextToken());
         bus.setRouteId(id);
 
+        bus.setStartTime(time);
+
         busService.saveBus(bus);
         modelMap.addAttribute("bus",bus);
         modelMap.addAttribute("route",route);
+        modelMap.addAttribute(time);
 
         System.out.println("Bus =" + bus);
         return new ModelAndView("redirect:/admin?id=13",modelMap);

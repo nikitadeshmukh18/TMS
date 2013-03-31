@@ -104,7 +104,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                <form class="form-addbus" method="POST" action="admin/saveBus">
                                                                  <h2 class="form-addbus-heading">ADD BUS DETAILS</h2><br>
 
-                                                                From : <select id="bus_src" name="bus_src">
+                                                                From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp: <select id="bus_src" name="bus_src">
 
                                                                <c:forEach items='${busStops}' var='stop'>
 
@@ -112,14 +112,16 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                  </c:forEach>
                                                                  </select>
                                                                <br>
-                                                                To :   <select id="bus_destination" name="bus_destination">
+                                                                To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select id="bus_destination" name="bus_destination">
 
                                                                 <c:forEach items='${busStops}' var='stop'>
 
                                                                 <option> <c:out value='${stop.stopName}'/></option>
                                                                 </c:forEach>
                                                                 </select>
+                                                                <br>
 
+                                                                Start Time : <input id="startTime" name="startTime" type="Text" class="input-block-level" placeholder="Start Time" required/>
                                                                 <br>
                                                                 Routes :   <select id="route" name="route">
 
@@ -131,7 +133,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
 
 
-                                                                <button class="btn btn-info" type="button" onclick="admin/addRoute">New Route</button><br>
+                                                                <button class="btn btn-info" type="button" onclick="addRoute">New Route</button><br>
 
                                                                 <br>
                                                          <button class="btn btn-large btn-primary" type="submit">SAVE</button>
@@ -178,6 +180,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                            Source : ${bus.busSource}
                                                            Destination : ${bus.busDestination}
                                                            Route: ${rt}
+                                                           Start Time: ${time}
 
                                                            </pre>
                                                            <a href="javascript:javascript:mypopup('http://localhost:8080/Sample/admin?id=14&bisid=<%=busid%>&bussrc=<%=bussrc%>&busdesti=<%=busdesti%>','400','400')" > WANT NEW ROUTE </a>
