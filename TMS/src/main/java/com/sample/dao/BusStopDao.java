@@ -33,4 +33,9 @@ public class BusStopDao {
         String name = (String) query.list().get(0);
         return name;
     }
+
+    public void saveBus(BusStop stop) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(stop);
+    }
 }

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.swing.*;
 import java.lang.reflect.Array;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -129,6 +130,21 @@ public class BusController {
 
     @RequestMapping(value = "/saveRoute")
     public ModelAndView saveRoute(){
+        return  new ModelAndView("redirect:/admin?id=0");
+    }
+
+    @RequestMapping(value = "/addStop")
+    public ModelAndView addStation(){
+
+        return new ModelAndView("redirect:/admin?id=3");
+    }
+
+    @RequestMapping(value = "/saveStop")
+    public ModelAndView saveStation(@RequestParam("stop") String stop){
+        BusStop busStop = new BusStop();
+        busStop.setStopName(stop);
+        busStopService.saveStop(busStop);
+        JOptionPane.showMessageDialog(null,"Stop Successfully Created");
         return  new ModelAndView("redirect:/admin?id=0");
     }
 

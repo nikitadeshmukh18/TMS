@@ -54,7 +54,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                         <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE STOPS<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">ADD STOPS</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addStop">ADD STOPS</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY STOPS INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE STOPS</a></li>
 
@@ -145,17 +145,30 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      case 2:
                                                           %>
                                                           <div class="container">
-                                                                <form class="form-addroute" method="POST" action="admin/saveRoute">
+                                                                 <form class="form-addroute" method="POST" action="admin/saveRoute">
                                                                  <h2 class="form-addroute-heading">ADD ROUTE DETAILS</h2>
                                                                  <input id="busid" name"username" type="text" class="input-block-level" placeholder="Route ID" required/>
                                                                  <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Route Source" required/>
                                                                  <input id="busdesti" name="busdesti" type="text" class="input-block-level" placeholder="Route Destination" required/>
                                                                  <button class="btn btn-large btn-primary" type="submit">Add Route</button>
-                                                                </form>
+                                                                 </form>
+
 
                                                                  </div> <!-- /container -->
                                                           <%
                                                          break;
+                                                     case 3:
+                                                          %>
+                                                          <div class="container">
+                                                                   <form class="form-addroute" method="POST" action="admin/saveStop">
+                                                                   <h2 class="form-addroute-heading">Add Station Details</h2>
+                                                                    <input id="stop" name="stop" type="text" class="input-block-level" placeholder="Stop Name" required/>
+                                                                    <button class="btn btn-large btn-primary" type="submit">Save</button>
+                                                                    </form>
+
+                                                          </div> <!-- /container -->
+                                                          <%
+                                                           break;
                                                      case 13:                 //ADD BUS Second Page
                                                            String bussrc = "";
                                                            bussrc = request.getParameter("bussrc");

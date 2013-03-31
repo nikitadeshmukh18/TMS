@@ -29,4 +29,8 @@ public class BusStopService {
     public List<BusStop> getAllStops() {
         return busStopDao.getAllStops();
     }
+
+    public void saveStop(BusStop stop){
+        busStopDao.saveBus(stop);
+    }
 }
