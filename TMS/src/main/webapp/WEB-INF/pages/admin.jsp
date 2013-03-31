@@ -133,7 +133,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
 
 
-                                                                <button class="btn btn-info" type="button" onclick="addRoute">New Route</button><br>
+                                                                <button class="btn btn-info" type="button" onclick="parent.location='/Sample/admin/addRoute'">New Route</button><br>
 
                                                                 <br>
                                                          <button class="btn btn-large btn-primary" type="submit">SAVE</button>
