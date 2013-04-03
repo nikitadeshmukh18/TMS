@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class BusService {
@@ -24,5 +26,9 @@ public class BusService {
 
     public void saveBus(Bus bus) {
         busDao.saveBus(bus);
+    }
+
+    public List<Bus> searchDirectBus(String busSrc, String busDestination) {
+        return busDao.searchDirectBus(busSrc,busDestination);
     }
 }

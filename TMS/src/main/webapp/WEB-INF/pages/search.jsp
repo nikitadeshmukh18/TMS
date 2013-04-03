@@ -121,7 +121,7 @@
 
    <div class="container">
 
-      <form class="form-inline" name="myForm" method="POST" onsubmit="return checkform(this);" >
+      <form class="form-inline" name="myForm" method="GET" action="search.do">
         <h2 class="form-search-heading">Basic Search</h2>
 
             <select id="bus_src" name="bus_src">
@@ -148,11 +148,42 @@
          <input type="text" name="txtInput" id="txtInput" size="30" class="input-medium search-query" placeholder="Enter Captcha Code" />
 
           
-          <button type="submit" class="btn">Search</button>
+          <button id="search" type="submit" class="btn">Search</button>
       </p>
       </form>
 
+
     </div> <!-- /container -->
+    <%
+        String str=(String)request.getAttribute("search");
+        if(str.equals("1")){
+
+    %>
+    <div  id="searchResults" class="container">
+          <table class="table table-striped">
+                <thead>
+                    <th>Bus No</th>
+                    <th>Source</th>
+                    <th>Desination</th>
+                    <th>Path</th>
+                    <th>Time</th>
+                </thead>
+          <c:forEach items='${directBuses}' var='bus'>
+
+            <tr id="busRow">
+                <td id="one">${bus.busNo}</td>
+                <td id="two">${bus.busSource}</td>
+                <td id="three">${bus.busDestination}</td>
+                <td id="four">route</td>
+                <td id="five">${bus.startTime}</td>
+            </tr>
+
+          </c:forEach>
+
+          </table>
+          </div>
+
+       <% } %>
 
     <script src="<%=request.getContextPath()%>/static/js/bootstrap-transition.js"></script>
                                                <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
