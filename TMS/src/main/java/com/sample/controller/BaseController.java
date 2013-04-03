@@ -1,14 +1,19 @@
 package com.sample.controller;
 
+import com.sample.model.BusStop;
 import com.sample.model.User;
 import com.sample.service.LoginService;
 import com.sample.service.UserService;
+import com.sample.service.BusStopService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 
 @Controller
@@ -18,16 +23,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class BaseController {
     private UserService userService;
     private LoginService loginService;
-
+    private BusStopService busStopService;
     public BaseController() {
     }
 
     @Autowired
 
 
-    public BaseController(UserService userService, LoginService loginService) {
+    public BaseController(UserService userService, LoginService loginService,BusStopService busStopService) {
         this.userService = userService;
         this.loginService = loginService;
+        this.busStopService=busStopService;
     }
 
     @RequestMapping(value = {"/", "/welcome"})
@@ -61,9 +67,27 @@ public class BaseController {
         }
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
+
+/*    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(ModelMap model) {
+
         return "search";
+    } */
+
+    @RequestMapping(value = "/search")
+    public ModelAndView admin(ModelMap map) {
+
+        try
+        {
+       List<BusStop> busStops = busStopService.getAllStops();
+        map.addAttribute("busStops", busStops);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error is " + e.toString());
+
+        }
+        return new ModelAndView("search", map);
     }
 
     @RequestMapping(value = "/logout")

@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.*" %>
+<%@page import="java.lang.*" %>
+<%@page import="com.sample.model.User"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,12 +18,6 @@
          <link href="<%=request.getContextPath()%>/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
          <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
          <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
-
-
-
-
-
-
 
 
     <style type="text/css">
@@ -82,7 +81,7 @@
 
     <body  onload="captch();">
 
-    
+
 
          <script type="text/javascript">
          function checkform(theform){
@@ -124,17 +123,21 @@
 
       <form class="form-inline" name="myForm" method="POST" onsubmit="return checkform(this);" >
         <h2 class="form-search-heading">Basic Search</h2>
-       <select name="bus_src">
-       <option>Bhosari</option>
-       <option>Khadaki</option>
-       <option>MaNaPa</option>
-       </select>
 
-       <select name="bus_desination">
-       <option>Bhosari</option>
-       <option>Khadaki</option>
-       <option>MaNaPa</option>
-       </select>
+            <select id="bus_src" name="bus_src">
+            <c:forEach items='${busStops}' var='stop'>
+            <option> <c:out value='${stop.stopName}'/></option>
+            </c:forEach>
+            </select>
+
+            <select id="bus_destination" name="bus_destination">
+            <c:forEach items='${busStops}' var='stop'>
+            <option> <c:out value='${stop.stopName}'/></option>
+            </c:forEach>
+            </select>
+
+
+
 
          <label for="code"><h4>Write code below >
           <span id="txtCaptchaDiv" style="color:#F00"></span></h4>

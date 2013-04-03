@@ -104,7 +104,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                <form class="form-addbus" method="POST" action="admin/saveBus">
                                                                  <h2 class="form-addbus-heading">ADD BUS DETAILS</h2><br>
 
-                                                                From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp: <select id="bus_src" name="bus_src">
+                                                                From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp:
+                                                                <select id="bus_src" name="bus_src">
 
                                                                <c:forEach items='${busStops}' var='stop'>
 
