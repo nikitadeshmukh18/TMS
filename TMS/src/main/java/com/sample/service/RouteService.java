@@ -75,4 +75,40 @@ public class RouteService {
         List routeIds = routeDao.getRouteIds();
         return routeIds;
     }
+
+    public Path getRouteFor(int routeId) {
+
+        Path path = new Path();
+        String routeStr = new String("");
+
+        List<Integer> haults = routeDao.getAllStopsForRoute(routeId);
+        Iterator it = haults.iterator();
+
+
+        while (it.hasNext()){
+
+                Integer stopId = (Integer) it.next();
+                String stopName = busStopDao.getStopWith(stopId.intValue());
+            try{
+            if (it.hasNext())
+                {
+                    routeStr=routeStr.concat(stopName);
+                    routeStr=routeStr.concat("-");
+                }
+                else {routeStr=routeStr.concat(stopName);break;}
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        path.setPathName(routeStr);
+        path.setRouteId(routeId);
+
+
+        return path;
+    }
 }
+
+
+

@@ -27,10 +27,10 @@ public class BusDao {
 
     public List<Bus> searchDirectBus(String busSrc, String busDestination) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "select * from Bus where Bus_Source='"+busSrc+"' and Bus_Destination='"+busDestination+"'";
+        String hql = "from Bus where busSource='"+busSrc+"' and busDestination='"+busDestination+"'";
         System.out.println("hql="+hql);
-        Query query = session.createSQLQuery(hql);
-        List<Bus> buses = (List<Bus>)query.list();
+        Query query = session.createQuery(hql);
+        List<Bus> buses = query.list();
         return buses;
     }
 }

@@ -160,6 +160,7 @@
 
     %>
     <div  id="searchResults" class="container">
+
           <table class="table table-striped">
                 <thead>
                     <th>Bus No</th>
@@ -168,17 +169,14 @@
                     <th>Path</th>
                     <th>Time</th>
                 </thead>
-          <c:forEach items='${directBuses}' var='bus'>
-
-            <tr id="busRow">
-                <td id="one">${bus.busNo}</td>
-                <td id="two">${bus.busSource}</td>
-                <td id="three">${bus.busDestination}</td>
-                <td id="four">route</td>
-                <td id="five">${bus.startTime}</td>
-            </tr>
-
-          </c:forEach>
+          <c:forEach var='bus' items='${directBuses}' varStatus="status">
+                      <tr><td> <c:out value='${bus.busNo}'/></td>
+                        <td> <c:out value='${bus.busSource}'/></td>
+                        <td> <c:out value='${bus.busDestination}'/></td>
+                        <td> <c:out value='${paths[status.index].pathName}'/> </td>
+                        <td> <c:out value='${bus.startTime}'/></td>
+                      </tr>
+                      </c:forEach>
 
           </table>
           </div>
