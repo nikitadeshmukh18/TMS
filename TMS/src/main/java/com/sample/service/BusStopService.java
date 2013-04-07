@@ -33,4 +33,8 @@ public class BusStopService {
     public void saveStop(BusStop stop){
         busStopDao.saveBus(stop);
     }
+
+    public String getStopWith(Integer stopId) {
+        return busStopDao.getStopWith(stopId);
+    }
 }

@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
+import java.util.Iterator;
 import java.util.List;
 
 @Repository
@@ -15,7 +17,6 @@ public class RouteDao {
 
     private Bus bus;
     private BusRoute busRoute;
-
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -48,5 +49,40 @@ public class RouteDao {
         return haults;
 
     }
+
+    public int getStopCount(int routeno)
+    {
+        Session session=sessionFactory.getCurrentSession();
+        String sql="select count(Stop_Index) from Route where Route_Id=" + routeno ;
+        Query query=session.createSQLQuery(sql);
+        List<Integer> counts = (List<Integer>) query.list();
+         Iterator it = counts.iterator();
+        BigInteger total = (BigInteger) it.next();
+
+        return total.intValue();
+
+    }
+
+    public int getStop(int routeno,int stop_index)
+    {
+        System.out.println("-----------Inside GetStop------------");
+       try
+       {
+
+        Session session=sessionFactory.getCurrentSession();
+        String sql="from BusRoute where routeId=" + routeno + " and stopIndex=" + stop_index ;
+        Query query=session.createQuery(sql);
+        List<BusRoute> counts = (List<BusRoute>) query.list();
+        System.out.println(counts.get(0).getStopId());
+        return counts.get(0).getStopId();
+       }
+       catch(Exception e)
+       {
+           e.printStackTrace();
+       }
+
+        return 1;
+    }
+
 }
 

@@ -2,6 +2,7 @@ package com.sample.service;
 
 import com.sample.dao.BusDao;
 import com.sample.model.Bus;
+import com.sample.model.BusStop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,20 @@ public class BusService {
         busDao.saveBus(bus);
     }
 
+
     public List<Bus> searchDirectBus(String busSrc, String busDestination) {
         return busDao.searchDirectBus(busSrc,busDestination);
     }
+
+    public List<Bus> getAllBuses() {
+        return busDao.getAllBuses();
+    }
+
+    public int getRouteNo(int busno)
+    {
+        int cnt=busDao.getRouteNo(busno);
+        return cnt;
+    }
+
+
 }
