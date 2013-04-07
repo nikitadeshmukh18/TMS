@@ -57,14 +57,6 @@ public class BaseController {
         this.routeService = routeService;
 
     }
-   /* public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,BusService busService ) {
-        this.userService = userService;
-        this.loginService = loginService;
-        this.busStopService=busStopService;
-        this.busService = busService;     } */
-
-
-
 
     @RequestMapping(value = {"/", "/welcome"})
     public String welcome(ModelMap model) {
@@ -97,12 +89,6 @@ public class BaseController {
         }
     }
 
-
-/*    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(ModelMap model) {
-
-        return "search";
-    } */
 
     @RequestMapping(value = "/search")
 
@@ -143,12 +129,6 @@ public class BaseController {
         catch (Exception e){
             e.printStackTrace();
         }
-
-
-
-
-
-
 
         return new ModelAndView("search", map);
 
@@ -250,7 +230,6 @@ public class BaseController {
 
             next=routeService.getStop(Integer.parseInt(route_no),Integer.parseInt(current)+1);
              String bus_src=busStopService.getStopWith(next);
-            //System.out.println(" ");
 
             modelMap.addAttribute("bus_no",id);
             modelMap.addAttribute("route_no",route_no);

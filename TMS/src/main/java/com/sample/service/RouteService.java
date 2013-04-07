@@ -41,28 +41,7 @@ public class RouteService {
         while (routeIterator.hasNext()){
 
             Integer routeId =   (Integer) routeIterator.next();
-
-            List<Integer> haults = routeDao.getAllStopsForRoute(routeId.intValue());
-
-            Iterator haultIterator = haults.iterator();
-
-            while (haultIterator.hasNext()){
-
-                Integer stopId = (Integer) haultIterator.next();
-                String stopName = busStopDao.getStopWith(stopId);
-                if (haultIterator.hasNext())
-                {
-                    routeStr=routeStr.concat(stopName);
-                    routeStr=routeStr.concat("-");
-                }
-                else routeStr=routeStr.concat(stopName);
-
-
-            }
-            System.out.println(routeStr);
-            Path path = new Path();
-            path.setPathName(routeStr);
-            path.setRouteId(routeId);
+            Path path = getRouteFor(routeId);
             paths.add(path);
 
         }
