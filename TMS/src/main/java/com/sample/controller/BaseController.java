@@ -2,17 +2,13 @@ package com.sample.controller;
 
 
 import com.sample.model.*;
-import com.sample.service.*;
 
 import com.sample.model.Bus;
 import com.sample.model.BusStop;
-import com.sample.model.Bus;
-import com.sample.model.User;
 import com.sample.service.BusService;
 import com.sample.service.LoginService;
 import com.sample.service.UserService;
 import com.sample.service.BusStopService;
-import com.sample.service.BusService;
 import com.sample.service.RouteService;
 
 
@@ -185,7 +181,7 @@ public class BaseController {
         String bus_src=st1.nextToken().toString();
             System.out.println(bus_src);
         System.out.println(id);
-        int route_no=busService.getRouteNo(id);
+        int route_no=busService.getRouteNoForBus(id);
         System.out.println(route_no);
         int total=2;
              total=routeService.getStopCount(route_no);
@@ -228,7 +224,7 @@ public class BaseController {
             int next;
 
 
-            next=routeService.getStop(Integer.parseInt(route_no),Integer.parseInt(current)+1);
+            next=routeService.getStopForRoute(Integer.parseInt(route_no), Integer.parseInt(current) + 1);
              String bus_src=busStopService.getStopWith(next);
 
             modelMap.addAttribute("bus_no",id);

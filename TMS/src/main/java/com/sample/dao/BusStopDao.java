@@ -34,7 +34,7 @@ public class BusStopDao {
         return name;
     }
 
-    public void saveBus(BusStop stop) {
+    public void saveStop(BusStop stop) {
         Session session = sessionFactory.getCurrentSession();
         session.save(stop);
     }

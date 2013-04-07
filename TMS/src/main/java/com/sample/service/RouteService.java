@@ -2,7 +2,6 @@ package com.sample.service;
 
 import com.sample.dao.BusStopDao;
 import com.sample.dao.RouteDao;
-import com.sample.model.BusRoute;
 import com.sample.model.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,10 +93,10 @@ public class RouteService {
 
     }
 
-    public int getStop(int route_no,int stop_index)
+    public int getStopForRoute(int routeNo, int stop_index)
     {
 
-        int stop_id=routeDao.getStop(route_no,stop_index);
+        int stop_id=routeDao.getStopForRoute(routeNo, stop_index);
         return stop_id;
 
     }

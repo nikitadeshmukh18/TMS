@@ -47,16 +47,12 @@ public class BusDao {
         return bus;
     }
 
-    public int getRouteNo(int busno)
+    public int getRouteNoForBus(int busNo)
     {
-        System.out.print(busno);
         Session session=sessionFactory.getCurrentSession();
-        System.out.print(busno);
-        String hql="from Bus where Bus_No=" + busno;
+        String hql="from Bus where Bus_No=" + busNo;
         Query query=session.createQuery(hql);
-        System.out.print("Query Created ");
         List<Bus> counts = (List<Bus>) query.list();
-        System.out.print(counts.get(0).getRouteId());
         return counts.get(0).getRouteId();
     }
 

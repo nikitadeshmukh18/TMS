@@ -50,10 +50,10 @@ public class RouteDao {
 
     }
 
-    public int getStopCount(int routeno)
+    public int getStopCount(int routeId)
     {
         Session session=sessionFactory.getCurrentSession();
-        String sql="select count(Stop_Index) from Route where Route_Id=" + routeno ;
+        String sql="select count(Stop_Index) from Route where Route_Id=" + routeId ;
         Query query=session.createSQLQuery(sql);
         List<Integer> counts = (List<Integer>) query.list();
          Iterator it = counts.iterator();
@@ -63,14 +63,14 @@ public class RouteDao {
 
     }
 
-    public int getStop(int routeno,int stop_index)
+    public int getStopForRoute(int routeId, int stop_index)
     {
         System.out.println("-----------Inside GetStop------------");
        try
        {
 
         Session session=sessionFactory.getCurrentSession();
-        String sql="from BusRoute where routeId=" + routeno + " and stopIndex=" + stop_index ;
+        String sql="from BusRoute where routeId=" + routeId + " and stopIndex=" + stop_index ;
         Query query=session.createQuery(sql);
         List<BusRoute> counts = (List<BusRoute>) query.list();
         System.out.println(counts.get(0).getStopId());

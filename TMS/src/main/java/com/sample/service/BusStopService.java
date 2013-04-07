@@ -2,7 +2,6 @@ package com.sample.service;
 
 import com.sample.dao.BusStopDao;
 import com.sample.model.BusStop;
-import com.sample.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +30,7 @@ public class BusStopService {
     }
 
     public void saveStop(BusStop stop){
-        busStopDao.saveBus(stop);
+        busStopDao.saveStop(stop);
     }
 
     public String getStopWith(Integer stopId) {
