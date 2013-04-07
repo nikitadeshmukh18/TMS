@@ -2,6 +2,8 @@
 <%@page import="java.util.*" %>
 <%@page import="java.lang.*" %>
 <%@page import="com.sample.model.User"%>
+<%@page import="com.sample.model.Bus"%>
+<%@page import="com.sample.service.BusService"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +22,7 @@ function routePopUp(url) {
     <link href="<%=request.getContextPath()%>/static/css/form.css" rel="stylesheet" type="text/css"/>
      <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
      <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
+     <script src="<%=request.getContextPath()%>/static/js/editBus.js"></script>
 
 </head>
 <body>
@@ -37,7 +40,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE BUS<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                              <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addBus">ADD BUS</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY BUS INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editBus">MODIFY BUS INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE BUS</a></li>
 
                                          </ul>
@@ -170,6 +173,62 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                           </div> <!-- /container -->
                                                           <%
                                                            break;
+
+                                                     case 4:
+                                                     %>
+                                                          <div class="container">
+                                                             <form class="form-addroute" method="POST" action="admin/updateBus">
+                                                               <h2 class="form-addroute-heading">Select Bus To Modify</h2>
+                                                               <select id="bus" name="bus">
+                                                                   <c:forEach items='${buses}' var='bus'>
+                                                                        <option value=${bus.busNo}>${bus.busNo}</option>
+                                                                   </c:forEach>
+                                                               </select>
+
+                                                               <div id="updateBus" class="container">
+                                                               <select id="u_bus_src" name="bus_src">
+
+                                                               <c:forEach items='${busStops}' var='stop'>
+
+                                                                    <option> <c:out value='${stop.stopName}'/></option>
+                                                                 </c:forEach>
+                                                                 </select>
+                                                               <br>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="u_bus_destination" name="bus_destination">
+
+                                                                <c:forEach items='${busStops}' var='stop'>
+
+                                                                <option> <c:out value='${stop.stopName}'/></option>
+                                                                </c:forEach>
+                                                                </select>
+                                                                <br>
+
+                                                                From : <input id="currentSrc" type="Text"></input><br>
+                                                                To : <input id="currentDestination" type="Text"/><br>
+                                                                Start Time : <input id="u_startTime" name="startTime" type="Text" placeholder="Start Time" required/><br>
+                                                                <br>
+                                                                Routes :   <select id="route" name="route">
+
+                                                                <c:forEach items='${routes}' var='route'>
+
+                                                                <option> <c:out value='${route.routeId}:'/>${route.pathName}</option>
+                                                                </c:forEach>
+                                                                </select>
+                                                               </div>
+
+
+
+
+                                                               <button id="updateButton" class="btn btn-large btn-primary" type="submit" onClick="loadDetails()">Update</button>
+                                                               <button id="saveUpdate" class="btn btn-large btn-primary" type="submit">Save</button>
+
+
+                                                               </form>
+                                                          </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
                                                      case 13:                 //ADD BUS Second Page
                                                            String bussrc = "";
                                                            bussrc = request.getParameter("bussrc");

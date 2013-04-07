@@ -63,6 +63,9 @@ public class BusController {
         List<Path> routes = routeService.getAllRoutes();
         map.addAttribute("routes", routes);
 
+        List<Bus> buses = busService.getAllBuses();
+        map.addAttribute("buses",buses);
+
         try{
         StringTokenizer st = new StringTokenizer(route, ":");
         int rid = Integer.parseInt(st.nextToken());
@@ -122,6 +125,17 @@ public class BusController {
         return new ModelAndView("redirect:/admin?id=13",modelMap);
     }
 
+
+    @RequestMapping(value = "/editBus")
+    public ModelAndView editBus(){
+        return new ModelAndView("redirect:/admin?id=4");
+    }
+
+
+
+
+
+
     @RequestMapping(value = "/addRoute")
     public ModelAndView addRoute(){
 
@@ -132,21 +146,5 @@ public class BusController {
     public ModelAndView saveRoute(){
         return  new ModelAndView("redirect:/admin?id=0");
     }
-
-    @RequestMapping(value = "/addStop")
-    public ModelAndView addStation(){
-
-        return new ModelAndView("redirect:/admin?id=3");
-    }
-
-    @RequestMapping(value = "/saveStop")
-    public ModelAndView saveStation(@RequestParam("stop") String stop){
-        BusStop busStop = new BusStop();
-        busStop.setStopName(stop);
-        busStopService.saveStop(busStop);
-        JOptionPane.showMessageDialog(null,"Stop Successfully Created");
-        return  new ModelAndView("redirect:/admin?id=0");
-    }
-
 
 }
