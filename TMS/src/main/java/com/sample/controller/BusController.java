@@ -128,10 +128,7 @@ public class BusController {
         return new ModelAndView("redirect:/admin?id=2");
     }
 
-    @RequestMapping(value = "/saveRoute")
-    public ModelAndView saveRoute(){
-        return  new ModelAndView("redirect:/admin?id=0");
-    }
+
 
     @RequestMapping(value = "/addStop")
     public ModelAndView addStation(){
@@ -147,6 +144,7 @@ public class BusController {
         JOptionPane.showMessageDialog(null,"Stop Successfully Created");
         return  new ModelAndView("redirect:/admin?id=0");
     }
+
 
 
 }

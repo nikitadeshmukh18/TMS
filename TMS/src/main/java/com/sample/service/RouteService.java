@@ -100,6 +100,15 @@ public class RouteService {
         return stop_id;
 
     }
+
+    public int getNewRouteID()
+    {
+        return routeDao.getNewRouteID();
+    }
+
+    public void saveRoute(BusRoute busRoute) {
+        routeDao.saveRoute(busRoute);
+    }
 }
 
 

@@ -108,9 +108,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                 <select id="bus_src" name="bus_src">
 
                                                                <c:forEach items='${busStops}' var='stop'>
-
-                                                                    <option> <c:out value='${stop.stopName}'/></option>
-                                                                 </c:forEach>
+                                                                 <option> <c:out value='${stop.stopName}'/></option>
+                                                               </c:forEach>
                                                                  </select>
                                                                <br>
                                                                 To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select id="bus_destination" name="bus_destination">

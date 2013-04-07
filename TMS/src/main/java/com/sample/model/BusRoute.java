@@ -18,7 +18,7 @@ public class BusRoute {
     private int stopId;
 
     @Column(name = "Time_Taken")
-    private int timeTaken;
+    private String timeTaken;
 
     public int getRouteId() {
         return routeId;
@@ -44,11 +44,11 @@ public class BusRoute {
         this.stopId = stopId;
     }
 
-    public int getTimeTaken() {
+    public String getTimeTaken() {
         return timeTaken;
     }
 
-    public void setTimeTaken(int timeTaken) {
+    public void setTimeTaken(String timeTaken) {
         this.timeTaken = timeTaken;
     }
 }
