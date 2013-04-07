@@ -1,6 +1,7 @@
 package com.sample.dao;
 
 import com.sample.model.Bus;
+import net.sourceforge.nanoxml.XMLElement;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
 
 @Repository
 public class BusDao {
@@ -24,6 +26,7 @@ public class BusDao {
 
 
     }
+
 
     public List<Bus> searchDirectBus(String busSrc, String busDestination) {
         Session session = sessionFactory.getCurrentSession();
