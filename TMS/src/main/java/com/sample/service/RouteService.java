@@ -2,6 +2,7 @@ package com.sample.service;
 
 import com.sample.dao.BusStopDao;
 import com.sample.dao.RouteDao;
+import com.sample.model.BusRoute;
 import com.sample.model.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,6 +100,15 @@ public class RouteService {
         int stop_id=routeDao.getStopForRoute(routeNo, stop_index);
         return stop_id;
 
+    }
+
+    public int getNewRouteID()
+    {
+        return routeDao.getNewRouteID();
+    }
+
+    public void saveRoute(BusRoute busRoute) {
+        routeDao.saveRoute(busRoute);
     }
 }
 

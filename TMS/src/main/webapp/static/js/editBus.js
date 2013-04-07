@@ -1,26 +1,7 @@
-jQuery(document).ready(function(){
-
-   jQuery("#updateBus").hide();
-   jQuery("#saveUpdate").hide();
-   jQuery("#u_bus_src").hide();
-   jQuery("#u_bus_destination").hide();
-
-
-
-});
-
 function loadDetails() {
 
-
-    jQuery("#updateBus").show();
-    jQuery("#updateButton").hide();
-    jQuery("#saveUpdate").show();
-    var busNo = parseInt(jQuery("select#bus").val());
-
-
-    $("#currentSrc").val(bus);
-    $("#currentDestination").val(bus.busDestination);
-
+var url = "/Sample/admin/updateBus?bus="+$("#bus").val();
+window.open(url,'Update Bus Details','width=600,height=400,toolbar=no,location=yes,directories=no,status=yes,menubar=no,scrollbars=yes,copyhistory=yes,resizable=yes');
 
 
 }

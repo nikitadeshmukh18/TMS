@@ -36,4 +36,8 @@ public class BusStopService {
     public String getStopWith(Integer stopId) {
         return busStopDao.getStopWith(stopId);
     }
+
+    public List<BusStop> getRouteStops(int Route_no) {
+        return busStopDao.getRouteStops(Route_no);
+    }
 }

@@ -57,5 +57,21 @@ public class BusDao {
     }
 
 
+    public Bus getBus(int bus_no) {
+        System.out.println("This is sample Bus");
+        Bus bus = new Bus();
+        bus.setBusNo(100);
+        bus.setRouteId(1);
+        bus.setStartTime("00");
+        bus.setBusSource("abc");
+        bus.setBusDestination("defg");
+        return bus;
 
+    }
+
+    public void updateBus(Bus bus) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(bus);
+
+    }
 }

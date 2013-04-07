@@ -44,4 +44,11 @@ public class BusService {
     }
 
 
+    public Bus getBus(int bus_no) {
+        return  busDao.getBus(bus_no);
+    }
+
+    public void updateBus(Bus bus) {
+        busDao.updateBus(bus);
+    }
 }

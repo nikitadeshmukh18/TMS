@@ -84,5 +84,26 @@ public class RouteDao {
         return 1;
     }
 
+    public int getNewRouteID()
+    {
+        Session session=sessionFactory.getCurrentSession();
+        String sql="select max(Route_Id)+1 from Route" ;
+        Query query=session.createSQLQuery(sql);
+        List<Integer> counts = (List<Integer>) query.list();
+        Iterator it = counts.iterator();
+        BigInteger total = (BigInteger) it.next();
+        return total.intValue();
+
+    }
+
+    //List Of Stops To Be Added
+    public void saveRoute(BusRoute busRoute) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(busRoute);
+
+
+    }
+
+
 }
 

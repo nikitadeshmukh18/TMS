@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
@@ -131,20 +132,46 @@ public class BusController {
         return new ModelAndView("redirect:/admin?id=4");
     }
 
+    @RequestMapping(value = "/updateBus")
+    public ModelAndView saveUpdate(@RequestParam("bus") String busNo,ModelMap map){
+
+        System.out.println("busNO----------"+busNo);
+
+        int bus_no = Integer.parseInt(busNo);
+        Bus bus = busService.getBus(bus_no);
+        int routeId = bus.getRouteId();
+        Path path = routeService.getRouteFor(routeId);
+        map.addAttribute("bus",bus);
+        map.addAttribute("path",path);
 
 
-
-
-
-    @RequestMapping(value = "/addRoute")
-    public ModelAndView addRoute(){
-
-        return new ModelAndView("redirect:/admin?id=2");
+        return new ModelAndView("updateBus");
     }
 
-    @RequestMapping(value = "/saveRoute")
-    public ModelAndView saveRoute(){
-        return  new ModelAndView("redirect:/admin?id=0");
+    @RequestMapping(value = "saveUpdate" , method = RequestMethod.POST)
+    public void saveUpdate(@RequestParam("busSource") String src ,
+                           @RequestParam("busDestination") String destination,
+                           @RequestParam("route") String route){
+
+
+        System.out.println("-----------------In Save Uppdate-----------------------" + src+" ,,  " + destination+",," + route);
+
+
+        Bus bus = new Bus();
+        bus.setBusNo(100);
+        bus.setBusSource(src);
+        bus.setBusDestination(destination);
+        busService.updateBus(bus);
+        JOptionPane.showMessageDialog(null, "Bus Successfully updated");
+
+
     }
+
+
+
+
+
+
+
 
 }

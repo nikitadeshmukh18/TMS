@@ -111,9 +111,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                 <select id="bus_src" name="bus_src">
 
                                                                <c:forEach items='${busStops}' var='stop'>
-
-                                                                    <option> <c:out value='${stop.stopName}'/></option>
-                                                                 </c:forEach>
+                                                                 <option> <c:out value='${stop.stopName}'/></option>
+                                                               </c:forEach>
                                                                  </select>
                                                                <br>
                                                                 To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <select id="bus_destination" name="bus_destination">
@@ -177,7 +176,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      case 4:
                                                      %>
                                                           <div class="container">
-                                                             <form class="form-addroute" method="POST" action="admin/updateBus">
+                                                             <form class="form-addroute" method="POST">
                                                                <h2 class="form-addroute-heading">Select Bus To Modify</h2>
                                                                <select id="bus" name="bus">
                                                                    <c:forEach items='${buses}' var='bus'>
@@ -185,42 +184,9 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                    </c:forEach>
                                                                </select>
 
-                                                               <div id="updateBus" class="container">
-                                                               <select id="u_bus_src" name="bus_src">
-
-                                                               <c:forEach items='${busStops}' var='stop'>
-
-                                                                    <option> <c:out value='${stop.stopName}'/></option>
-                                                                 </c:forEach>
-                                                                 </select>
-                                                               <br>
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="u_bus_destination" name="bus_destination">
-
-                                                                <c:forEach items='${busStops}' var='stop'>
-
-                                                                <option> <c:out value='${stop.stopName}'/></option>
-                                                                </c:forEach>
-                                                                </select>
-                                                                <br>
-
-                                                                From : <input id="currentSrc" type="Text"></input><br>
-                                                                To : <input id="currentDestination" type="Text"/><br>
-                                                                Start Time : <input id="u_startTime" name="startTime" type="Text" placeholder="Start Time" required/><br>
-                                                                <br>
-                                                                Routes :   <select id="route" name="route">
-
-                                                                <c:forEach items='${routes}' var='route'>
-
-                                                                <option> <c:out value='${route.routeId}:'/>${route.pathName}</option>
-                                                                </c:forEach>
-                                                                </select>
-                                                               </div>
 
 
-
-
-                                                               <button id="updateButton" class="btn btn-large btn-primary" type="submit" onClick="loadDetails()">Update</button>
-                                                               <button id="saveUpdate" class="btn btn-large btn-primary" type="submit">Save</button>
+                                                               <button id="Update" class="btn btn-large btn-primary" onClick="loadDetails()">Update</button>
 
 
                                                                </form>
