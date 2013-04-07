@@ -121,7 +121,7 @@
 
    <div class="container">
 
-      <form class="form-inline" name="myForm" method="GET" action="search.do">
+      <form class="form-inline" name="myForm" method="GET" action="search.do"" >
         <h2 class="form-search-heading">Basic Search</h2>
 
             <select id="bus_src" name="bus_src">
@@ -148,12 +148,12 @@
          <input type="text" name="txtInput" id="txtInput" size="30" class="input-medium search-query" placeholder="Enter Captcha Code" />
 
           
-          <button id="search" type="submit" class="btn">Search</button>
+          <button type="submit" class="btn">Search</button>
       </p>
       </form>
 
-
     </div> <!-- /container -->
+
     <%
         String str=(String)request.getAttribute("search");
         if(str.equals("1")){

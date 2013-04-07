@@ -130,8 +130,6 @@ public class BusController {
 
     @RequestMapping(value = "/saveRoute")
     public ModelAndView saveRoute(){
-
-
         return  new ModelAndView("redirect:/admin?id=0");
     }
 

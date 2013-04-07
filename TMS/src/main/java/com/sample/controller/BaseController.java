@@ -1,7 +1,20 @@
 package com.sample.controller;
 
+
 import com.sample.model.*;
 import com.sample.service.*;
+
+import com.sample.model.Bus;
+import com.sample.model.BusStop;
+import com.sample.model.Bus;
+import com.sample.model.User;
+import com.sample.service.BusService;
+import com.sample.service.LoginService;
+import com.sample.service.UserService;
+import com.sample.service.BusStopService;
+import com.sample.service.BusService;
+import com.sample.service.RouteService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 
 @Controller
@@ -24,11 +38,15 @@ public class BaseController {
     private LoginService loginService;
     private BusStopService busStopService;
     private BusService busService;
+
     private RouteService routeService;
+
+
     public BaseController() {
     }
 
     @Autowired
+
 
 
     public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,BusService busService, RouteService routeService ) {
@@ -37,7 +55,16 @@ public class BaseController {
         this.busStopService=busStopService;
         this.busService = busService;
         this.routeService = routeService;
+
     }
+   /* public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,BusService busService ) {
+        this.userService = userService;
+        this.loginService = loginService;
+        this.busStopService=busStopService;
+        this.busService = busService;     } */
+
+
+
 
     @RequestMapping(value = {"/", "/welcome"})
     public String welcome(ModelMap model) {
@@ -78,10 +105,11 @@ public class BaseController {
     } */
 
     @RequestMapping(value = "/search")
+
     public ModelAndView search(ModelMap map, @ModelAttribute("search") String search, @ModelAttribute("bus_src") String busSrc,
                                @ModelAttribute("bus_d")String busDestination) {
 
-        try
+            try
         {
        List<BusStop> busStops = busStopService.getAllStops();
         map.addAttribute("busStops", busStops);
@@ -145,5 +173,98 @@ public class BaseController {
         return new ModelAndView("redirect:/");
     }
 
+    @RequestMapping(value = "/chome")
+    public ModelAndView chome(ModelMap map) {
 
+        try
+        {
+           List <Bus> busList = busService.getAllBuses();
+
+            map.addAttribute("busList", busList);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error is " + e.toString());
+
+        }
+        return new ModelAndView("chome", map);
+    }
+
+    @RequestMapping(value = "/chome.do", method = RequestMethod.GET)
+    public ModelAndView conductorNext(@RequestParam("bus_id") String bus_id,
+                                      ModelMap modelMap) {
+
+
+        try
+        {
+        System.out.println(bus_id);
+
+        StringTokenizer st = new StringTokenizer(bus_id, ":");
+        int id = Integer.parseInt(st.nextToken());
+        StringTokenizer st1 = new StringTokenizer(st.nextToken().toString(), "-");
+        String bus_src=st1.nextToken().toString();
+            System.out.println(bus_src);
+        System.out.println(id);
+        int route_no=busService.getRouteNo(id);
+        System.out.println(route_no);
+        int total=2;
+             total=routeService.getStopCount(route_no);
+            modelMap.addAttribute("bus_no",id);
+            modelMap.addAttribute("route_no",route_no);
+            modelMap.addAttribute("current","1");
+            modelMap.addAttribute("total",total);
+            modelMap.addAttribute("current_stop",bus_src);
+            return new ModelAndView("redirect:cbusselect" );
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+
+        }
+
+        return new ModelAndView("redirect:/");
+    }
+
+    @RequestMapping(value = "/cbusselect")
+    public String cbusselect() {
+        return ("cbusselect");
+    }
+
+
+
+
+    @RequestMapping(value = "/cbusselect.do", method = RequestMethod.GET)
+    public ModelAndView docbusselect(@RequestParam("bus_no") String bus_no,@RequestParam("route_no") String route_no,
+                                     @RequestParam("current") String current,@RequestParam("total") String total,
+                                      ModelMap modelMap) {
+
+
+        try
+        {
+
+            System.out.println(bus_no + " " + route_no + " " + current + " " + total);
+            int id=Integer.parseInt(bus_no);
+
+            int next;
+
+
+            next=routeService.getStop(Integer.parseInt(route_no),Integer.parseInt(current)+1);
+             String bus_src=busStopService.getStopWith(next);
+            //System.out.println(" ");
+
+            modelMap.addAttribute("bus_no",id);
+            modelMap.addAttribute("route_no",route_no);
+            modelMap.addAttribute("current",Integer.parseInt(current)+1);
+            modelMap.addAttribute("total",total);
+            modelMap.addAttribute("current_stop",bus_src);
+            return new ModelAndView("redirect:cbusselect" );
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+
+        }
+
+        return new ModelAndView("redirect:/");
+    }
 }

@@ -76,6 +76,7 @@ public class RouteService {
         return routeIds;
     }
 
+
     public Path getRouteFor(int routeId) {
 
         Path path = new Path();
@@ -107,6 +108,19 @@ public class RouteService {
 
 
         return path;
+    }
+    public int getStopCount(int route_no)
+    {
+        return routeDao.getStopCount(route_no);
+
+    }
+
+    public int getStop(int route_no,int stop_index)
+    {
+
+        int stop_id=routeDao.getStop(route_no,stop_index);
+        return stop_id;
+
     }
 }
 
