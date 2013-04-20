@@ -7,6 +7,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
+  <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="<%=request.getContextPath()%>/static/js/editBus.js"></script>
 <script language="javascript" type="text/javascript">
 function routePopUp(url) {
 	newwindow=window.open(url,'name','height=200,width=150');
@@ -20,11 +24,9 @@ function routePopUp(url) {
     <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="<%=request.getContextPath()%>/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
     <link href="<%=request.getContextPath()%>/static/css/form.css" rel="stylesheet" type="text/css"/>
-     <script src="<%=request.getContextPath()%>/static/js/bootstrap-dropdown.js"></script>
-     <script src="<%=request.getContextPath()%>/static/js/jquery.js"></script>
-     <script src="<%=request.getContextPath()%>/static/js/editBus.js"></script>
 
 </head>
+
 <body>
 WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a>  ${id}</text>
                      <section id="dropdowns">
@@ -58,7 +60,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE STOPS<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addStop">ADD STOPS</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY STOPS INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editStop">MODIFY STOPS INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE STOPS</a></li>
 
                                          </ul>
@@ -209,6 +211,28 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
 
                                                                <button id="delete" class="btn btn-large btn-primary">Delete</button>
+
+
+                                                               </form>
+                                                          </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
+                                                     case 6:
+                                                     %>
+                                                          <div class="container">
+                                                             <form class="form-addroute" method="POST" action="admin/updateStop">
+                                                               <h2 class="form-addroute-heading">Select Bus Stop To Modify</h2>
+                                                               <select id="editStopList" name="stop">
+                                                                   <c:forEach items='${busStops}' var='stop'>
+                                                                        <option value=${stop.stopId}>${stop.stopName}</option>
+                                                                   </c:forEach>
+                                                               </select>
+                                                               <label for="newName">Changed Name : </label>
+                                                               <input id="newName" name="newName" type="text" class="input-block-level" required/>
+
+                                                               <button id="updateStop" class="btn btn-large btn-primary">Update</button>
 
 
                                                                </form>

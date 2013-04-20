@@ -40,4 +40,26 @@ public class BusStopController {
         JOptionPane.showMessageDialog(null, "Stop Successfully Created");
         return  new ModelAndView("redirect:/admin?id=0");
     }
+
+    @RequestMapping(value = "/editStop")
+    public ModelAndView editStop(){
+
+        return new ModelAndView("redirect:/admin?id=6");
+    }
+
+    @RequestMapping(value = "/updateStop")
+    public ModelAndView saveStop(@RequestParam("newName") String stopName,
+                                 @RequestParam("stop") String stopId){
+
+        BusStop stop = new BusStop();
+        stop.setStopId(Integer.parseInt(stopId));
+        stop.setStopName(stopName);
+
+        busStopService.update(stop);
+
+        JOptionPane.showMessageDialog(null, "Stop Successfully Updated");
+
+        return new ModelAndView("redirect:/admin?id=0");
+    }
+
 }

@@ -1,5 +1,4 @@
 
-
 function loadDetails() {
 
 var url = "/Sample/admin/updateBus?bus="+$("#bus").val();
@@ -7,3 +6,6 @@ window.open(url,'Update Bus Details','width=600,height=400,toolbar=no,location=y
 
 
 }
+
+
+

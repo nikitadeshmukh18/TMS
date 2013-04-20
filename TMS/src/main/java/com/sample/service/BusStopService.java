@@ -40,4 +40,8 @@ public class BusStopService {
     public List<BusStop> getRouteStops(int Route_no) {
         return busStopDao.getRouteStops(Route_no);
     }
+
+    public void update(BusStop stop) {
+        busStopDao.update(stop);
+    }
 }

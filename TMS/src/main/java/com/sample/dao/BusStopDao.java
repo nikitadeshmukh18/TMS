@@ -47,4 +47,9 @@ public class BusStopDao {
         List<BusStop> busStops = query.list();
         return busStops;
     }
+
+    public void update(BusStop stop) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(stop);
+    }
 }
