@@ -60,8 +60,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE STOPS<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addStop">ADD STOPS</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editStop">MODIFY STOPS INFO</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE STOPS</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editStop">MODIFY STOP INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteStop">DELETE STOP</a></li>
 
                                          </ul>
                                        </li>
@@ -233,6 +233,24 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                <input id="newName" name="newName" type="text" class="input-block-level" required/>
 
                                                                <button id="updateStop" class="btn btn-large btn-primary">Update</button>
+
+
+                                                               </form>
+                                                          </div> <!-- /container -->
+                                                     <%
+                                                     break;
+                                                     case 7:
+                                                     %>
+                                                          <div class="container">
+                                                             <form class="form-addroute" method="POST" action="admin/removeStop">
+                                                               <h2 class="form-addroute-heading">Select Bus Stop To Modify</h2>
+                                                               <select id="editStopList" name="stop">
+                                                                   <c:forEach items='${busStops}' var='stop'>
+                                                                        <option value=${stop.stopId}>${stop.stopName}</option>
+                                                                   </c:forEach>
+                                                               </select>
+
+                                                               <button id="removeStop" class="btn btn-large btn-primary">Delete</button>
 
 
                                                                </form>

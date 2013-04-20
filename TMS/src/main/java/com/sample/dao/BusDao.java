@@ -71,12 +71,8 @@ public class BusDao {
 
     }
 
-    public void delete(int busNo) {
+    public void delete(Bus bus) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "delete from Bus where Bus_No="+busNo;
-        System.out.println(hql);
-        Query query = session.createSQLQuery(hql);
-        query.executeUpdate();
-
+        session.delete(bus);
     }
 }

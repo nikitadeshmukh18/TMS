@@ -52,4 +52,10 @@ public class BusStopDao {
         Session session = sessionFactory.getCurrentSession();
         session.update(stop);
     }
+
+    public void delete(BusStop stop) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(stop);
+
+    }
 }

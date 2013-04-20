@@ -44,4 +44,8 @@ public class BusStopService {
     public void update(BusStop stop) {
         busStopDao.update(stop);
     }
+
+    public void delete(BusStop stop) {
+        busStopDao.delete(stop);
+    }
 }

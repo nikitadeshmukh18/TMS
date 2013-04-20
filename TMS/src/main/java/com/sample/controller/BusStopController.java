@@ -62,4 +62,22 @@ public class BusStopController {
         return new ModelAndView("redirect:/admin?id=0");
     }
 
+    @RequestMapping(value = "/deleteStop")
+    public ModelAndView deleteBus(){
+        return new ModelAndView("redirect:/admin?id=7");
+    }
+
+    @RequestMapping(value = "/removeStop")
+    public ModelAndView removeBus(@RequestParam("stop") String stopId){
+
+        BusStop busStop = new BusStop();
+        busStop.setStopId(Integer.parseInt(stopId));
+        busStopService.delete(busStop);
+
+        JOptionPane.showMessageDialog(null, "Stop Successfully Deleted");
+
+        return new ModelAndView("redirect:/admin?id=0");
+    }
+
+
 }

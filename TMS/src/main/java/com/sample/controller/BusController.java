@@ -189,7 +189,9 @@ public class BusController {
     @RequestMapping(value = "/removeBus")
     public ModelAndView removeBus(@RequestParam("bus") String busNo) {
 
-        busService.delete(Integer.parseInt(busNo));
+        Bus bus = new Bus();
+        bus.setBusNo(Integer.parseInt(busNo));
+        busService.delete(bus);
         JOptionPane.showMessageDialog(null, "Bus Successfully Deleted");
         return new ModelAndView("redirect:/admin?id=0");
     }
