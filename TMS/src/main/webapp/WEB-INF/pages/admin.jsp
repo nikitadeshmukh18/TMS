@@ -41,7 +41,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                              <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addBus">ADD BUS</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editBus">MODIFY BUS INFO</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE BUS</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteBus">DELETE BUS</a></li>
 
                                          </ul>
                                        </li>
@@ -194,7 +194,27 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      <%
                                                      break;
 
+                                                    case 5:
+                                                     %>
+                                                          <div class="container">
+                                                             <form class="form-addroute" method="POST" action="admin/removeBus">
+                                                               <h2 class="form-addroute-heading">Select Bus To Delete</h2>
+                                                               <select id="bus" name="bus">
+                                                                   <c:forEach items='${buses}' var='bus'>
+                                                                        <option value=${bus.busNo}>${bus.busNo}</option>
+                                                                   </c:forEach>
+                                                               </select>
 
+
+
+
+                                                               <button id="delete" class="btn btn-large btn-primary">Delete</button>
+
+
+                                                               </form>
+                                                          </div> <!-- /container -->
+                                                     <%
+                                                     break;
                                                      case 13:                 //ADD BUS Second Page
                                                            String bussrc = "";
                                                            bussrc = request.getParameter("bussrc");

@@ -51,4 +51,8 @@ public class BusService {
     public void updateBus(Bus bus) {
         busDao.updateBus(bus);
     }
+
+    public void delete(int busNo) {
+        busDao.delete(busNo);
+    }
 }

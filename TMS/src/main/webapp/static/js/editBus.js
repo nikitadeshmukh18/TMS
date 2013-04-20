@@ -1,3 +1,5 @@
+
+
 function loadDetails() {
 
 var url = "/Sample/admin/updateBus?bus="+$("#bus").val();

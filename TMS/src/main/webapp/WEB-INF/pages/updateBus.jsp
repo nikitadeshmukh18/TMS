@@ -1,7 +1,30 @@
+
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
   <head>
 
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+       $("#selectRoute").hide();
+       $("#busNo").hide();
+     });
+
+     function changeRoute(){
+
+         $("#route").hide();
+         $("#selectRoute").show();
+         $("#selectRoute").change(function() {
+            var route = $("#selectRoute").val();
+            $("#route").val(route.toString());
+
+         });
+
+    }
+
+    </script>
 
      <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
@@ -42,11 +65,25 @@
 
     <div class="container">
 
-      <form method="POST" action="saveUpdate">
+      <form method="POST" action="saveUpdate" name="busForm" id="busForm">
+
         <h2 id="bus" name="bus" class="form-signin-heading">Bus Details for Bus No - ${bus.busNo}</h2>
-        <input id="busSource" name="busSource" type="Text" class="input-block-level" placeholder="${bus.busSource}"></input>
-        <input id="busDestination" name="busDestination" type="Text" class="input-block-level" placeholder="${bus.busDestination}"></input>
-        <input id="route" name="route" type="Text" class="input-block-level" placeholder="${path.pathName}"></input>
+
+        <input id="busNo" name="busNo" type="Text" value = "${bus.busNo}"/>
+        <label for="busSource">Source</label>
+        <input id="busSource" name="busSource" type="Text" value="${bus.busSource}" style = "width:50;"></input><br>
+        <label for="busDestination">Destination</label>
+        <input id="busDestination" name="busDestination" type="Text" style = "width:50;" value="${bus.busDestination}"></input><br>
+        <label for="startTime">Destination</label>
+        <input id="startTime" name="startTime" type="Text" style = "width:50;" value="${bus.startTime}"></input><br>
+        <label for="route">Route</label>
+        <select id="selectRoute">
+        <c:forEach items='${routes}' var='route'>
+
+            <option> <c:out value='${route.routeId}:'/>${route.pathName}</option>
+            </c:forEach>
+        </select>
+        <input id="route" name="route" type="Text" style = "width:100" value="${path.routeId}:${path.pathName}" readonly="readonly"><button type="button" class="btn btn-small" onClick = "changeRoute()">Change</button></input><br>
 
         <button class="btn btn-large btn-primary" onClick = "window.close();">Save</button>
       </form>

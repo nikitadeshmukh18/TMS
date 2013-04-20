@@ -58,13 +58,9 @@ public class BusDao {
 
 
     public Bus getBus(int bus_no) {
-        System.out.println("This is sample Bus");
-        Bus bus = new Bus();
-        bus.setBusNo(100);
-        bus.setRouteId(1);
-        bus.setStartTime("00");
-        bus.setBusSource("abc");
-        bus.setBusDestination("defg");
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Bus where busNo=?").setParameter(0,bus_no);
+        Bus bus = (Bus) query.list().get(0);
         return bus;
 
     }
@@ -72,6 +68,15 @@ public class BusDao {
     public void updateBus(Bus bus) {
         Session session = sessionFactory.getCurrentSession();
         session.update(bus);
+
+    }
+
+    public void delete(int busNo) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "delete from Bus where Bus_No="+busNo;
+        System.out.println(hql);
+        Query query = session.createSQLQuery(hql);
+        query.executeUpdate();
 
     }
 }

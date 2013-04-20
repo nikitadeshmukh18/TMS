@@ -143,28 +143,55 @@ public class BusController {
         Path path = routeService.getRouteFor(routeId);
         map.addAttribute("bus",bus);
         map.addAttribute("path",path);
+        List<Path> routes = routeService.getAllRoutes();
+        map.addAttribute("routes", routes);
 
 
         return new ModelAndView("updateBus");
     }
 
     @RequestMapping(value = "saveUpdate" , method = RequestMethod.POST)
-    public void saveUpdate(@RequestParam("busSource") String src ,
+    public void saveUpdate(@RequestParam("busNo") String busNo,
+                           @RequestParam("busSource") String src ,
                            @RequestParam("busDestination") String destination,
-                           @RequestParam("route") String route){
+                           @RequestParam("startTime") String startTime,@RequestParam("route") String route){
 
-
-        System.out.println("-----------------In Save Uppdate-----------------------" + src+" ,,  " + destination+",," + route);
 
 
         Bus bus = new Bus();
-        bus.setBusNo(100);
+
+        bus.setBusNo(Integer.parseInt(busNo));
         bus.setBusSource(src);
         bus.setBusDestination(destination);
+        StringTokenizer st = new StringTokenizer(route, ":");
+
+        int id = Integer.parseInt(st.nextToken());
+        bus.setRouteId(id);
+
+        bus.setStartTime(startTime);
+
+        try{
         busService.updateBus(bus);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error During Update");
+
+        }
         JOptionPane.showMessageDialog(null, "Bus Successfully updated");
 
+    }
 
+    @RequestMapping(value = "/deleteBus")
+    public ModelAndView deleteBus() {
+
+        return new ModelAndView("redirect:/admin?id=5");
+    }
+
+    @RequestMapping(value = "/removeBus")
+    public ModelAndView removeBus(@RequestParam("bus") String busNo) {
+
+        busService.delete(Integer.parseInt(busNo));
+        JOptionPane.showMessageDialog(null, "Bus Successfully Deleted");
+        return new ModelAndView("redirect:/admin?id=0");
     }
 
 
