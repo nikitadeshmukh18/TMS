@@ -46,6 +46,7 @@
                 <value>com.sample.model.Bus</value>
                 <value>com.sample.model.BusRoute</value>
                 <value>com.sample.model.BusStop</value>
+                <value>com.sample.model.Conductor</value>
             </list>
         </property>
 

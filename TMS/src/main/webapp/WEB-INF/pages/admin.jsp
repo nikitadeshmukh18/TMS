@@ -68,8 +68,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                         <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE CONDUCTOR<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">ADD CONDUCTOR</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY CONDUCTOR INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addConductor">ADD CONDUCTOR</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteConductor">MODIFY CONDUCTOR INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE CONDUCTOR</a></li>
 
                                          </ul>
@@ -239,6 +239,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                           </div> <!-- /container -->
                                                      <%
                                                      break;
+
+
                                                      case 7:
                                                      %>
                                                           <div class="container">
@@ -257,6 +259,41 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                           </div> <!-- /container -->
                                                      <%
                                                      break;
+                                                    case 8:
+                                                         %>
+
+                                                         <div class="container">
+                                                               <form class="form-addbus" method="POST" action="admin/saveConductor">
+                                                                 <h2 class="form-addbus-heading">Add Conductor Details</h2><br>
+
+
+                                                                Name : <input id="CName" name="CName" type="Text" class="input-block-level" placeholder="Conductor name" required/>
+                                                                <br>
+
+                                                                <button class="btn btn-large btn-primary" type="submit">SAVE</button>
+                                                               </form>
+
+                                                             </div> <!-- /container -->
+                                                         <%
+                                                         break;
+                                                         case 9:
+                                                         %>
+
+                                                         <div class="container">
+                                                               <form class="form-addbus" method="POST" action="admin/removeConductor">
+                                                               <h2 class="form-addbus-heading">Select Conductor to be removed</h2><br>
+
+
+                                                                Name : <input id="CName" name="CName" type="Text" class="input-block-level" placeholder="Conductor name" required/>
+                                                                <br>
+
+                                                                <button class="btn btn-large btn-primary" type="submit">SAVE</button>
+                                                               </form>
+
+                                                             </div> <!-- /container -->
+                                                         <%
+                                                         break;
+
                                                      case 13:                 //ADD BUS Second Page
                                                            String bussrc = "";
                                                            bussrc = request.getParameter("bussrc");
