@@ -44,4 +44,21 @@ public class ConductorController {
         JOptionPane.showMessageDialog(null," Conductor Successfully Added");
         return new ModelAndView("redirect:/admin?id=0");
     }
+
+    @RequestMapping("/deleteConductor")
+    public ModelAndView deleteConductor(){
+        return new ModelAndView("redirect:/admin?id=9");
+    }
+
+    @RequestMapping("/removeConductor")
+    public ModelAndView remConductor(@RequestParam("conductor") String conductor){
+        Conductor c = new Conductor();
+        c.setId(Integer.parseInt(conductor));
+        service.remove(c);
+        JOptionPane.showMessageDialog(null,"Conductor Deleted Succesfully");
+        return new ModelAndView("redirect:/admin?id=0");
+    }
+
+
+
 }

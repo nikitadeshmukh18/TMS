@@ -69,8 +69,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE CONDUCTOR<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addConductor">ADD CONDUCTOR</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteConductor">MODIFY CONDUCTOR INFO</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE CONDUCTOR</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">MODIFY CONDUCTOR INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteConductor">DELETE CONDUCTOR</a></li>
 
                                          </ul>
                                        </li>
@@ -284,10 +284,13 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                <h2 class="form-addbus-heading">Select Conductor to be removed</h2><br>
 
 
-                                                                Name : <input id="CName" name="CName" type="Text" class="input-block-level" placeholder="Conductor name" required/>
-                                                                <br>
+                                                                <select id="conductor" name="conductor">
+                                                                    <c:forEach items='${conductors}' var='c'>
+                                                                       <option value=${c.id}>${c.name}</option>
+                                                                    </c:forEach>
+                                                                </select>
 
-                                                                <button class="btn btn-large btn-primary" type="submit">SAVE</button>
+                                                                <button class="btn btn-large btn-primary" type="submit">DELETE</button>
                                                                </form>
 
                                                              </div> <!-- /container -->

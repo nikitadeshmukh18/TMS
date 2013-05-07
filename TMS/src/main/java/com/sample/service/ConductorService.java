@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 
@@ -25,5 +27,13 @@ public class ConductorService {
     public void saveConductor(Conductor conductor){
 
         cdao.saveConductor(conductor);
+    }
+
+    public List<Conductor> getAllconductors() {
+        return cdao.getAll();
+    }
+
+    public void remove(Conductor c) {
+        cdao.remove(c);
     }
 }

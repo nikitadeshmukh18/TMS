@@ -1,13 +1,7 @@
 package com.sample.controller;
 
-import com.sample.model.Bus;
-import com.sample.model.BusStop;
-import com.sample.model.Path;
-import com.sample.model.User;
-import com.sample.service.BusService;
-import com.sample.service.BusStopService;
-import com.sample.service.RouteService;
-import com.sample.service.UserService;
+import com.sample.model.*;
+import com.sample.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,17 +33,19 @@ public class BusController {
     private BusStopService busStopService;
     private BusService busService;
     private RouteService routeService;
+    private ConductorService conductorService;
 
     public BusController() {
 
     }
 
     @Autowired
-    public BusController(UserService userService, BusStopService busStopService, BusService busService, RouteService routeService) {
+    public BusController(UserService userService, BusStopService busStopService, BusService busService, RouteService routeService, ConductorService conductorService) {
         this.busStopService = busStopService;
         this.userService = userService;
         this.busService = busService;
         this.routeService = routeService;
+        this.conductorService = conductorService;
     }
 
     @RequestMapping(value = "/admin")
@@ -66,6 +62,9 @@ public class BusController {
 
         List<Bus> buses = busService.getAllBuses();
         map.addAttribute("buses",buses);
+
+        List<Conductor> conductors = conductorService.getAllconductors();
+        map.addAttribute("conductors",conductors);
 
         try{
         StringTokenizer st = new StringTokenizer(route, ":");
