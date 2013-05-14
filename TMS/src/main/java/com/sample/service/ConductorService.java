@@ -36,4 +36,13 @@ public class ConductorService {
     public void remove(Conductor c) {
         cdao.remove(c);
     }
+
+
+    public Conductor getConductor(int id) {
+         return cdao.getConductor(id);
+    }
+
+    public void update(Conductor conductor) {
+        cdao.update(conductor);
+    }
 }

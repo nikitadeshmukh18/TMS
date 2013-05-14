@@ -149,6 +149,7 @@ public class BusController {
         return new ModelAndView("updateBus");
     }
 
+
     @RequestMapping(value = "saveUpdate" , method = RequestMethod.POST)
     public void saveUpdate(@RequestParam("busNo") String busNo,
                            @RequestParam("busSource") String src ,
@@ -170,7 +171,7 @@ public class BusController {
         bus.setStartTime(startTime);
 
         try{
-        busService.updateBus(bus);
+            busService.updateBus(bus);
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error During Update");
 
@@ -178,7 +179,6 @@ public class BusController {
         JOptionPane.showMessageDialog(null, "Bus Successfully updated");
 
     }
-
     @RequestMapping(value = "/deleteBus")
     public ModelAndView deleteBus() {
 

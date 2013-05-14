@@ -69,7 +69,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE CONDUCTOR<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addConductor">ADD CONDUCTOR</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">MODIFY CONDUCTOR INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editConductor">MODIFY CONDUCTOR INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteConductor">DELETE CONDUCTOR</a></li>
 
                                          </ul>
@@ -296,6 +296,26 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                              </div> <!-- /container -->
                                                          <%
                                                          break;
+                                                    case 10:
+                                                     %>
+                                                          <div class="container">
+                                                             <form class="form-addroute" method="POST">
+                                                               <h2 class="form-addroute-heading">Select Conductor To Modify</h2>
+                                                               <select id="cond" name="cond">
+                                                                   <c:forEach items='${conductors}' var='c'>
+                                                                        <option value=${c.id}>${c.name}</option>
+                                                                   </c:forEach>
+                                                               </select>
+
+
+
+                                                               <button id="Update" class="btn btn-large btn-primary" onClick="loadConductorDetails()">Update</button>
+
+
+                                                               </form>
+                                                          </div> <!-- /container -->
+                                                     <%
+                                                     break;
 
                                                      case 13:                 //ADD BUS Second Page
                                                            String bussrc = "";

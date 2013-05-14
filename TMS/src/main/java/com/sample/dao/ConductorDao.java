@@ -32,4 +32,17 @@ public class ConductorDao {
         Session session = sessionFactory.getCurrentSession();
         session.delete(c);
     }
+
+    public Conductor getConductor(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Conductor where id=?").setParameter(0,id);
+        Conductor conductor = (Conductor) query.list().get(0);
+        return  conductor;
+
+    }
+
+    public void update(Conductor conductor) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(conductor);
+    }
 }
