@@ -33,16 +33,19 @@ public class RouteController {
 
     private RouteService routeService;
     private BusStopService busStopService;
+    private BusService busService;
+
     public RouteController()
     {
 
     }
     @Autowired
-    public RouteController(RouteService routeService,BusStopService busStopService)
+    public RouteController(RouteService routeService,BusStopService busStopService, BusService busService)
     {
 
         this.routeService=routeService;
         this.busStopService=busStopService;
+        this.busService = busService;
     }
 
     @RequestMapping(value = "/newRoute")
@@ -118,6 +121,79 @@ public class RouteController {
 
 
     }
+
+    @RequestMapping(value = "/deleteRoute")
+    public ModelAndView deleteRoute() {
+
+
+        return new ModelAndView("redirect:/admin?id=11");
+    }
+
+
+    @RequestMapping(value = "/removeRoute")
+    public ModelAndView removeRoute(ModelMap map,@RequestParam("routeSelect") int route) {
+
+        if(busService.getRouteBusCount(route)>0)
+        {
+            JOptionPane.showMessageDialog(null, "Bus Count : " + busService.getRouteBusCount(route));
+            List<Bus> busList=busService.getBusesByRoute(route);
+
+            Iterator it=busList.listIterator();
+            while (it.hasNext())
+            {
+                JOptionPane.showMessageDialog(null,it.next());
+            }
+            map.addAttribute("route",route);
+            map.addAttribute("busList",busList);
+
+            return new ModelAndView("removeRoute");
+        }
+
+        BusRoute busRoute=new BusRoute();
+        busRoute.setRouteId(route);
+        routeService.delete(busRoute);
+        JOptionPane.showMessageDialog(null,"Route Deleted Successfully");
+        return new ModelAndView("redirect:/admin?id=0");
+    }
+
+
+    @RequestMapping(value = "/modifyRoute")
+    public ModelAndView modifyRoute() {
+
+
+        return new ModelAndView("redirect:/admin?id=14");
+    }
+
+    @RequestMapping(value = "/updateRoute")
+    public ModelAndView updateRoute(ModelMap modelMap,@RequestParam("route") String route)
+    {
+        int routeId = Integer.parseInt(route);
+        List<BusStop> busStopsList = busStopService.getRouteStops(routeId);
+
+        List<Integer> routeIndices = routeService.getStopIndices(routeId);
+        List<RouteStops> routeStopsList = new ArrayList<RouteStops>();
+        Iterator it = routeIndices.iterator();
+        int index =1;
+        while (it.hasNext())
+        {
+            RouteStops st = new RouteStops();
+            st.setStopIndex(index++);
+            st.setStopName(busStopService.getStopWith((Integer) it.next()));
+
+
+
+            routeStopsList.add(st);
+
+            JOptionPane.showMessageDialog(null,st.getStopName() + st.getStopIndex());
+        }
+
+
+        modelMap.addAttribute("busStops",busStopsList);
+        modelMap.addAttribute("routeStops",routeStopsList);
+        modelMap.addAttribute("route",route);
+        return new ModelAndView("updateRoute");
+    }
+
 
 
 

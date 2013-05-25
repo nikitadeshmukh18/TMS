@@ -55,4 +55,13 @@ public class BusService {
     public void delete(Bus bus) {
         busDao.delete(bus);
     }
+
+    public int getRouteBusCount(int route)
+    {
+        return busDao.getRouteBusCount(route);
+    }
+
+    public List<Bus> getBusesByRoute(int route) {
+        return busDao.getBusesByRoute(route);
+    }
 }

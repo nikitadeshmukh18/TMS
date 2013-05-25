@@ -4,6 +4,7 @@ import com.sample.dao.BusStopDao;
 import com.sample.dao.RouteDao;
 import com.sample.model.BusRoute;
 import com.sample.model.Path;
+import com.sample.model.RouteStops;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -109,6 +110,15 @@ public class RouteService {
 
     public void saveRoute(BusRoute busRoute) {
         routeDao.saveRoute(busRoute);
+    }
+
+    public void delete(BusRoute busRoute) {
+        routeDao.delete(busRoute);
+    }
+
+
+    public List<Integer> getStopIndices(int routeId) {
+        return routeDao.getStopIndicesForRoute(routeId);
     }
 }
 

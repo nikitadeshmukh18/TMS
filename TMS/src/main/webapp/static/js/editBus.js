@@ -14,5 +14,20 @@ function loadConductorDetails() {
 
 }
 
+ function loadRouteDetails()
+ {
+var url = "/Sample/admin/removeRoute?route="+$("#route").val();
+TINY.box.show({iframe:url,boxid:'',width:550,height:550,fixed:false,maskid:'bluemask',maskopacity:40,closejs:function(){closeJS()}});
+alert(url);
+ }
+
+function loadRouteUpdateDetails()
+{
+var url = "/Sample/admin/updateRoute?route="+$("#route").val();
+TINY.box.show({iframe:url,boxid:'',width:550,height:550,fixed:false,maskid:'bluemask',maskopacity:40,closejs:function(){closeJS()}});
+alert(url);
+
+}
+
 
 

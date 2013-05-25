@@ -51,8 +51,8 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE ROUTES<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addRoute">ADD ROUTES</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">MODIFY ROUTES INFO</a></li>
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">DELETE ROUTES</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/modifyRoute">MODIFY ROUTES INFO</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteRoute">DELETE ROUTES</a></li>
 
                                          </ul>
                                        </li>
@@ -317,6 +317,167 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      <%
                                                      break;
 
+
+
+                                                    case 11:    //REMOVE ROUTE
+                                                     %>
+                                                        <div class="container">
+                                                        <form class="form-addroute" action="admin/removeRoute">
+                                                        <h2 class="form-addroute-heading">Select Route to Delete</h2>
+                                                      Routes :   <select id="routeSelect" name="routeSelect">
+
+                                                        <c:forEach items='${routes}' var='r'>
+
+                                                            <option> <c:out value='${r.routeId}'/></option>
+                                                        </c:forEach>
+                                                       </select>
+                                                     <button id="removeRoute" class="btn btn-large btn-primary">Delete</button>
+                                                     <a onClick="loadRouteDetails()" class="btn btn-large btn-primary">Update Working</a>
+                                                     </form>
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
+
+
+                                         case 12:    //BUS LIST WHICH ARE ON ROUTE TO BE DELETED
+                                                     %>
+                                                     <div class="container">
+                                                     <form class="form-addroute" method="POST" action="admin/removeRoute">
+                                                     <h2 class="form-addroute-heading">Select Route to Delete</h2>
+
+                                                     Route ID :  <%
+
+                                                    String route1= request.getParameter("rt11");
+
+
+                                                     int rt1=Integer.parseInt(route1);
+
+
+
+                                                    %>
+                                                    ROUTE : <%=rt1 %>-- ${rt1}----<c:out value="${rt1}"/>
+                                                    <c:set var="contains" value="false" />
+                                                    <c:forEach var="item" items="${buses}">
+                                                      ${item.busNo}
+                                                      <c:if test="${rt1 eq item.routeId}">
+                                                      <h3><b>   ${item.busNo}</b></h3>
+                                                        <c:set var="contains" value="true" />
+                                                      </c:if>
+                                                    </c:forEach>
+
+
+                                                    <c:forEach items='${buses}' var='bus'>
+                                                     <option value=${bus.busNo}>${bus.busNo}</option>
+                                                    </c:forEach>
+
+
+
+                                                         ${bussrc10}
+                                                      <select id="bus" name="bus">
+                                                      <c:forEach items='${buses12}' var='bus'>
+                                                      <option value='${bus.busNo}'>'${bus.busNo}'</option>
+                                                      </c:forEach>
+                                                      </select>
+                                                    <b>${busList.busNo}</b>
+                                                    <b><i>${BUS.busList.busNo}</i></b>
+                                                    <table border="1">
+                                                    <tr><td>BUS ID </td><td>BUS Source</td><td>BUS Destination </td></tr>
+
+
+                                                    <c:forEach items='${busList12}' var='bus1'>
+                                                    <tr>
+                                                    <td><c:out value='${bus1.busNo}'/></td>
+                                                    <td><c:out value='${bus1.busSource}'/> </td>
+                                                    <td><c:out value='${bus1.busDestination}'/> </td>
+                                                    </tr>
+                                                    </c:forEach>
+                                                    </table>
+
+
+
+
+                                                     </form>
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
+                                                    case 14:    //MODIFY ROUTE
+                                                     %>
+                                                     <div class="container">
+                                                     <form class="form-addroute" method="POST" action="admin/updateRoute">
+                                                     <h2 class="form-addroute-heading">Select Route to Modify</h2>
+                                                     Routes :   <select id="route" name="route">
+
+                                                     <c:forEach items='${routes}' var='route'>
+
+                                                     <option> <c:out value='${route.routeId}'/></option>
+                                                     </c:forEach>
+                                                     </select>
+                                                     <button id="removeRoute" class="btn btn-large btn-primary">Modify</button>
+                                                     <a onClick="loadRouteUpdateDetails()" class="btn btn-large btn-primary">Update Route</a>
+                                                     </form>
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
+
+                                                     case 15:    //DISPLAY ROUTE TO BE MODIFIED
+                                                      %>
+                                                      <div class="container">
+                                                      <form class="form-addroute" method="POST" action="admin/updateRoute">
+
+
+
+                                                      <ul class="nav nav-pills" id="myTab">
+                                                      <li class="active" ><a href="#insert" data-toggle="tab">Insert</a></li>
+                                                      <li><a href="#delete" data-toggle="tab">Delete</a></li>
+
+                                                      </ul>
+
+                                                     <div class="tab-content">
+
+                                                      <div class="tab-pane active" id="insert">
+                                                        <form class="form-addroute" method="POST" action="admin/insertInRoute">
+                                                        <h2 class="form-addroute-heading">Insert Bus Stop in Route</h2>
+                                                        <input  name="index" type="text" class="input-block-level" placeholder="Enter Index" required/>
+
+                                                        LIST OF STOPS
+
+                                                        <select id="bus_src" name="bus_src">
+                                                        <c:forEach items='${busStopList}' var='stop'>
+                                                        <option> <c:out value='${stop.stopName}'/></option>
+                                                        </c:forEach>
+                                                        </select>
+                                                        <button class="btn btn-success" type="submit">Insert</button>
+                                                        </form>
+                                                      </div>
+
+
+                                                      <div class="tab-pane" id="delete">
+                                                        <form class="form-addroute" method="POST" action="admin/deleteInRoute">
+                                                        <h2 class="form-addroute-heading">Insert Bus Stop in Route</h2>
+
+
+
+                                                         <button class="btn btn-danger" type="submit">Delete</button>
+                                                         </form>
+                                                      </div>
+                                                     </div>
+                                                        <script>
+                                                       $(function () {
+                                                       $('#myTab a:first').tab('show');
+                                                       })
+                                                       </script>
+                                                      </form>
+                                                      </div> <!-- /container -->
+
+                                                      <%
+                                                      break;
+
                                                      case 13:                 //ADD BUS Second Page
                                                            String bussrc = "";
                                                            bussrc = request.getParameter("bussrc");
@@ -349,7 +510,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                            break;
 
 
-                                                     case 14:                 //ADD BUS Pop UP & NEW Route
+                                                     case 16:                 //ADD BUS Pop UP & NEW Route
                                                      String bussrc1 = "";
                                                      bussrc1 = request.getParameter("bussrc");
                                                      String busdesti1 = "";

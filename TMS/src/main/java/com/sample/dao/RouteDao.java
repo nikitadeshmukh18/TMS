@@ -2,13 +2,16 @@ package com.sample.dao;
 
 import com.sample.model.Bus;
 import com.sample.model.BusRoute;
+import com.sample.model.RouteStops;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.StatelessSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -102,6 +105,23 @@ public class RouteDao {
         session.save(busRoute);
 
 
+    }
+
+    public void delete(BusRoute busRoute) {
+        Session session=sessionFactory.getCurrentSession();
+        session.delete(busRoute);
+
+    }
+
+
+    public List<Integer> getStopIndicesForRoute(int routeId) {
+
+        String h = "Select Stop_Id from Route where Route_Id="+routeId+" order by Stop_Index";
+        Session session = sessionFactory.getCurrentSession();
+        Query q = session.createSQLQuery(h);
+        List<Integer> i=q.list();
+
+          return i;
     }
 
 
