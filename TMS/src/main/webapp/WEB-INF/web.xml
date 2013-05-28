@@ -3,7 +3,6 @@
          id="WebApp_ID" version="2.5">
     <display-name>TMS</display-name>
 
-    <display-name>Counter Web Application</display-name>
 
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>

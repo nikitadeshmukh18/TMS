@@ -1,17 +1,17 @@
 package com.sample.controller;
 
 import com.sample.model.Bus;
+import com.sample.model.BusList;
 import com.sample.service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.security.PrivateKey;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @Transactional
@@ -47,5 +47,13 @@ public class ApiController {
 
     }
 
+    @RequestMapping(value = "/buses", method = RequestMethod.GET)
+    public @ResponseBody BusList giveBusList(){
+
+        List<Bus> busList = busService.getAllBuses();
+        BusList list = new BusList(busList);
+        return list;
+
+    }
 
 }

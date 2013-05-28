@@ -31,6 +31,20 @@
     <orderEntry type="library" name="org.springframework.security:spring-security-core:3.2.0.M1" level="project" />
     <orderEntry type="library" name="org.springframework:spring-orm:3.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="org.springframework:spring-oxm:3.0.0.RELEASE" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/xstream-1.4.4/xstream/src/test" />
+          <root url="file://$USER_HOME$/Downloads/xstream-1.4.4/xstream/src/java" />
+          <root url="file://$USER_HOME$/Downloads/xstream-1.4.4/xstream-benchmark/src/test" />
+          <root url="file://$USER_HOME$/Downloads/xstream-1.4.4/xstream-benchmark/src/java" />
+          <root url="file://$USER_HOME$/Downloads/xstream-1.4.4/xstream-hibernate/src/test" />
+          <root url="file://$USER_HOME$/Downloads/xstream-1.4.4/xstream-hibernate/src/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
 

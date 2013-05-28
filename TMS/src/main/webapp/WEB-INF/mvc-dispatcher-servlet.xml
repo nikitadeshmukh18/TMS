@@ -5,7 +5,7 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/context
@@ -17,7 +17,9 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/oxm
-       http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+       http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <context:annotation-config/>
 
@@ -138,6 +140,7 @@
             <list>
                 <value>com.sample.model.Bus</value>
                 <value>com.sample.service.BusService</value>
+                <value>com.sample.model.User</value>
             </list>
         </property>
     </bean>
@@ -157,6 +160,31 @@
     </bean>
 
 
+    <!--for rest api-->
 
+    <!--<bean id="marshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">-->
+        <!--<property name="aliases">-->
+            <!--<map>-->
+                <!--<entry key="category" value="com.sample.model.Bus"></entry>-->
+                <!--<entry key="category" value="com.sample.model.User"></entry>-->
+
+            <!--</map>-->
+        <!--</property>-->
+
+    <!--</bean>-->
+
+    <!--<bean-->
+        <!--class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
+        <!--<property name="messageConverters">-->
+            <!--<util:list>-->
+                <!--<bean-->
+                        <!--class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">-->
+                    <!--<constructor-arg ref="marshaller" />-->
+                <!--</bean>-->
+                <!--<bean-->
+                        <!--class="org.springframework.http.converter.StringHttpMessageConverter" />-->
+            <!--</util:list>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>
