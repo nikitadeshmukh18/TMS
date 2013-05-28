@@ -3,6 +3,7 @@ package com.sample.controller;
 import com.sample.model.Bus;
 import com.sample.model.BusList;
 import com.sample.service.BusService;
+import com.sample.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.*;
 import java.util.List;
 
 @Controller
@@ -19,16 +22,17 @@ import java.util.List;
 public class ApiController {
 
     private BusService busService;
+    private LoginService loginService;
 
     public ApiController() {
     }
 
     @Autowired
 
-    public ApiController(BusService busService) {
+    public ApiController(BusService busService,  LoginService loginService) {
         this.busService = busService;
+        this.loginService = loginService;
     }
-
 
     @RequestMapping(value = "/search", method = RequestMethod.GET )
     public @ResponseBody Bus searchBuses(@RequestParam("bus_src") String bus_src,@RequestParam("bus_destination") String bus_destination){
@@ -53,6 +57,20 @@ public class ApiController {
         List<Bus> busList = busService.getAllBuses();
         BusList list = new BusList(busList);
         return list;
+
+    }
+
+    @RequestMapping(value = "/login" , method = RequestMethod.GET)
+    public @ResponseBody void login(@RequestParam("username") String username , @RequestParam("password")String password){
+
+        boolean isValid = loginService.isValidUser(username, password);
+
+
+        if (isValid) {
+            JOptionPane.showMessageDialog(null,"successfull");
+        } else {
+            JOptionPane.showMessageDialog(null,"Unsuccessfull");
+        }
 
     }
 
