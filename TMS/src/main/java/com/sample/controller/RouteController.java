@@ -184,17 +184,68 @@ public class RouteController {
 
             routeStopsList.add(st);
 
-            JOptionPane.showMessageDialog(null,st.getStopName() + st.getStopIndex());
+            //JOptionPane.showMessageDialog(null,st.getStopName() + st.getStopIndex());
         }
+
+
 
 
         modelMap.addAttribute("busStops",busStopsList);
         modelMap.addAttribute("routeStops",routeStopsList);
         modelMap.addAttribute("route",route);
-        return new ModelAndView("updateRoute");
+        return new ModelAndView("/updateRoute");
     }
 
 
+
+    @RequestMapping(value = "/deleteRouteStop")
+    public ModelAndView deleteRouteStop(ModelMap modelMap,@RequestParam("route") String route,@RequestParam("stopIndex") String stopIndex)
+    {
+        int routeId = Integer.parseInt(route);
+        int stop_index=Integer.parseInt(stopIndex);
+        routeService.deleteRouteStop(routeId,stop_index);
+        modelMap.addAttribute("route",routeId);
+        return new ModelAndView("redirect:/admin/updateRoute");
+    }
+
+    @RequestMapping(value = "/insertRouteStops")
+    public ModelAndView insertRouteStops(ModelMap modelMap,@RequestParam("route") String route,@RequestParam("stop_index") String stopIndex,@RequestParam("bus_stop") String bus_stop,@RequestParam("stop_time") String stop_time)
+    {
+
+        StringTokenizer st = new StringTokenizer(bus_stop, ":");
+
+        String str=st.nextToken();
+        str.trim();
+        int stop_id = Integer.parseInt(str);
+        System.out.println("ID:"+stop_id);
+        int routeId = Integer.parseInt(route);
+        int stop_index=Integer.parseInt(stopIndex);
+
+        int maxstopindex=routeService.getRouteStopIndexCount(routeId);
+        //JOptionPane.showMessageDialog(null,route+stopIndex+bus_stop);
+        if(stop_index<=1)
+            stop_index=1;
+        if(stop_index>=maxstopindex+1)
+        {
+            stop_index=maxstopindex+1;
+            BusRoute busRoute=new BusRoute();
+            busRoute.setRouteId(routeId);
+            busRoute.setStopIndex(stop_index);
+            busRoute.setStopId(stop_id);
+            busRoute.setTimeTaken(stop_time);
+            routeService.saveRoute(busRoute);
+        }
+        else
+        {
+            routeService.insertStopInRoute(routeId,stop_index,stop_id,stop_time);
+
+        }
+
+       JOptionPane.showMessageDialog(null,"Stop Added in Route..!!");
+        modelMap.addAttribute("route",routeId);
+        return new ModelAndView("redirect:/admin/updateRoute");
+
+    }
 
 
 

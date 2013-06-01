@@ -47,23 +47,39 @@
 
   <body>
 
-    <form>
+
     <div class="container">
+         <a href="/Sample/admin?id=0" class="btn btn-large btn-info">Admin Home</a>
         <h2>Route : ${route} </h2>
         <h3><i>Following Stops are Currently in Route</i></h3>
         <table class="table">
-                <tr><th>BUS No</th><th>BUS Source</th><th>BUS Destination</th></tr>
+                <tr><th>Stop No</th><th>Stop Name </th><th>Delete </th></tr>
                 <c:forEach items='${routeStops}' var='r'>
                 <tr>
-                	<td><c:out value="${r.stopIndex}" /></td>
+                    <td><c:out value="${r.stopIndex}" /></td>
                 	<td><c:out value="${r.stopName}" /></td>
+                	<td><a href="deleteRouteStop?route=${route}&stopIndex=${r.stopIndex}" class="btn btn-small btn-primary">Delete Stops</a></td>
                 </tr>
                 </c:forEach>
                </table>
 
 
+
+    <form action="insertRouteStops" class="form-signin">
+    <h2>Insert Stop in Route </h2>
+
+    <input  name="stop_index" type="text" class="input-block-level" placeholder="Stop Index " required/>
+    <input type="hidden" value="${route}" name="route">
+    LIST OF STOPS
+    <select id="bus_stop" name="bus_stop">
+    <c:forEach items='${busStops}' var='b'>
+    <option>  <c:out value="${b.stopId}" />: <c:out value="${b.stopName}" />   </option>
+    </c:forEach>
+        </select>
+    <input  name="stop_time" type="text" class="input-block-level" placeholder="Time From Src " required/>
+    <button class="btn btn-success" type="submit">Insert Stop</button>
       </form>
-      <text color = "red">${errorMessage}</text>
+    <text color = "red">${errorMessage}</text>
     </div>
 
 

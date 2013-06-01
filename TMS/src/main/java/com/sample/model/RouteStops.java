@@ -9,7 +9,7 @@ public class RouteStops {
 
     private int stopIndex;
     private String stopName;
-
+    private String stopTime;
     public int getStopIndex() {
         return stopIndex;
     }
@@ -24,5 +24,13 @@ public class RouteStops {
 
     public void setStopName(String stopName) {
         this.stopName = stopName;
+    }
+    public String getStopTime()
+    {
+        return stopTime;
+    }
+    public void setStopTime(String stopTime)
+    {
+        this.stopTime=stopTime;
     }
 }

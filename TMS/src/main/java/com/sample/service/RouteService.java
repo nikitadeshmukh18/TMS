@@ -120,7 +120,24 @@ public class RouteService {
     public List<Integer> getStopIndices(int routeId) {
         return routeDao.getStopIndicesForRoute(routeId);
     }
-}
+
+    public void deleteRouteStop(int route,int stopIndex)
+    {
+        routeDao.deleteRouteStop(route,stopIndex);
+    }
+
+    public int getRouteStopIndexCount(int route)
+    {
+        return routeDao.getRouteStopIndexCount(route);
+    }
+
+    public void insertStopInRoute(int route,int stopindex,int bus_stop,String stop_time)
+    {
+
+        routeDao.insertStopInRoute(route, stopindex, bus_stop,stop_time);
+
+    }
+    }
 
 
 

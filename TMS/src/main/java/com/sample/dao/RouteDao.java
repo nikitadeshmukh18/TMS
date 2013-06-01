@@ -3,13 +3,11 @@ package com.sample.dao;
 import com.sample.model.Bus;
 import com.sample.model.BusRoute;
 import com.sample.model.RouteStops;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.StatelessSession;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -123,6 +121,74 @@ public class RouteDao {
 
           return i;
     }
+
+
+    public void deleteRouteStop(int route,int stopIndex)
+    {
+      String sql="DELETE FROM Route WHERE (route_id,stop_index) in (("+route +","+ stopIndex + "))";
+
+
+        Session session=sessionFactory.getCurrentSession();
+         Query query=session.createSQLQuery(sql);
+        int rowCount = query.executeUpdate();
+        System.out.println("Rows affected: " + rowCount);
+
+
+
+
+        String sql1="UPDATE ROUTE SET STOP_INDEX=STOP_INDEX-1 WHERE STOP_INDEX >"  + stopIndex + " and route_id="+route;
+        Query query1=session.createSQLQuery(sql1);
+        query1.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Stop Deleted " );
+
+    }
+
+    public int getRouteStopIndexCount(int route)
+    {
+
+        Session session=sessionFactory.getCurrentSession();
+        String sql="select max(stop_index) from Route where route_id="+ route ;
+        Query query=session.createSQLQuery(sql);
+       List<Integer> counts = (List<Integer>) query.list();
+        Iterator it = counts.iterator();
+        Integer integer=(Integer)it.next();
+
+        return integer;
+
+
+    }
+
+    public void insertStopInRoute(int route,int stopindex,int bus_stop,String stop_time)
+    {
+
+
+       Session session=sessionFactory.getCurrentSession();
+
+
+        int maxstopid=getRouteStopIndexCount(route);
+
+        for(int i=maxstopid;i>=stopindex;i--)
+        {
+
+
+            String sql1="UPDATE ROUTE SET STOP_INDEX="+(i+1) + " WHERE STOP_INDEX="  + i + " and route_id="+route;
+            Query query1=session.createSQLQuery(sql1);
+            query1.executeUpdate();
+
+
+        }
+        BusRoute busRoute1=new BusRoute();
+        busRoute1.setRouteId(route);
+        busRoute1.setStopIndex(stopindex);
+        busRoute1.setStopId(bus_stop);
+        busRoute1.setTimeTaken(stop_time);
+        session.save(busRoute1);
+
+
+
+    }
+
 
 
 }
