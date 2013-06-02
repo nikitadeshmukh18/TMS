@@ -20,7 +20,7 @@ import java.util.List;
 @Transactional
 
 @RequestMapping("/api")
-public class ApiController {
+public class ApiController extends ResourceNo {
 
     private BusService busService;
     private LoginService loginService;
@@ -63,7 +63,7 @@ public class ApiController {
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
     public @ResponseBody
-    void login(@RequestParam("username") String username , @RequestParam("password")String password) throws LoginFailException {
+    ResponseStatus login(@RequestParam("username") String username , @RequestParam("password")String password) throws LoginFailException {
 
         boolean isValid = loginService.isValidUser(username, password);
         if(!isValid) throw new LoginFailException();
