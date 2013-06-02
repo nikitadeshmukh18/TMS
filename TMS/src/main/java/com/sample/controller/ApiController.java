@@ -4,13 +4,13 @@ import com.sample.model.Bus;
 import com.sample.model.BusList;
 import com.sample.service.BusService;
 import com.sample.service.LoginService;
+import exceptions.LoginFailException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.*;
@@ -18,8 +18,9 @@ import java.util.List;
 
 @Controller
 @Transactional
+
 @RequestMapping("/api")
-public class ApiController {
+public class ApiController extends ResourceNo {
 
     private BusService busService;
     private LoginService loginService;
@@ -61,16 +62,11 @@ public class ApiController {
     }
 
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
-    public @ResponseBody void login(@RequestParam("username") String username , @RequestParam("password")String password){
+    public @ResponseBody
+    ResponseStatus login(@RequestParam("username") String username , @RequestParam("password")String password) throws LoginFailException {
 
         boolean isValid = loginService.isValidUser(username, password);
-
-
-        if (isValid) {
-            JOptionPane.showMessageDialog(null,"successfull");
-        } else {
-            JOptionPane.showMessageDialog(null,"Unsuccessfull");
-        }
+        if(!isValid) throw new LoginFailException();
 
     }
 
