@@ -1,6 +1,9 @@
 package com.sample.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @Entity
 @Table(name = "BusStop")
@@ -30,3 +33,4 @@ public class BusStop {
         this.stopName = stopName;
     }
 }
+

@@ -2,16 +2,16 @@ package com.sample.controller;
 
 import com.sample.model.Bus;
 import com.sample.model.BusList;
+import com.sample.model.BusStop;
+import com.sample.model.StopList;
 import com.sample.service.BusService;
+import com.sample.service.BusStopService;
 import com.sample.service.LoginService;
 import exceptions.LoginFailException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.*;
 import java.util.List;
@@ -20,19 +20,21 @@ import java.util.List;
 @Transactional
 
 @RequestMapping("/api")
-public class ApiController {
+public class ApiController{
 
     private BusService busService;
     private LoginService loginService;
+    private BusStopService busStopService;
 
     public ApiController() {
     }
 
     @Autowired
 
-    public ApiController(BusService busService,  LoginService loginService) {
+    public ApiController(BusService busService,  LoginService loginService, BusStopService stopService) {
         this.busService = busService;
         this.loginService = loginService;
+        this.busStopService = stopService;
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET )
@@ -69,5 +71,19 @@ public class ApiController {
         if(!isValid) throw new LoginFailException();
 
     }
+
+    @RequestMapping(value = "/stops", method = RequestMethod.GET)
+    public @ResponseBody
+    StopList giveStops(){
+
+        List<BusStop> stops= busStopService.getAllStops();
+        BusStop stop = new BusStop();
+        StopList stopList = new StopList(stops);
+        return stopList;
+
+
+
+    }
+
 
 }
