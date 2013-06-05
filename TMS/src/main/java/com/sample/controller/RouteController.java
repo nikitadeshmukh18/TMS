@@ -247,6 +247,10 @@ public class RouteController {
 
     }
 
+    @RequestMapping(value = "/displayRoutes")
+    public ModelAndView displayRoutes(ModelMap map){
+        return new ModelAndView("redirect:/admin?id=18",map);
+    }
 
 
 

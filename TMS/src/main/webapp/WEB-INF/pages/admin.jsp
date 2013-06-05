@@ -27,6 +27,10 @@ function routePopUp(url) {
 
 </head>
 
+<style type="text/css">
+
+
+</style>
 <body>
 WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a>  ${id}</text>
                      <section id="dropdowns">
@@ -44,6 +48,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                              <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addBus">ADD BUS</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editBus">MODIFY BUS INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteBus">DELETE BUS</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/displayBuses">DISPLAY ALL BUSES</a></li>
 
                                          </ul>
                                        </li>
@@ -53,6 +58,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addRoute">ADD ROUTES</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/modifyRoute">MODIFY ROUTES INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteRoute">DELETE ROUTES</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/displayRoutes">DISPLAY ROUTES</a></li>
 
                                          </ul>
                                        </li>
@@ -62,6 +68,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addStop">ADD STOPS</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editStop">MODIFY STOP INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteStop">DELETE STOP</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/displayStops">DISPLAY STOPS</a></li>
 
                                          </ul>
                                        </li>
@@ -71,6 +78,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addConductor">ADD CONDUCTOR</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/editConductor">MODIFY CONDUCTOR INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteConductor">DELETE CONDUCTOR</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/displayConductors">DISPLAY CONDUCTORS</a></li>
 
                                          </ul>
                                        </li>
@@ -259,7 +267,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                           </div> <!-- /container -->
                                                      <%
                                                      break;
-                                                    case 8:
+                                                    case 8:         //add conductor
                                                          %>
 
                                                          <div class="container">
@@ -269,6 +277,10 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
                                                                 Name : <input id="CName" name="CName" type="Text" class="input-block-level" placeholder="Conductor name" required/>
                                                                 <br>
+                                                                Username : <input id="Cusername" name="Cusername" type="Text" class="input-block-level" placeholder="Username for Conductor" required/>
+                                                                <br>
+                                                                Password : <input id="Cpassword" name="Cpassword" type="Text" class="input-block-level" placeholder="Password for Conductor" required/>
+                                                                <br>
 
                                                                 <button class="btn btn-large btn-primary" type="submit">SAVE</button>
                                                                </form>
@@ -276,7 +288,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                              </div> <!-- /container -->
                                                          <%
                                                          break;
-                                                         case 9:
+                                                         case 9:     //remove conductor
                                                          %>
 
                                                          <div class="container">
@@ -544,12 +556,79 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                        <option>5</option>
                                                                        </select>
                                                      <input  name="bustime" type="text" class="input-block-level" placeholder="Arrival Time OF BUS" required/>
-                                                     <button class="btn btn-success btn-large" type="submit">Add Stop</button>
+                                                     <button class="btn btn-success btn-large" type="sub mit">Add Stop</button>
 
                                                       </form>
 
                                                      <%
                                                      break;
+
+                                                case 17:    //display Buses
+                                                     %>
+                                                        <div class="container">
+                                                            <table class="table table-striped tablestyle" >
+                                                                <thead>
+                                                                    <th>Bus No</th>
+                                                                    <th>Source</th>
+                                                                    <th>Desination</th>
+                                                                    <th>Path</th>
+                                                                    <th>Time</th>
+                                                                </thead>
+                                                                  <c:forEach var='bus' items='${buses}' varStatus="status">
+                                                                              <tr><td> <c:out value='${bus.busNo}'/></td>
+                                                                                <td> <c:out value='${bus.busSource}'/></td>
+                                                                                <td> <c:out value='${bus.busDestination}'/></td>
+                                                                                <td> <c:out value='${paths[status.index].pathName}'/> </td>
+                                                                                <td> <c:out value='${bus.startTime}'/></td>
+                                                                              </tr>
+                                                                  </c:forEach>
+
+                                                            </table>
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+                                                case 18:    //Routes
+                                                     %>
+                                                        <div class="container">
+                                                            <table class="table table-striped tablestyle" >
+                                                                <thead>
+                                                                    <th>Route Id</th>
+                                                                    <th>Route</th>
+                                                                </thead>
+                                                                  <c:forEach var='route' items='${routes}'>
+                                                                              <tr><td> <c:out value='${route.routeId}'/></td>
+                                                                                <td> <c:out value='${route.pathName}'/></td>
+                                                                              </tr>
+                                                                  </c:forEach>
+
+                                                            </table>
+
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+                                                case 19:    //Routes
+                                                     %>
+                                                        <div class="container">
+                                                            <table class="table table-striped tablestyle" >
+                                                                <thead>
+                                                                    <th>Stop Id</th>
+                                                                    <th>Stop Name</th>
+                                                                </thead>
+                                                                  <c:forEach var='stop' items='${busStops}'>
+                                                                              <tr><td> <c:out value='${stop.stopId}'/></td>
+                                                                                <td> <c:out value='${stop.stopName}'/></td>
+                                                                              </tr>
+                                                                  </c:forEach>
+
+                                                            </table>
+
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
 
                                                       default :
                                                           %>

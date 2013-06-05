@@ -31,4 +31,20 @@ public class UserService {
         return userDao.getUser(username);
     }
 
+    public void save(User user) {
+        userDao.save(user);
+    }
+
+    public User getUserId(String name) {
+        return userDao.getUserId(name);
+
+    }
+
+    public List<User> getConductors() {
+        return userDao.getConductors();
+    }
+
+    public void remove(User user) {
+        userDao.remove(user);
+    }
 }

@@ -5,6 +5,7 @@ import com.sample.service.BusStopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -77,6 +78,11 @@ public class BusStopController {
         JOptionPane.showMessageDialog(null, "Stop Successfully Deleted");
 
         return new ModelAndView("redirect:/admin?id=0");
+    }
+
+    @RequestMapping(value = "/displayStops")
+    public ModelAndView displayStops(ModelMap map){
+        return new ModelAndView("redirect:/admin?id=19",map);
     }
 
 

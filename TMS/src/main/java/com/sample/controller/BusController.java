@@ -33,19 +33,17 @@ public class BusController {
     private BusStopService busStopService;
     private BusService busService;
     private RouteService routeService;
-    private ConductorService conductorService;
 
     public BusController() {
 
     }
 
     @Autowired
-    public BusController(UserService userService, BusStopService busStopService, BusService busService, RouteService routeService, ConductorService conductorService) {
+    public BusController(UserService userService, BusStopService busStopService, BusService busService, RouteService routeService) {
         this.busStopService = busStopService;
         this.userService = userService;
         this.busService = busService;
         this.routeService = routeService;
-        this.conductorService = conductorService;
     }
 
     @RequestMapping(value = "/admin")
@@ -63,7 +61,7 @@ public class BusController {
         List<Bus> buses = busService.getAllBuses();
         map.addAttribute("buses",buses);
 
-        List<Conductor> conductors = conductorService.getAllconductors();
+        List<User> conductors = userService.getConductors();
         map.addAttribute("conductors",conductors);
 
         try{
@@ -195,6 +193,10 @@ public class BusController {
         return new ModelAndView("redirect:/admin?id=0");
     }
 
+    @RequestMapping(value = "/displayBuses")
+    public ModelAndView displayAll(ModelMap map){
+        return new ModelAndView("redirect:/admin?id=17",map);
+    }
 
 
 

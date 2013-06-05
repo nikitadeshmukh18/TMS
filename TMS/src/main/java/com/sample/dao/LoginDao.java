@@ -17,7 +17,7 @@ public class LoginDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public int getId(String username) {
+    public long getId(String username) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Login where username=?").setParameter(0, username);
         Login loginModel = (Login) query.list().get(0);
@@ -41,4 +41,12 @@ public class LoginDao {
 
     }
 
+    public void saveLoginCredentials(Login loginCredentials) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(loginCredentials);
+    }
+
+    public void remove(Login user) {
+        sessionFactory.getCurrentSession().delete(user);
+    }
 }

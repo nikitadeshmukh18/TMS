@@ -32,4 +32,27 @@ public class UserDao {
         User user1 = (User) query.list().get(0);
         return user1;
     }
+
+    public void save(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(user);
+    }
+
+    public User getUserId(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where name=?").setParameter(0,name);
+        User user1 = (User) query.list().get(0);
+        return  user1;
+    }
+
+    public List<User> getConductors() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where userType=?").setParameter(0,1);
+        List<User> allUsers = query.list();
+        return allUsers;
+    }
+
+    public void remove(User user) {
+        sessionFactory.getCurrentSession().delete(user);
+    }
 }

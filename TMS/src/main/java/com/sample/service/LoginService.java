@@ -1,6 +1,7 @@
 package com.sample.service;
 
 import com.sample.dao.LoginDao;
+import com.sample.model.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class LoginService {
         this.loginDao = loginDao;
     }
 
-    public int getId(String username){
+    public long getId(String username){
         return loginDao.getId(username);
 
     }
@@ -31,4 +32,11 @@ public class LoginService {
         return loginDao.isValidUser(username,password );
     }
 
+    public void saveCredentials(Login loginCredentials) {
+        loginDao.saveLoginCredentials(loginCredentials);
+    }
+
+    public void remove(Login user) {
+        loginDao.remove(user);
+    }
 }

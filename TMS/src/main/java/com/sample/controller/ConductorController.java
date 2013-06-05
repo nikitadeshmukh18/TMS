@@ -1,9 +1,9 @@
 package com.sample.controller;
 
-import com.sample.model.Bus;
-import com.sample.model.Conductor;
-import com.sample.model.Path;
+import com.sample.model.*;
 import com.sample.service.ConductorService;
+import com.sample.service.LoginService;
+import com.sample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,14 +23,16 @@ import java.util.StringTokenizer;
 public class ConductorController {
 
 
-    private ConductorService service;
+    private UserService service;
+    private LoginService loginService;
 
     public ConductorController() {
     }
 
     @Autowired
-    public ConductorController(ConductorService service) {
+    public ConductorController(UserService service, LoginService loginService) {
         this.service = service;
+        this.loginService = loginService;
     }
 
     @RequestMapping("/addConductor")
@@ -39,14 +41,26 @@ public class ConductorController {
     }
 
     @RequestMapping("/saveConductor")
-    public ModelAndView saveConductor(@RequestParam("CName") String name){
+    public ModelAndView saveConductor(@RequestParam("CName") String name,
+                                      @RequestParam("Cusername") String username,
+                                      @RequestParam("Cpassword") String password){
 
-        Conductor conductor = new Conductor();
-        conductor.setName(name);
-        service.saveConductor(conductor);
+         User user = new User();
+         user.setName(name);
+         user.setUserType(1);
+         user.setContact(null);
+         service.save(user);
 
+        Login loginCredentials = new Login();
+        Long id = service.getUserId(name).getId();
+         System.out.println("-----------id=" + id);
+         loginCredentials.setUsername(username);
+         loginCredentials.setPassword(password);
+         loginCredentials.setId(id);
 
-        JOptionPane.showMessageDialog(null," Conductor Successfully Added");
+         loginService.saveCredentials(loginCredentials);
+
+        JOptionPane.showMessageDialog(null, " Conductor Successfully Added");
         return new ModelAndView("redirect:/admin?id=0");
     }
 
@@ -54,50 +68,53 @@ public class ConductorController {
     public ModelAndView deleteConductor(){
         return new ModelAndView("redirect:/admin?id=9");
     }
-
+//
     @RequestMapping("/removeConductor")
     public ModelAndView remConductor(@RequestParam("conductor") String conductor){
-        Conductor c = new Conductor();
-        c.setId(Integer.parseInt(conductor));
-        service.remove(c);
+        User user = new User();
+        user.setId(Long.parseLong(conductor));
+        service.remove(user);
+        Login userCreds = new Login();
+        userCreds.setId(Long.parseLong(conductor));
+        loginService.remove(userCreds);
         JOptionPane.showMessageDialog(null,"Conductor Deleted Succesfully");
         return new ModelAndView("redirect:/admin?id=0");
     }
-
-    @RequestMapping(value = "/editConductor")
-    public ModelAndView editConductor(){
-        return new ModelAndView("redirect:/admin?id=10");
-    }
-
-    @RequestMapping(value = "/updateConductor")
-    public ModelAndView saveUpdate(@RequestParam("c") String condId,ModelMap map){
-
-        int id = Integer.parseInt(condId);
-        Conductor conductor = service.getConductor(id);
-        map.addAttribute("conductor", conductor);
-
-        return new ModelAndView("updateConductor");
-    }
-
-    @RequestMapping(value = "saveUpdateConductor" , method = RequestMethod.POST)
-    public void saveUpdate(@RequestParam("cid") String cid,
-                           @RequestParam("name") String name){
-
-
-
-        Conductor conductor = new Conductor();
-        conductor.setId(Integer.parseInt(cid));
-        conductor.setName(name);
-
-        try{
-            service.update(conductor);
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Error During Update");
-
-        }
-        JOptionPane.showMessageDialog(null, "Conductor Successfully updated");
-
-    }
+//
+//    @RequestMapping(value = "/editConductor")
+//    public ModelAndView editConductor(){
+//        return new ModelAndView("redirect:/admin?id=10");
+//    }
+//
+//    @RequestMapping(value = "/updateConductor")
+//    public ModelAndView saveUpdate(@RequestParam("c") String condId,ModelMap map){
+//
+//        int id = Integer.parseInt(condId);
+//        Conductor conductor = service.getConductor(id);
+//        map.addAttribute("conductor", conductor);
+//
+//        return new ModelAndView("updateConductor");
+//    }
+//
+//    @RequestMapping(value = "saveUpdateConductor" , method = RequestMethod.POST)
+//    public void saveUpdate(@RequestParam("cid") String cid,
+//                           @RequestParam("name") String name){
+//
+//
+//
+//        Conductor conductor = new Conductor();
+//        conductor.setId(Integer.parseInt(cid));
+//        conductor.setName(name);
+//
+//        try{
+//            service.update(conductor);
+//        }catch (Exception e){
+//            JOptionPane.showMessageDialog(null, "Error During Update");
+//
+//        }
+//        JOptionPane.showMessageDialog(null, "Conductor Successfully updated");
+//
+//    }
 
 
 }

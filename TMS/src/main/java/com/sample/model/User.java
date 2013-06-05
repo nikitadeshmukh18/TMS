@@ -18,7 +18,7 @@ public class User {
     private String contact;
 
     @Column(name = "User_Type")
-    private String userType;
+    private int userType;
 
     public User() {}
 
@@ -46,11 +46,11 @@ public class User {
         this.contact = contact;
     }
 
-    public String getUserType() {
+    public int getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(int userType) {
         this.userType = userType;
     }
 }

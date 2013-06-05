@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Table(name = "Login")
 public class Login {
 
-    @Id @GeneratedValue
+    @Id
 
     @Column(name = "User_Id")
-    private int id;
+    private long id;
 
     @Column(name = "username")
     private String username;
@@ -17,11 +17,11 @@ public class Login {
     @Column(name = "password")
     private String password;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
