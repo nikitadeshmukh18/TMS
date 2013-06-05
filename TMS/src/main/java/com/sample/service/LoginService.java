@@ -39,4 +39,12 @@ public class LoginService {
     public void remove(Login user) {
         loginDao.remove(user);
     }
+
+    public Login getUser(long id) {
+        return loginDao.getUser(id);
+    }
+
+    public void updateUserCredentials(Login credentials) {
+        loginDao.updateUserCredentials(credentials);
+    }
 }

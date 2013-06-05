@@ -55,4 +55,22 @@ public class UserDao {
     public void remove(User user) {
         sessionFactory.getCurrentSession().delete(user);
     }
+
+    public User getUser(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where id=?").setParameter(0,id);
+        User user1 = (User) query.list().get(0);
+        return  user1;
+    }
+
+    public void upadate(User user) {
+        Session session = sessionFactory.getCurrentSession();
+//        String hql = "Update USER set Name='"+user.getName()+ "' where User_Id="+user.getId();
+//        System.out.println(hql);
+//        Query query = session.createSQLQuery(hql);
+//        query.executeUpdate();
+
+        session.update(user);
+
+    }
 }

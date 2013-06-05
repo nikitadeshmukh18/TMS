@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -81,40 +82,56 @@ public class ConductorController {
         return new ModelAndView("redirect:/admin?id=0");
     }
 //
-//    @RequestMapping(value = "/editConductor")
-//    public ModelAndView editConductor(){
-//        return new ModelAndView("redirect:/admin?id=10");
-//    }
+    @RequestMapping(value = "/editConductor")
+    public ModelAndView editConductor(){
+        return new ModelAndView("redirect:/admin?id=10");
+    }
+
+    @RequestMapping(value = "/updateConductor")
+    public ModelAndView saveUpdate(@RequestParam("c") String condId,ModelMap map){
+
+        long id = Long.parseLong(condId);
+        User conductor = service.getUser(id);
+        map.addAttribute("conductor", conductor);
+
+        Login Cuser = loginService.getUser(id);
+        map.addAttribute("Cuser",Cuser);
+        return new ModelAndView("updateConductor");
+    }
 //
-//    @RequestMapping(value = "/updateConductor")
-//    public ModelAndView saveUpdate(@RequestParam("c") String condId,ModelMap map){
-//
-//        int id = Integer.parseInt(condId);
-//        Conductor conductor = service.getConductor(id);
-//        map.addAttribute("conductor", conductor);
-//
-//        return new ModelAndView("updateConductor");
-//    }
-//
-//    @RequestMapping(value = "saveUpdateConductor" , method = RequestMethod.POST)
-//    public void saveUpdate(@RequestParam("cid") String cid,
-//                           @RequestParam("name") String name){
-//
-//
-//
-//        Conductor conductor = new Conductor();
-//        conductor.setId(Integer.parseInt(cid));
-//        conductor.setName(name);
-//
-//        try{
-//            service.update(conductor);
-//        }catch (Exception e){
-//            JOptionPane.showMessageDialog(null, "Error During Update");
-//
-//        }
-//        JOptionPane.showMessageDialog(null, "Conductor Successfully updated");
-//
-//    }
+    @RequestMapping(value = "saveUpdateConductor" , method = RequestMethod.POST)
+    public void saveUpdate(@RequestParam("cid") String cid,
+                           @RequestParam("name") String name,
+                           @RequestParam("Cusername") String username,
+                           @RequestParam("Cpassword") String password){
+
+
+
+        User conductor = new User();
+        conductor.setId(Long.parseLong(cid));
+        conductor.setUserType(1);
+        conductor.setName(name);
+        conductor.setContact(null);
+
+        Login credentials = new Login();
+        credentials.setId(Long.parseLong(cid));
+        credentials.setPassword(password);
+        credentials.setUsername(username);
+
+        try{
+            service.update(conductor);
+            System.out.println("Executed user update---------------");
+
+
+            loginService.updateUserCredentials(credentials);
+            System.out.println("Executed user update---------------");
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error During Update");
+
+        }
+        JOptionPane.showMessageDialog(null, "Conductor Successfully updated");
+
+    }
 
 
 }

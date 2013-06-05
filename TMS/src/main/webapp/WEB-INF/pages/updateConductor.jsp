@@ -6,24 +6,6 @@
   <head>
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-       $("#").hide();
-     });
-
-     function changeRoute(){
-
-         $("#route").hide();
-         $("#selectRoute").show();
-         $("#selectRoute").change(function() {
-            var route = $("#selectRoute").val();
-            $("#route").val(route.toString());
-
-         });
-
-    }
-
-    </script>
 
      <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
@@ -71,6 +53,10 @@
         <input id="cid" name="cid" type="Text" value = "${conductor.id}" style="display:none;"/>
         <label for="name">Name</label>
         <input id="name" name="name" type="Text" value="${conductor.name}" style = "width:50;"></input><br>
+        <label for="Cusername">Username</label>
+        <input id="Cusername" name="Cusername" type="Text" value="${Cuser.username}" style = "width:50;"></input><br>
+        <label for="Cpassword">Password</label>
+        <input id="Cpassword" name="Cpassword" type="Text" value="${Cuser.password}" style = "width:50;"></input><br>
 
         <button class="btn btn-large btn-primary" onClick = "window.close();">Save</button>
       </form>

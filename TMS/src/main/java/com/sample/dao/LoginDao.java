@@ -49,4 +49,21 @@ public class LoginDao {
     public void remove(Login user) {
         sessionFactory.getCurrentSession().delete(user);
     }
+
+    public Login getUser(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Login where id=?").setParameter(0, id);
+        Login loginModel = (Login) query.list().get(0);
+        return loginModel;
+
+    }
+
+    public void updateUserCredentials(Login credentials) {
+        Session session = sessionFactory.getCurrentSession();
+//        String hql = "update Login set username='"+ credentials.getUsername() + "' , password='"+credentials.getPassword()+"' where User_Id="+credentials.getId();
+//        System.out.println(hql);
+//        Query query = session.createSQLQuery(hql);
+          session.update(credentials);
+
+    }
 }
