@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Repository
@@ -18,11 +17,14 @@ public class SearchDao {
     private SessionFactory sessionFactory;
 
 
-    public List<BusStop> getSearchList(String src,String destination) {
+    public List getSearchList(String stopname) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select bus_no from searchtable where bus_src='"+src +"' and bus_destination='"+destination+"'");
-        List<BusStop> busids = query.list();
-        return busids;
+        Query query = session.createSQLQuery("select Route_Id from searchtable where Stop_Name= '"+stopname +"' order by Route_Id");
+        List<Integer> routeIds =  query.list();
+        return routeIds;
+
     }
+
+
 
 }

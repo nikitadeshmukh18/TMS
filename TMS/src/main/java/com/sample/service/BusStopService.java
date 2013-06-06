@@ -48,4 +48,8 @@ public class BusStopService {
     public void delete(BusStop stop) {
         busStopDao.delete(stop);
     }
+
+    public int getId(String source) {
+        return busStopDao.getId(source);
+    }
 }

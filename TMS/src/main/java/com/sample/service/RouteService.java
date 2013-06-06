@@ -4,7 +4,6 @@ import com.sample.dao.BusStopDao;
 import com.sample.dao.RouteDao;
 import com.sample.model.BusRoute;
 import com.sample.model.Path;
-import com.sample.model.RouteStops;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -137,7 +136,17 @@ public class RouteService {
         routeDao.insertStopInRoute(route, stopindex, bus_stop,stop_time);
 
     }
+
+    public int getStopIndex(int id, Integer rId) {
+        return routeDao.getStopIndex(id, rId);
     }
+
+    public List getStopsAfter(int sourceId, int rId) {
+        int i = getStopIndex(sourceId, rId);
+
+        return routeDao.getStopsAfter(i, rId);
+    }
+}
 
 
 

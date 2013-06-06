@@ -190,6 +190,24 @@ public class RouteDao {
     }
 
 
+    public int getStopIndex(int id, Integer rId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select Stop_Index from Route where Stop_Id="+id+ " and Route_Id="+rId;
+        Query query = session.createSQLQuery(hql);
+        if (query.list().size() > 0 ){
+            int i = (Integer) query.list().get(0);
+            return i;
+        }
+        else
+            return  -1;
+    }
 
+    public List getStopsAfter(int sourceId, int rId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select Stop_Id from Route where Stop_Index >"+sourceId+" and Route_Id="+rId;;
+        Query query = session.createSQLQuery(hql);
+        List<Integer> stopIds =  query.list();
+        return stopIds;
+    }
 }
 

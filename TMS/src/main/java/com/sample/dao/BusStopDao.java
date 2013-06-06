@@ -58,4 +58,12 @@ public class BusStopDao {
         session.delete(stop);
 
     }
+
+    public int getId(String source) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select Stop_Id from BusStop where Stop_Name='"+source+"'";
+        Query query = session.createSQLQuery(hql);
+        int id = (Integer) query.list().get(0);
+        return id;
+    }
 }
