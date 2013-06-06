@@ -5,12 +5,21 @@ public class SearchResult {
 
     int busId1;
     int busId2;
-    int stopId1;
-    int stopId2;
+
     int stopIndex1;
     int stopIndex2;
     int interMedStopIndex1;
     int interMedStopIndex2;
+    int interMedStopId;
+    String interMedStopName;
+
+    public String getInterMedStopName() {
+        return interMedStopName;
+    }
+
+    public void setInterMedStopName(String interMedStopName) {
+        this.interMedStopName = interMedStopName;
+    }
 
     public int getInterMedStopIndex2() {
         return interMedStopIndex2;
@@ -38,6 +47,22 @@ public class SearchResult {
         this.busId1 = busId1;
     }
 
+    public int getInterMedStopIndex1() {
+        return interMedStopIndex1;
+    }
+
+    public void setInterMedStopIndex1(int interMedStopIndex1) {
+        this.interMedStopIndex1 = interMedStopIndex1;
+    }
+
+    public int getInterMedStopId() {
+        return interMedStopId;
+    }
+
+    public void setInterMedStopId(int interMedStopId) {
+        this.interMedStopId = interMedStopId;
+    }
+
     public int getBusId2() {
         return busId2;
     }
@@ -46,21 +71,6 @@ public class SearchResult {
         this.busId2 = busId2;
     }
 
-    public int getStopId1() {
-        return stopId1;
-    }
-
-    public void setStopId1(int stopId1) {
-        this.stopId1 = stopId1;
-    }
-
-    public int getStopId2() {
-        return stopId2;
-    }
-
-    public void setStopId2(int stopId2) {
-        this.stopId2 = stopId2;
-    }
 
     public int getStopIndex1() {
         return stopIndex1;

@@ -209,7 +209,7 @@ public class RouteDao {
             return  -1;
     }
 
-    public List getStopsAfter(int sourceId, int rId) {
+    public List<Integer> getStopsAfter(int sourceId, int rId) {
         Session session = sessionFactory.getCurrentSession();
         String hql = "select Stop_Id from Route where Stop_Index >"+sourceId+" and Route_Id="+rId;;
         Query query = session.createSQLQuery(hql);

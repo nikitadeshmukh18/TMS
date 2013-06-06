@@ -156,26 +156,44 @@
 
     <%
         String str=(String)request.getAttribute("search");
-        if(str.equals("1")){
+        int i=1;
+        if(str.equals("1"))
+        {
 
     %>
     <div  id="searchResults" class="container">
 
           <table class="table table-striped">
                 <thead>
+                    <th>Result No</th>
                     <th>Bus No</th>
-                    <th>Source</th>
-                    <th>Desination</th>
-                    <th>Path</th>
-                    <th>Time</th>
+                    <th>Get in Stop</th>
+                    <th>Get down Stop</th>
+
                 </thead>
-          <c:forEach var='bus' items='${directBuses}' varStatus="status">
-                      <tr><td> <c:out value='${bus.busNo}'/></td>
-                        <td> <c:out value='${bus.busSource}'/></td>
-                        <td> <c:out value='${bus.busDestination}'/></td>
-                        <td> <c:out value='${paths[status.index].pathName}'/> </td>
-                        <td> <c:out value='${bus.startTime}'/></td>
+          <c:forEach var='result' items='${results}' varStatus="status">
+
+                      <tr>
+                        <td><%=i%><%i++;%></td>
+                        <td> <c:out value='${result.busId1}'/></td>
+                        <td> <c:out value='${source}'/></td>
+                        <c:choose>
+                        <c:when test="${result.busId2 != -1}">
+                        <td> <c:out value='${result.interMedStopName}'/></td>
+                        </tr>
+                        <tr>
+                        <td> <c:out value=''/> </td>
+                        <td> <c:out value='${result.busId2}'/> </td>
+                        <td> <c:out value='${result.interMedStopName}'/> </td>
+                        <td> <c:out value='${destination}'/> </td>
                       </tr>
+                      </c:when>
+                      <c:otherwise>
+                      <td> <c:out value='${destination}'/> </td>
+                      </tr>
+                      </c:otherwise>
+                      </c:choose>
+
                       </c:forEach>
 
           </table>

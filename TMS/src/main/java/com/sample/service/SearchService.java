@@ -53,7 +53,7 @@ public class SearchService {
         {
             do
             {
-                Integer rId=(Integer.parseInt((String)it.next()));
+                Integer rId=(Integer)it.next();
                 List<Bus> buses = busService.getBusesByRoute(rId);
 
                 int sIndex = routeService.getStopIndex(sourceId,rId);
@@ -62,10 +62,13 @@ public class SearchService {
                 Iterator bIterator = buses.iterator();
                 while (bIterator.hasNext()){
                         SearchResult result = new SearchResult();
-                        result.setBusId1((Integer) bIterator.next());
+                        result.setBusId1(((Bus) bIterator.next()).getBusNo());
                         result.setStopIndex1(sIndex);
                         result.setStopIndex2(dIndex);
+                        result.setInterMedStopId(-1);
                         result.setBusId2(-1);
+                        result.setInterMedStopIndex(-1);
+                        result.setInterMedStopIndex2(-1);
                         searchResults.add(result);
                     }
 
@@ -89,31 +92,38 @@ public class SearchService {
             Iterator dIterator = destinationIds.iterator();
             int sRId =(Integer) sIterator.next();
             List<Integer> stops = routeService.getStopsAfter(sourceId,sRId );
-            Iterator stopsIterator = destinationIds.iterator();
+            Iterator stopsIterator = stops.iterator();
 
             while (dIterator.hasNext()){
-                Integer rId=(Integer.parseInt((String)dIterator.next()));
                 int dRId = (Integer) dIterator.next();
                 while (stopsIterator.hasNext())
                 {
                     int id=(Integer)stopsIterator.next();
                     int temp = routeService.getStopIndex(id, dRId);
                     int dIndex = routeService.getStopIndex(destinationId, dRId );
+
                     if(temp != -1 && temp<dIndex){
                         List<Bus> destinationBuses = busService.getBusesByRoute(dRId);
                         Iterator dBIterator = destinationBuses.iterator();
 
                         while (dBIterator.hasNext()){
+
                             List<Bus> sourceBuses = busService.getBusesByRoute(sRId);
-                            Iterator sBIterator = destinationBuses.iterator();
+                            Iterator sBIterator = sourceBuses.iterator();
+                            int tempBusId2 = ((Bus) dBIterator.next()).getBusNo();
                             while (sBIterator.hasNext()){
                                 SearchResult searchResult = new SearchResult();
-                                searchResult.setBusId1((Integer) sBIterator.next());
-                                searchResult.setBusId2((Integer) dBIterator.next());
+                                searchResult.setBusId1(((Bus) sBIterator.next()).getBusNo());
+                                searchResult.setBusId2(tempBusId2);
+
+                                if(searchResult.getBusId1() == searchResult.getBusId2()) continue;
+
                                 searchResult.setStopIndex1(routeService.getStopIndex(sourceId, sRId));
                                 searchResult.setStopIndex2(routeService.getStopIndex(destinationId, dRId));
                                 searchResult.setInterMedStopIndex(routeService.getStopIndex(id, sRId));
                                 searchResult.setInterMedStopIndex2(temp);
+                                searchResult.setInterMedStopId(id);
+                                searchResult.setInterMedStopName(busStopService.getStopWith(id));
                                 finalList.add(searchResult);
                                  flag=true;
 
@@ -151,9 +161,17 @@ public class SearchService {
         Iterator sIterator = sourceIds.iterator();
         Iterator dIterator = destinationIds.iterator();
         List<Integer> commonIds = new ArrayList<Integer>();
-        int s =  (Integer) sIterator.next();
-        int d =  (Integer) dIterator.next();
+        int s = -1;
+        int d = -1;
 
+        if (sIterator.hasNext() && dIterator.hasNext()){
+             s =  (Integer) sIterator.next();
+             d =  (Integer) dIterator.next();
+
+        }
+        if(s==-1 || d ==-1) {
+            return commonIds;
+        }
         while (sIterator.hasNext() && dIterator.hasNext()){
 
             if (s == d){

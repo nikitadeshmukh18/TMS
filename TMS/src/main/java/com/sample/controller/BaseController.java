@@ -1,10 +1,9 @@
 package com.sample.controller;
 
 
-import com.sample.model.*;
-
 import com.sample.model.Bus;
 import com.sample.model.BusStop;
+import com.sample.model.SearchResult;
 import com.sample.service.*;
 
 
@@ -15,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -33,6 +31,7 @@ public class BaseController {
     private ConductorService conductorService;
 
     private RouteService routeService;
+    private SearchService searchService;
 
 
     public BaseController() {
@@ -42,13 +41,16 @@ public class BaseController {
 
 
 
-    public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,BusService busService, RouteService routeService,ConductorService conductorService ) {
+    public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,
+                          BusService busService, RouteService routeService,ConductorService conductorService,
+                          SearchService searchService  ) {
         this.userService = userService;
         this.loginService = loginService;
         this.busStopService=busStopService;
         this.busService = busService;
         this.routeService = routeService;
         this.conductorService=conductorService;
+        this.searchService = searchService;
 
 
     }
@@ -102,24 +104,12 @@ public class BaseController {
         }
 
         try{
-        if (search.equals("1")){
-            List<Bus> directBuses = busService.searchDirectBus(busSrc, busDestination);
-            map.addAttribute("directBuses",directBuses);
-
-            List<Path> paths = new ArrayList<Path>();
-            Iterator it = directBuses.iterator();
-            while (it.hasNext()){
-                Bus bus = (Bus) it.next();
-                int routeId = bus.getRouteId();
-                Path path = routeService.getRouteFor(routeId);
-                paths.add(path);
-
+            if (search.equals("1")){
+                List<SearchResult> results =  searchService.getSearchResults(busSrc, busDestination);
+                map.addAttribute("results", results);
+                map.addAttribute("source", busSrc);
+                map.addAttribute("destination" , busDestination);
             }
-            Path pathsArray[];
-            pathsArray= paths.toArray(new Path[paths.size()]);
-            map.addAttribute("paths",pathsArray);
-
-        }
         }
         catch (Exception e){
             e.printStackTrace();
@@ -128,6 +118,7 @@ public class BaseController {
         return new ModelAndView("search", map);
 
     }
+
 
     @RequestMapping(value = "/search.do")
     public ModelAndView searchBuses(@RequestParam("bus_src") String busSrc,
