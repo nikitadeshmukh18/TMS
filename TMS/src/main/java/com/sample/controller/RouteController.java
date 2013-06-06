@@ -79,13 +79,14 @@ public class RouteController {
 
     @RequestMapping(value = "/saveRoute")
     public ModelAndView saveRoute(@RequestParam("routeId") String routeId,@RequestParam("busStops") String stop_id,
-                                  @RequestParam("current") String stop_index,@RequestParam("timing") String timeTaken,ModelMap map) {
+                                  @RequestParam("current") String stop_index,@RequestParam("timehr") String timehr,@RequestParam("timemin") String timemin,ModelMap map) {
 
         try
         {
         System.out.println("RouteId:"+routeId);
         System.out.println("StopId:"+stop_id);
         System.out.println("Current stop index:"+stop_index);
+        String timeTaken=timehr.concat(":".concat(timemin));
         System.out.println("Timing:"+timeTaken);
 
         BusRoute busRoute=new BusRoute();
@@ -107,7 +108,7 @@ public class RouteController {
         List<BusStop> busStops = busStopService.getRouteStops(Integer.parseInt(routeId));
 
         map.addAttribute("busStops", busStops);
-        map.addAttribute("route_no",routeId);
+        map.addAttribute("routeId",routeId);
         map.addAttribute("current",Integer.parseInt(stop_index)+1);
 
         }
@@ -251,6 +252,8 @@ public class RouteController {
     public ModelAndView displayRoutes(ModelMap map){
         return new ModelAndView("redirect:/admin?id=18",map);
     }
+
+
 
 
 

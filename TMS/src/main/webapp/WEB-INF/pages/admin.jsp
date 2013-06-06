@@ -55,7 +55,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                         <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE ROUTES<b class="caret"></b></a>
                                          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/addRoute">ADD ROUTES</a></li>
+                                           <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/newRoute">ADD ROUTES</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/modifyRoute">MODIFY ROUTES INFO</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/deleteRoute">DELETE ROUTES</a></li>
                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="admin/displayRoutes">DISPLAY ROUTES</a></li>
@@ -105,8 +105,9 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      case 0:
                                                      %>
                                                      <center>
-                                                     <h1>Hey This is Simple Home</h1>
-                                                     <h2>Yet to Design</h2>
+                                                     <img src="<%=request.getContextPath()%>/static/img/bus.gif" alt="Homepage Image"  height="420" width="420">
+                                                     <h2>Administrative Home</h2>
+                                                     <h3>Driving TMS</h3>
                                                      </center>
                                                     <%
                                                      break;
@@ -158,7 +159,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      case 2:
                                                           %>
                                                           <div class="container">
-                                                                 <form class="form-addroute" method="POST" action="admin/saveRoute">
+                                                                 <form class="form-addroute" method="POST" action="/saveRoute">
                                                                  <h2 class="form-addroute-heading">ADD ROUTE DETAILS</h2>
                                                                  <input id="busid" name"username" type="text" class="input-block-level" placeholder="Route ID" required/>
                                                                  <input id="bussrc" name="bussrc" type="text" class="input-block-level" placeholder="Route Source" required/>

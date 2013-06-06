@@ -137,6 +137,7 @@ public class RouteService {
 
     }
 
+
     public int getStopIndex(int id, Integer rId) {
         return routeDao.getStopIndex(id, rId);
     }
@@ -146,7 +147,11 @@ public class RouteService {
 
         return routeDao.getStopsAfter(i, rId);
     }
-}
+   public int getStopId(int id, Integer rId) {
+        return routeDao.getStopId(id,rId);
+    }
+
+    }
 
 
 

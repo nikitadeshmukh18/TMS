@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Service
@@ -45,4 +46,14 @@ public class ConductorService {
     public void update(Conductor conductor) {
         cdao.update(conductor);
     }
+
+    public void delayhandling(int bus_no,int bus_stop) throws ParseException {
+        cdao.delayhandling(bus_no,bus_stop);
+    }
+
+    public void deleteRunningBus(int bus_no)
+    {
+        cdao.deleteRunningBus(bus_no);
+    }
 }
+

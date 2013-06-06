@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.swing.*;
+
 import java.awt.*;
+
+import java.text.ParseException;
+
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -66,7 +70,9 @@ public class ConductorController {
     }
 
     @RequestMapping("/deleteConductor")
-    public ModelAndView deleteConductor(){
+    public ModelAndView deleteConductor() throws ParseException {
+
+
         return new ModelAndView("redirect:/admin?id=9");
     }
 //

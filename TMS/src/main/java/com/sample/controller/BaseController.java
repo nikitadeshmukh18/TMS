@@ -5,11 +5,7 @@ import com.sample.model.*;
 
 import com.sample.model.Bus;
 import com.sample.model.BusStop;
-import com.sample.service.BusService;
-import com.sample.service.LoginService;
-import com.sample.service.UserService;
-import com.sample.service.BusStopService;
-import com.sample.service.RouteService;
+import com.sample.service.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +30,7 @@ public class BaseController {
     private LoginService loginService;
     private BusStopService busStopService;
     private BusService busService;
+    private ConductorService conductorService;
 
     private RouteService routeService;
 
@@ -45,12 +42,14 @@ public class BaseController {
 
 
 
-    public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,BusService busService, RouteService routeService ) {
+    public BaseController(UserService userService, LoginService loginService,BusStopService busStopService,BusService busService, RouteService routeService,ConductorService conductorService ) {
         this.userService = userService;
         this.loginService = loginService;
         this.busStopService=busStopService;
         this.busService = busService;
         this.routeService = routeService;
+        this.conductorService=conductorService;
+
 
     }
 
@@ -185,6 +184,8 @@ public class BaseController {
         System.out.println(route_no);
         int total=2;
              total=routeService.getStopCount(route_no);
+
+            conductorService.delayhandling(id,routeService.getStopId(1,route_no));
             modelMap.addAttribute("bus_no",id);
             modelMap.addAttribute("route_no",route_no);
             modelMap.addAttribute("current","1");
@@ -227,6 +228,10 @@ public class BaseController {
             next=routeService.getStopForRoute(Integer.parseInt(route_no), Integer.parseInt(current) + 1);
              String bus_src=busStopService.getStopWith(next);
 
+
+
+           conductorService.delayhandling(id,routeService.getStopId(Integer.parseInt(current)+1,Integer.parseInt(route_no)));
+
             modelMap.addAttribute("bus_no",id);
             modelMap.addAttribute("route_no",route_no);
             modelMap.addAttribute("current",Integer.parseInt(current)+1);
@@ -242,4 +247,12 @@ public class BaseController {
 
         return new ModelAndView("redirect:/");
     }
+
+    @RequestMapping(value = "/deleteRunningBus", method = RequestMethod.GET)
+    public ModelAndView deleteRunningBus(@RequestParam("bus_no") String bus_no,ModelMap map)
+    {
+        conductorService.deleteRunningBus(Integer.parseInt(bus_no));
+        return new ModelAndView("redirect:/chome");
+    }
+
 }

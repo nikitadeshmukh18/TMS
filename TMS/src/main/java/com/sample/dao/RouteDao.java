@@ -7,11 +7,14 @@ import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import javax.swing.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+
 
 @Repository
 public class RouteDao {
@@ -107,7 +110,11 @@ public class RouteDao {
 
     public void delete(BusRoute busRoute) {
         Session session=sessionFactory.getCurrentSession();
-        session.delete(busRoute);
+        String sql=" delete from Route where Route_Id="+busRoute.getRouteId();
+        Query query=session.createSQLQuery(sql);
+        int rowCount = query.executeUpdate();
+        System.out.println("Rows affected: " + rowCount);
+        //session.delete(busRoute);
 
     }
 
@@ -116,6 +123,7 @@ public class RouteDao {
 
         String h = "Select Stop_Id from Route where Route_Id="+routeId+" order by Stop_Index";
         Session session = sessionFactory.getCurrentSession();
+
         Query q = session.createSQLQuery(h);
         List<Integer> i=q.list();
 
@@ -186,7 +194,6 @@ public class RouteDao {
         session.save(busRoute1);
 
 
-
     }
 
 
@@ -209,5 +216,19 @@ public class RouteDao {
         List<Integer> stopIds =  query.list();
         return stopIds;
     }
+    public int getStopId(int id, Integer rId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select Stop_Id from Route where Stop_Index="+id+ " and Route_Id="+rId;
+        Query query = session.createSQLQuery(hql);
+        if (query.list().size() > 0 ){
+            int i = (Integer) query.list().get(0);
+            return i;
+        }
+        else
+            return -1;
+    }
+
+
+
 }
 
