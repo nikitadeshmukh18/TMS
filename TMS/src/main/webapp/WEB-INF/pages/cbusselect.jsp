@@ -65,7 +65,7 @@
                                                      %>
                                                      <h1>This a Final Stop</h1>
 
-                                                     <a href=<%=url %> class="btn btn-large btn-primary">Log Out</a>
+                                                     <a href=<%=url %> class="btn btn-large btn-primary">Conductor Home</a>
 
                                                      <%                                                     }
                                                      else

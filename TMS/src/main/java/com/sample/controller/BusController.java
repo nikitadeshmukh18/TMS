@@ -100,8 +100,12 @@ public class BusController {
     public ModelAndView saveBus(@RequestParam("bus_src") String busSource,
                                 @RequestParam("bus_destination") String busDestination,
                                 @RequestParam("route") String route,
-                                @RequestParam("startTime") String time,
+                                @RequestParam("timehr") String timehr,
+                                @RequestParam("timemin") String timemin,
                                 ModelMap modelMap) {
+
+
+        String time=timehr.concat(":".concat(timemin));
 
         Bus bus = new Bus();
         bus.setBusSource(busSource);

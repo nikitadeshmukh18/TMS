@@ -67,7 +67,7 @@
 
 <div class="jumbotron masthead">
   <div class="container">
-    <h1>TMS</h1>
+    <h1>iTMS</h1>
     <p>Intelligent Transport Management System</p>
 
     <ul class="masthead-links">

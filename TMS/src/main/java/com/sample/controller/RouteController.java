@@ -136,13 +136,14 @@ public class RouteController {
 
         if(busService.getRouteBusCount(route)>0)
         {
-            JOptionPane.showMessageDialog(null, "Bus Count : " + busService.getRouteBusCount(route));
+          //  JOptionPane.showMessageDialog(null, "Bus Count : " + busService.getRouteBusCount(route));
             List<Bus> busList=busService.getBusesByRoute(route);
 
             Iterator it=busList.listIterator();
             while (it.hasNext())
             {
-                JOptionPane.showMessageDialog(null,it.next());
+
+              //  JOptionPane.showMessageDialog(null,it.next());
             }
             map.addAttribute("route",route);
             map.addAttribute("busList",busList);

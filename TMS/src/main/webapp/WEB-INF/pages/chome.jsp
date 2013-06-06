@@ -17,6 +17,7 @@
     <body>
     <div class="container">
     <form class="form-conductor" method="GET" action="chome.do">
+    <a href="/Sample/" class="btn btn-large btn-info">Home</a>
     <h2 class="form-conductor-heading">SELECT BUS</h2>
     <select id="bus_id" name="bus_id">
     <c:forEach items='${busList}' var='bus'>

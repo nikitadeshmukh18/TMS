@@ -38,7 +38,7 @@ public class BusStopController {
         BusStop busStop = new BusStop();
         busStop.setStopName(stop);
         busStopService.saveStop(busStop);
-        JOptionPane.showMessageDialog(null, "Stop Successfully Created");
+        //JOptionPane.showMessageDialog(null, "Stop Successfully Created");
         return  new ModelAndView("redirect:/admin?id=0");
     }
 

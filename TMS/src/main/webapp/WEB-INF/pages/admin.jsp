@@ -20,8 +20,8 @@ function routePopUp(url) {
 
 </script>
 
-    <title></title>
-    <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+ <title>TMS | ADMIN </title>
+     <link href="<%=request.getContextPath()%>/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="<%=request.getContextPath()%>/static/css/bootstrap-responsive.css" rel="stylesheet" type="text/css"/>
     <link href="<%=request.getContextPath()%>/static/css/form.css" rel="stylesheet" type="text/css"/>
 
@@ -40,7 +40,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                <div id="navbar-example" class="navbar navbar-static">
                                  <div class="navbar-inner">
                                    <div class="container" style="width: auto;">
-                                     <a class="brand" href="#">TMS | ADMIN</a>
+                                     <a class="brand" href="admin?id=0">TMS | ADMIN</a>
                                      <ul class="nav" role="navigation">
                                        <li class="dropdown">
                                          <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">MANAGE BUS<b class="caret"></b></a>
@@ -135,7 +135,21 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                 </select>
                                                                 <br>
 
-                                                                Start Time : <input id="startTime" name="startTime" type="Text" class="input-block-level" placeholder="Start Time" required/>
+                                                                Start Time :
+
+                                                                <p>
+                                                                Hour:
+                                                                <select id="timehr" name="timehr">
+                                                                <c:forEach var="i" begin="00" end="23">
+                                                                <option><c:out value="${i}"/></option>
+                                                                </c:forEach>
+                                                                </select>
+                                                                Minutes : <select id="timemin" name="timemin">
+                                                                <c:forEach var="j" begin="00" end="59">
+                                                                <option><c:out value="${j}"/></option>
+                                                                </c:forEach>
+                                                                </select>
+                                                                </p>
                                                                 <br>
                                                                 Routes :   <select id="route" name="route">
 
@@ -147,7 +161,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
 
 
 
-                                                                <button class="btn btn-info" type="button" onclick="parent.location='/Sample/admin/addRoute'">New Route</button><br>
+                                                                <button class="btn btn-info" type="button" onclick="parent.location='/Sample/admin/newRoute'">New Route</button><br>
 
                                                                 <br>
                                                          <button class="btn btn-large btn-primary" type="submit">SAVE</button>
@@ -280,7 +294,7 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                                 <br>
                                                                 Username : <input id="Cusername" name="Cusername" type="Text" class="input-block-level" placeholder="Username for Conductor" required/>
                                                                 <br>
-                                                                Password : <input id="Cpassword" name="Cpassword" type="Text" class="input-block-level" placeholder="Password for Conductor" required/>
+                                                                Password : <input id="Cpassword" name="Cpassword" type="password" class="input-block-level" placeholder="Password for Conductor" required/>
                                                                 <br>
 
                                                                 <button class="btn btn-large btn-primary" type="submit">SAVE</button>
@@ -345,7 +359,6 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                         </c:forEach>
                                                        </select>
                                                      <button id="removeRoute" class="btn btn-large btn-primary">Delete</button>
-                                                     <a onClick="loadRouteDetails()" class="btn btn-large btn-primary">Update Working</a>
                                                      </form>
                                                      </div> <!-- /container -->
                                                      <%

@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.*;
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,7 +39,19 @@ public class BusStopDao {
 
     public void saveStop(BusStop stop) {
         Session session = sessionFactory.getCurrentSession();
+        String sql="SELECT count(stop_id) FROM busstop b where Stop_name like '%" + stop.getStopName() +"%'";
+        Query query=session.createSQLQuery(sql);
+        List<Integer> counts = (List<Integer>) query.list();
+        Iterator it = counts.iterator();
+        BigInteger total = (BigInteger) it.next();
+          int integer=Integer.parseInt(total.toString());
+        if(integer>0)
+            JOptionPane.showMessageDialog(null,"Stop Already Exist In Table");
+        else
+        {
         session.save(stop);
+            JOptionPane.showMessageDialog(null,"Stop Created..!!");
+        }
     }
 
     public List<BusStop> getRouteStops(int route_no) {

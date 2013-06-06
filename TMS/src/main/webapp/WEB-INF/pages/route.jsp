@@ -72,20 +72,20 @@ Current Stop Index  = ${current}
 <br>
 </h3>
 Time (From Source) :
+<p>
+Hour:
 <select id="timehr" name="timehr">
 <c:forEach var="i" begin="00" end="23">
 <option><c:out value="${i}"/></option>
 </c:forEach>
 </select>
-:
-<select id="timemin" name="timemin">
+Minutes : <select id="timemin" name="timemin">
 <c:forEach var="j" begin="00" end="59">
 <option><c:out value="${j}"/></option>
 </c:forEach>
 </select>
+</p>
 
-
-<a href="newRoute" >New Route</a>
 <input type="Submit" class="btn btn-primary btn-large" value="Add Stop">
 </center>
 </form>

@@ -56,7 +56,7 @@
         <label for="Cusername">Username</label>
         <input id="Cusername" name="Cusername" type="Text" value="${Cuser.username}" style = "width:50;"></input><br>
         <label for="Cpassword">Password</label>
-        <input id="Cpassword" name="Cpassword" type="Text" value="${Cuser.password}" style = "width:50;"></input><br>
+        <input id="Cpassword" name="Cpassword" type="password" value="${Cuser.password}" style = "width:50;"></input><br>
 
         <button class="btn btn-large btn-primary" onClick = "window.close();">Save</button>
       </form>
