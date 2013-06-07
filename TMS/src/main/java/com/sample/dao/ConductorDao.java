@@ -123,7 +123,7 @@ public class ConductorDao {
         int temp=Integer.parseInt(str);
         System.out.println(str);
         System.out.println(temp);
-        sql="select count(current_stop) from runningbuses where bus_no="+ bus_no ;
+        sql="select count(current_stop) from RunningBuses where bus_no="+ bus_no ;
         query=session.createSQLQuery(sql);
         List<Integer> counts = (List<Integer>) query.list();
         Iterator it = counts.iterator();
@@ -133,13 +133,13 @@ public class ConductorDao {
         if(integer>0)//update
         {
 
-            String sql1="delete from runningbuses where bus_no="+bus_no;
+            String sql1="delete from RunningBuses where bus_no="+bus_no;
             Query query1=session.createSQLQuery(sql1);
             query1.executeUpdate();
         }
 
 
-            String sql1="insert into runningbuses values("+bus_no+","+ bus_stop +","+temp+")";
+            String sql1="insert into RunningBuses values("+bus_no+","+ bus_stop +","+temp+")";
             Query query1=session.createSQLQuery(sql1);
             query1.executeUpdate();
 
@@ -151,7 +151,7 @@ public class ConductorDao {
     {
 
         Session session=sessionFactory.getCurrentSession();
-        String sql1="delete from runningbuses where bus_no="+bus_no;
+        String sql1="delete from RunningBuses where bus_no="+bus_no;
         Query query1=session.createSQLQuery(sql1);
         query1.executeUpdate();
     }

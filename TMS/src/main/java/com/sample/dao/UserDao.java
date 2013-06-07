@@ -73,4 +73,14 @@ public class UserDao {
         session.update(user);
 
     }
+
+    public int getUserType(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createSQLQuery("select User_Type from USER where User_Id="+id);
+        if(query.list().size() > 0 ){
+            int type = (Integer) query.list().get(0);
+            return type;
+        }
+        return -1;
+    }
 }

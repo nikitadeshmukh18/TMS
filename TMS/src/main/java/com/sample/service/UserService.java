@@ -55,4 +55,8 @@ public class UserService {
     public void update(User user) {
         userDao.upadate(user);
     }
+
+    public int getUserType(int id) {
+        return userDao.getUserType(id);
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -79,11 +80,20 @@ public class BaseController {
 
 
         boolean isValid = loginService.isValidUser(username, password);
+
+        int id = (int) loginService.getId(username);
+        int type = userService.getUserType(id);
+
         if (isValid) {
+            if(type == 1 ) return new ModelAndView("redirect:/chome");
+
             return new ModelAndView("redirect:admin?id=0");
+
         } else {
+            JOptionPane.showMessageDialog(null,"Invalid Credentials");
             return new ModelAndView("redirect:/login");
         }
+
     }
 
 

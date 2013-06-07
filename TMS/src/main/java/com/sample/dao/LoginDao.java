@@ -20,8 +20,11 @@ public class LoginDao {
     public long getId(String username) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Login where username=?").setParameter(0, username);
-        Login loginModel = (Login) query.list().get(0);
-        return loginModel.getId();
+        if(query.list().size() > 0){
+            Login loginModel = (Login) query.list().get(0);
+            return loginModel.getId();
+        }
+        return -1;
 
     }
 
@@ -30,7 +33,11 @@ public class LoginDao {
         Login loginModel = null;
         try {
             Query query = session.createQuery("from Login where username=?").setParameter(0, username);
-            loginModel = (Login) query.list().get(0);
+            if (query.list().size() > 0){
+                loginModel = (Login) query.list().get(0);
+            }
+            else
+                return false;
         } catch (IndexOutOfBoundsException exception) {
             return false;
         }
