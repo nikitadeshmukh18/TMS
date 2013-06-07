@@ -32,7 +32,7 @@ function routePopUp(url) {
 
 </style>
 <body>
-WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out</a>  ${id}</text>
+WELCOME ADMIN <text align="right"><a href="/Sample/welcome">Log Out</a>  </text>
                      <section id="dropdowns">
                               <div class="page-header">
 
@@ -641,6 +641,29 @@ WELCOME ADMIN ${user.name} <text align="right"><a href="/Sample/welcome">Log Out
                                                      </div> <!-- /container -->
                                                      <%
                                                      break;
+
+
+                                                    case 20:    //Routes
+                                                     %>
+                                                        <div class="container">
+                                                            <table class="table table-striped tablestyle" >
+                                                                <thead>
+                                                                    <th> Id</th>
+                                                                    <th> Name</th>
+                                                                </thead>
+                                                                  <c:forEach var='c' items='${conductors}'>
+                                                                              <tr><td> <c:out value='${c.id}'/></td>
+                                                                                <td> <c:out value='${c.name}'/></td>
+                                                                              </tr>
+                                                                  </c:forEach>
+
+                                                            </table>
+
+                                                     </div> <!-- /container -->
+                                                     <%
+                                                     break;
+
+
 
 
 

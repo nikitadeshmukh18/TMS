@@ -139,5 +139,10 @@ public class ConductorController {
 
     }
 
+    @RequestMapping(value = "/displayConductors")
+    public ModelAndView display(){
+        return new ModelAndView("redirect:/admin?id=20");
+    }
+
 
 }

@@ -46,17 +46,12 @@
                 <a href="./">Home</a>
 
               </li>
-              <li class="">
-               <a href="initiative">Initiative</a>
-              </li>
+
               <li class="">
                 <a href="search">Search</a>
               </li>
               <li class="">
                 <a href="login">Login</a>
-              </li>
-              <li class="">
-                 <a href="about">About Us</a>
               </li>
 
             </ul>
